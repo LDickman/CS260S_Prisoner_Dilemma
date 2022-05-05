@@ -19,6 +19,10 @@
 #submitButton {
 }
 
+#helpButton{
+  border-radius: 60%;
+}
+
 .inGameScreen {
   color: black;
   background-color: rgb(59, 203, 247);
