@@ -17,8 +17,6 @@
 }
 
 #submitButton {
-  position:relative;
-  top: 80px;
 }
 
 .inGameScreen {
@@ -27,6 +25,8 @@
 }
 /* END In-Game Page */
 
-/* Result Page */
-
-/* END Result Page */
+/* Guide Page */
+.guideScreen{
+  background-color: powderblue;
+}
+/* END Guide Page */
