@@ -1,0 +1,32 @@
+/* Main Menu */
+.header {
+    color: black;
+    text-align: center;
+  }
+/* END Main Menu */
+
+/* In-Game Page */
+#defectButton {
+  background-color: rgb(247, 59, 59); 
+  color:white;
+}
+
+#coopButton {
+  background-color: rgb(0, 253, 13); 
+  color:black;
+}
+
+#submitButton {
+  position:relative;
+  top: 80px;
+}
+
+.inGameScreen {
+  color: black;
+  background-color: rgb(59, 203, 247);
+}
+/* END In-Game Page */
+
+/* Result Page */
+
+/* END Result Page */

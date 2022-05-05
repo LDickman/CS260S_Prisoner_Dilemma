@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script  type="module" src="./JS/"></script>
+    <link rel=stylesheet id="style" type="text/css" href="./CSS/ScreenOutilnes.css" />
     <title>Prisoner's Dilemma</title>
 </head>
 <body>
-    <header>Prisoner's Dilemma Main Menu</header>
+<!------------------MAIN SCREEN------------------------->
+    <diV class="header">
+        <h1>Steal Or Split!</h1>
+        <p>Prisoner's Dilemma by: Lauren Dickman, Courtney Arrowood, Dale Donnelly</p>
+        <p>Approved by: Dr. Nate Kremer-Herman & Dr. Jared Bates</p>
+    </diV>
     <ul>
         <li>start game against random AI</li>
         <li>Create game (choose AI)</li>
         <li>Guide</li>
     </ul>
+<!------------------END MAIN SCREEN------------------------->
+    
+<!------------------IN GAME SCREEN------------------------->
+    <div class="inGameScreen">
+
+        <section>Dr. Jared Bates would like to allow students to explore the Prisoner’s Dilemma. The
+            game would consist of playing an indeterminate number of rounds against a computer opponent
+            who has implemented a strategy against the player. Each round, the player is given two choices:
+            cooperate or defect. Some strategies are more effective than others, and after playing against an
+            opponent the player is provided information about the chosen strategy. As the player continues
+            through the game, they are introduced to more strategies (with varying degrees of
+            sophistication). This game is meant to provide experiential learning as opposed to a laid out
+            lesson, and the player should be encouraged to experiment with their own strategies to score the
+            most points possible.
+        </section>
+        
+        <button id="defectButton">Steal</button>
+        <button id="submitButton">Submit</button>
+        <button id="coopButton">Split</button>
+    </div>
+<!------------------END IN GAME SCREEN------------------------->
+
+<!------------------RESULT SCREEN------------------------->
+
+<!------------------END RESULT SCREEN------------------------->
 </body>
 </html>
