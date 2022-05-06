@@ -30,7 +30,18 @@
 /* END In-Game Page */
 
 /* Guide Page */
-.guideScreen{
-  background-color: powderblue;
+.guideFormDiv {
+  text-align: center;
+}
+
+.guideForm {
+  font-size: 16px;
+}
+.mainMenuFormDiv {
+  text-align: center;
+}
+
+.mainMenuForm {
+  font-size: 16px;
 }
 /* END Guide Page */
