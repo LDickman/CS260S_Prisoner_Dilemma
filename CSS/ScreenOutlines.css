@@ -12,20 +12,28 @@
 }
 
 #coopButton {
+  background-image: url(/CSS/images/scale.png);
+  background-size: 100%;
   background-color: rgb(0, 253, 13); 
+  height: 60px;
   color:black;
 }
 
 #submitButton {
+  background-color: bisque;
 }
 
 #helpButton{
   border-radius: 60%;
 }
 
-.inGameScreen {
+#playerScores {
+  background-color:aquamarine;
+}
+
+.inGameScreenFormDiv {
+  text-align: center;
   color: black;
-  background-color: rgb(59, 203, 247);
 }
 /* END In-Game Page */
 
