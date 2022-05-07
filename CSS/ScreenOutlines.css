@@ -45,3 +45,25 @@
   font-size: 16px;
 }
 /* END Guide Page */
+
+/* Console Game */
+#consolePlayAgain {
+  display: none;
+}
+
+#consoleSplit {
+  display: none;
+}
+
+#consoleSteal {
+  display: none;
+}
+
+#consoleSubmitSplit {
+  display: none;
+}
+
+#consoleSubmitSteal {
+  display: none;
+}
+/* END Console Game */
