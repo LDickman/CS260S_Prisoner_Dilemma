@@ -106,4 +106,8 @@ table, th, td {
 #playerChoiceHistoryTable {
   display: none;
 }
+
+#toMainMenuDiv {
+  text-align: center;
+}
 /* END Console Game */
