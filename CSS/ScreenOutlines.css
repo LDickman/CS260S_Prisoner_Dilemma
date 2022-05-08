@@ -79,15 +79,31 @@
   display: none;
 }
 
-#consoleOpponentPointsPara {
+#endOfGame {
   display: none;
 }
 
-#opponentAIPara {
+#opponentDetails {
+  display: none;
+}
+
+#roundNumDisplay {
+  display: none;
+}
+
+#finalRound {
+  display: none;
+}
+
+#roundNumDiv {
   display: none;
 }
 
 table, th, td {
   border: 1px solid black
+}
+
+#playerChoiceHistoryTable {
+  display: none;
 }
 /* END Console Game */

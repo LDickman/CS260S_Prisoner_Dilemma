@@ -7,10 +7,19 @@
 </head>
 <body>
     <h1>Console Game</h1>
-    <h3>Please open console to see the game</h3>
+    <h3>But you don't need to look at the console anymore!</h3>
+    <div id="endOfGame">
+        <h1>Game Over</h1>
+    </div>
+    <div id="roundNumDiv">
+        <h1 id="roundNumDisplay">Round: <span id="roundNum"></span></h1>
+        <h1 id="finalRound">Final Round</h1>
+    </div>
     <p id="consolePlayerPointsPara">Player Points: <span id="consolePlayerPoints">0</span> </p>
-    <p id="consoleOpponentPointsPara">Opponent Points: <span id="opponentPoints"></span></p>
-    <p id="opponentAIPara">Opponent AI: <span id="opponentAI"></span></p>
+    <div id="opponentDetails">
+        <p>Opponent Points: <span id="opponentPoints"></span></p>
+        <p>Opponent AI: <span id="opponentAI"></span></p>
+    </div>
     <table id="playerChoiceHistoryTable">
         <tr id ="playerChoicesRow">
             <th>Player Choices</th>

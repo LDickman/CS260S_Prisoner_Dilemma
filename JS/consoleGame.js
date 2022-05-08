@@ -72,6 +72,7 @@ function activatePlayerChoiceButtons() {
 }
 
 function populateChoiceHistoryTable() {
+    document.getElementById("playerChoiceHistoryTable").style.display = 'block';
     if (currentRound !== 1) {
         for (let i = 0; i < playerChoices.length; i++) {
             if (i === playerChoices.length - 1) {
@@ -104,13 +105,16 @@ function givePoints() {
 
 function printRound() {
     document.getElementById("consolePlayerPointsPara").style.display = 'block';
-    document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
+    document.getElementById("roundNumDiv").style.display = 'block';
+    updatePlayerPoints();
     if (currentRound === rounds) {
         console.log ("==== Last Round ====");
-    } else if (currentRound < 10) {
-        console.log("===== Round 0" + currentRound + " =====");
+        document.getElementById("finalRound").style.display = 'block';
+        document.getElementById("roundNum").innerHTML = currentRound;
     } else {
         console.log("===== Round " + currentRound + " =====");
+        document.getElementById("roundNumDisplay").style.display = 'block';
+        document.getElementById("roundNum").innerHTML = currentRound;
     }
     console.log("Click Split or Steal!");
     console.log("Opponent AI: " + opponent.name);
@@ -135,9 +139,10 @@ function playAgain() {
 
 function resetGame() {
     // Hide opponent details
-    document.getElementById("consoleOpponentPointsPara").style.display = 'none';
-    document.getElementById("opponentAIPara").style.display = 'none';
-    //
+    document.getElementById("opponentDetails").style.display = 'none';
+    // Hide Game Over and final round headers
+    document.getElementById("endOfGame").style.display = 'none';
+    document.getElementById("finalRound").style.display = 'none';
     clearChoiceHistoryTable();
     currentRound = 1;
     playerChoices = [];
@@ -209,11 +214,21 @@ function printOpponentChoices() {
     }
 }
 
+function updatePlayerPoints() {
+    document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
+}
+
 function printSummary() {
-    document.getElementById("consoleOpponentPointsPara").style.display = 'block';
+    // show end of game header
+    document.getElementById("endOfGame").style.display = 'block';
+    // show & update opponent details
+    document.getElementById("opponentDetails").style.display = 'block';
     document.getElementById("opponentPoints").innerHTML = opponentPoints;
-    document.getElementById("opponentAIPara").style.display = 'block';
     document.getElementById("opponentAI").innerHTML = opponent.name;
+    // show updated player score
+    updatePlayerPoints();
+    // hide round num info
+    document.getElementById("roundNumDiv").style.display = 'none';
     console.log("=== Game Results ===");
     if (playerPoints > opponentPoints) {
         console.log("You win! Congrats!");
