@@ -74,4 +74,20 @@
 #consoleSubmitSteal {
   display: none;
 }
+
+#consolePlayerPointsPara {
+  display: none;
+}
+
+#consoleOpponentPointsPara {
+  display: none;
+}
+
+#opponentAIPara {
+  display: none;
+}
+
+table, th, td {
+  border: 1px solid black
+}
 /* END Console Game */

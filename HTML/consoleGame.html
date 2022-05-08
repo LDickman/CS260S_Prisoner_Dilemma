@@ -8,6 +8,17 @@
 <body>
     <h1>Console Game</h1>
     <h3>Please open console to see the game</h3>
+    <p id="consolePlayerPointsPara">Player Points: <span id="consolePlayerPoints">0</span> </p>
+    <p id="consoleOpponentPointsPara">Opponent Points: <span id="opponentPoints"></span></p>
+    <p id="opponentAIPara">Opponent AI: <span id="opponentAI"></span></p>
+    <table id="playerChoiceHistoryTable">
+        <tr id ="playerChoicesRow">
+            <th>Player Choices</th>
+        </tr>
+        <tr id ="OpponentChoicesRow">
+            <th>Opponent Choices</th>
+        </tr>
+    </table>
     <button id="createConsoleGame" onclick="createGame();" >Create Game</button>
     <button id="consoleSplit" onclick="submitSplitActive()">Split</button>
     <button id="consoleSteal" onclick="submitStealActive()">Steal</button>

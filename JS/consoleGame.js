@@ -8,20 +8,20 @@ let opponentChoices = [];
 let opponentPoints = 0;
 
 function createGame() {
-    populatePossibleOpponents();
-    pickOpponentRandomly();
-    console.log("Let's Play!");
-    rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
+    // v Deactivates create game button
     document.getElementById("createConsoleGame").style.display = 'none';
-    document.getElementById("consoleSplit").style.display = 'block';
-    document.getElementById("consoleSteal").style.display = 'block';
+    setGameRounds();
+    setOpponent();
     playGame();
 }
 
-function playAgain() {
-    console.clear();
-    createGame();
-    document.getElementById("consolePlayAgain").style.display = "none";
+function setGameRounds() {
+    rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
+}
+
+function setOpponent() {
+    populatePossibleOpponents();
+    pickOpponentRandomly();
 }
 
 function populatePossibleOpponents() {
@@ -43,6 +43,8 @@ function pickOpponentRandomly() {
 }
 
 function playGame() {
+    activatePlayerChoiceButtons();
+    populateChoiceHistoryTable();
     givePoints();
     if (currentRound <= rounds) {
         printRound();
@@ -53,19 +55,95 @@ function playGame() {
         console.log("====================");
     } else {
         printSummary();
-        resetGame();
+        // v activates play again button
+        document.getElementById("consolePlayAgain").style.display = 'block';
+        deactivatePlayerChoiceButtons()
     }
 }
 
+function deactivatePlayerChoiceButtons() {
+    document.getElementById("consoleSplit").style.display = 'none';
+    document.getElementById("consoleSteal").style.display = 'none';
+}
+
+function activatePlayerChoiceButtons() {
+    document.getElementById("consoleSplit").style.display = 'block';
+    document.getElementById("consoleSteal").style.display = 'block';
+}
+
+function populateChoiceHistoryTable() {
+    if (currentRound !== 1) {
+        for (let i = 0; i < playerChoices.length; i++) {
+            if (i === playerChoices.length - 1) {
+                let playerRow = document.getElementById("playerChoicesRow");
+                let opponentRow = document.getElementById("OpponentChoicesRow");
+                playerRow.insertCell(-1).innerHTML = (currentRound - 1) + ". " + playerChoices[i];
+                opponentRow.insertCell(-1).innerHTML = (currentRound - 1) + ". " + opponentChoices[i];
+            }
+        }
+    }
+}
+
+function givePoints() {
+    let pChoice = playerChoices[playerChoices.length - 1];
+    let oChoice = opponentChoices[opponentChoices.length - 1];
+    if (currentRound > 1) {
+        if (pChoice === "Split" && oChoice === "Split") {
+            playerPoints += 250;
+            opponentPoints += 250;
+        } else if (pChoice === "Steal" && oChoice === "Split") {
+            playerPoints += 500;
+            opponentPoints -= 50;
+        } else if (pChoice === "Split" && oChoice === "Steal") {
+            playerPoints -= 50;
+            opponentPoints += 500;
+        }
+    }
+
+}
+
+function printRound() {
+    document.getElementById("consolePlayerPointsPara").style.display = 'block';
+    document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
+    if (currentRound === rounds) {
+        console.log ("==== Last Round ====");
+    } else if (currentRound < 10) {
+        console.log("===== Round 0" + currentRound + " =====");
+    } else {
+        console.log("===== Round " + currentRound + " =====");
+    }
+    console.log("Click Split or Steal!");
+    console.log("Opponent AI: " + opponent.name);
+}
+
+function clearChoiceHistoryTable() {
+    for (let i = 0; i < playerChoices.length; i++) {
+        let playerRow = document.getElementById("playerChoicesRow");
+        let opponentRow = document.getElementById("OpponentChoicesRow");
+        playerRow.deleteCell(-1);
+        opponentRow.deleteCell(-1);
+    }
+}
+
+function playAgain() {
+    // v Deactivates play again button
+    document.getElementById("consolePlayAgain").style.display = 'none';
+    resetGame();
+    console.clear();
+    createGame();
+}
+
 function resetGame() {
+    // Hide opponent details
+    document.getElementById("consoleOpponentPointsPara").style.display = 'none';
+    document.getElementById("opponentAIPara").style.display = 'none';
+    //
+    clearChoiceHistoryTable();
     currentRound = 1;
     playerChoices = [];
     playerPoints = 0;
     opponentChoices = [];
     opponentPoints = 0;
-    document.getElementById("consolePlayAgain").style.display = 'block';
-    document.getElementById("consoleSplit").style.display = 'none';
-    document.getElementById("consoleSteal").style.display = 'none';
 }
 
 function submitSplitActive() {
@@ -104,18 +182,6 @@ function playerChoiceSteal() {
     playGame()
 }
 
-function printRound() {
-    if (currentRound === rounds) {
-        console.log ("==== Last Round ====");
-    } else if (currentRound < 10) {
-        console.log("===== Round 0" + currentRound + " =====");
-    } else {
-        console.log("===== Round " + currentRound + " =====");
-    }
-    console.log("Click Split or Steal!");
-    console.log("Opponent AI: " + opponent.name);
-}
-
 function printPlayerChoices() {
     if (currentRound === 1) {
         console.log("You have made no choices yet!");
@@ -125,24 +191,6 @@ function printPlayerChoices() {
             console.log((i + 1) + ". " + playerChoices[i]);
         }
     }
-}
-
-function givePoints() {
-    let pChoice = playerChoices[playerChoices.length - 1];
-    let oChoice = opponentChoices[opponentChoices.length - 1];
-    if (currentRound > 1) {
-        if (pChoice === "Split" && oChoice === "Split") {
-            playerPoints += 250;
-            opponentPoints += 250;
-        } else if (pChoice === "Steal" && oChoice === "Split") {
-            playerPoints += 500;
-            opponentPoints -= 50;
-        } else if (pChoice === "Split" && oChoice === "Steal") {
-            playerPoints -= 50;
-            opponentPoints += 500;
-        }
-    }
-
 }
 
 function opponentTurn() {
@@ -162,6 +210,10 @@ function printOpponentChoices() {
 }
 
 function printSummary() {
+    document.getElementById("consoleOpponentPointsPara").style.display = 'block';
+    document.getElementById("opponentPoints").innerHTML = opponentPoints;
+    document.getElementById("opponentAIPara").style.display = 'block';
+    document.getElementById("opponentAI").innerHTML = opponent.name;
     console.log("=== Game Results ===");
     if (playerPoints > opponentPoints) {
         console.log("You win! Congrats!");
