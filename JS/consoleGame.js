@@ -1,6 +1,7 @@
 import { OpponentTitForTatDefectFirst } from './OpponentTitForTatDefectFirst.js';
 import { OpponentAlwaysSplit } from "./OpponentAlwaysSplits.js"
 import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
+import { OpponentRandom } from "./OpponentRandom.js"
 let rounds;
 export let currentRound = 1;
 export let playerChoices = [];
@@ -46,16 +47,16 @@ function setOpponent() {
 }
 
 function populatePossibleOpponents() {
-    let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
-    let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
-    // let randomChoice = new OpponentRandom("Random Choice");
+    // let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
+    // let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
+    let randomChoice = new OpponentRandom("Random Choice");
     // let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
-    let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
-    possibleOpponents.push(alwaysSplit);
-    possibleOpponents.push(alwaysSteal);
-    // possibleOpponents.push(randomChoice);
+   // let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
+    // possibleOpponents.push(alwaysSplit);
+    // possibleOpponents.push(alwaysSteal);
+    possibleOpponents.push(randomChoice);
     // possibleOpponents.push(titForTatCoop);
-    possibleOpponents.push(titForTatDefect);
+   // possibleOpponents.push(titForTatDefect);
 }
 
 function pickOpponentRandomly() {
@@ -264,20 +265,6 @@ function printSummary() {
     printPlayerChoices();
     printOpponentChoices();
     console.log("====================");
-}
-
-class OpponentRandom {
-    name
-
-    makeChoice() {
-        let actions = ["Split", "Steal"];
-        let random = Math.floor(Math.random() * actions.length);
-        return actions[random];
-    }
-
-    constructor(name) {
-        this.name = name;
-    }
 }
 
 class OpponentTitForTatCoopFirst {
