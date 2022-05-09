@@ -2,6 +2,7 @@ import { OpponentTitForTatDefectFirst } from './OpponentTitForTatDefectFirst.js'
 import { OpponentAlwaysSplit } from "./OpponentAlwaysSplits.js"
 import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
 import { OpponentRandom } from "./OpponentRandom.js"
+import { OpponentTitForTatCoopFirst } from "./OpponentTitForTatCoopFirst.js"
 let rounds;
 export let currentRound = 1;
 export let playerChoices = [];
@@ -47,16 +48,16 @@ function setOpponent() {
 }
 
 function populatePossibleOpponents() {
-    // let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
-    // let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
+    let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
+    let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
     let randomChoice = new OpponentRandom("Random Choice");
-    // let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
-   // let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
-    // possibleOpponents.push(alwaysSplit);
-    // possibleOpponents.push(alwaysSteal);
+    let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
+    let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
+    possibleOpponents.push(alwaysSplit);
+    possibleOpponents.push(alwaysSteal);
     possibleOpponents.push(randomChoice);
-    // possibleOpponents.push(titForTatCoop);
-   // possibleOpponents.push(titForTatDefect);
+    possibleOpponents.push(titForTatCoop);
+    possibleOpponents.push(titForTatDefect);
 }
 
 function pickOpponentRandomly() {
@@ -265,25 +266,4 @@ function printSummary() {
     printPlayerChoices();
     printOpponentChoices();
     console.log("====================");
-}
-
-class OpponentTitForTatCoopFirst {
-    name
-
-    makeChoice() {
-        if (currentRound === 1) {
-            return "Split";
-        } else {
-            let pChoice = playerChoices[currentRound - 2];
-            if (pChoice === "Split") {
-                return "Split"
-            } else {
-                return "Steal"
-            }
-        }
-    }
-
-    constructor(name) {
-        this.name = name;
-    }
 }
