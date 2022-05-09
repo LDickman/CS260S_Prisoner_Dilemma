@@ -1,5 +1,6 @@
 import { OpponentTitForTatDefectFirst } from './OpponentTitForTatDefectFirst.js';
 import { OpponentAlwaysSplit } from "./OpponentAlwaysSplits.js"
+import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
 let rounds;
 export let currentRound = 1;
 export let playerChoices = [];
@@ -46,12 +47,12 @@ function setOpponent() {
 
 function populatePossibleOpponents() {
     let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
-    // let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
+    let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
     // let randomChoice = new OpponentRandom("Random Choice");
     // let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
     let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
     possibleOpponents.push(alwaysSplit);
-    // possibleOpponents.push(alwaysSteal);
+    possibleOpponents.push(alwaysSteal);
     // possibleOpponents.push(randomChoice);
     // possibleOpponents.push(titForTatCoop);
     possibleOpponents.push(titForTatDefect);
@@ -263,18 +264,6 @@ function printSummary() {
     printPlayerChoices();
     printOpponentChoices();
     console.log("====================");
-}
-
-class OpponentAlwaysSteal {
-    name
-
-    makeChoice() {
-        return "Steal";
-    }
-
-    constructor(name) {
-        this.name = name;
-    }
 }
 
 class OpponentRandom {
