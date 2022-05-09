@@ -1,11 +1,30 @@
+import { OpponentTitForTatDefectFirst } from './OpponentTitForTatDefectFirst.js';
 let rounds;
-let currentRound = 1;
-let playerChoices = [];
+export let currentRound = 1;
+export let playerChoices = [];
 let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
 let opponentChoices = [];
 let opponentPoints = 0;
+
+const startButton = document.getElementById("createConsoleGame");
+startButton.addEventListener("click", createGame);
+
+const conSlpitButton = document.getElementById("consoleSplit");
+conSlpitButton.addEventListener("click", submitSplitActive);
+
+const conStealButton = document.getElementById("consoleSteal");
+conStealButton.addEventListener("click", submitStealActive);
+
+const submitSplitButton = document.getElementById("consoleSubmitSplit");
+submitSplitButton.addEventListener("click", playerChoiceSplit);
+
+const submitStealButton = document.getElementById("consoleSubmitSteal");
+submitStealButton.addEventListener("click", playerChoiceSteal);
+
+const replayButton = document.getElementById("consolePlayAgain");
+replayButton.addEventListener("click", playAgain);
 
 function createGame() {
     // v Deactivates create game button
@@ -25,15 +44,15 @@ function setOpponent() {
 }
 
 function populatePossibleOpponents() {
-    let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
-    let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
-    let randomChoice = new OpponentRandom("Random Choice");
-    let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
+    // let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
+    // let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
+    // let randomChoice = new OpponentRandom("Random Choice");
+    // let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
     let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
-    possibleOpponents.push(alwaysSplit);
-    possibleOpponents.push(alwaysSteal);
-    possibleOpponents.push(randomChoice);
-    possibleOpponents.push(titForTatCoop);
+    // possibleOpponents.push(alwaysSplit);
+    // possibleOpponents.push(alwaysSteal);
+    // possibleOpponents.push(randomChoice);
+    // possibleOpponents.push(titForTatCoop);
     possibleOpponents.push(titForTatDefect);
 }
 
@@ -304,23 +323,23 @@ class OpponentTitForTatCoopFirst {
     }
 }
 
-class OpponentTitForTatDefectFirst {
-    name
+// class OpponentTitForTatDefectFirst {
+//     name
 
-    makeChoice() {
-        if (currentRound === 1) {
-            return "Steal";
-        } else {
-            let pChoice = playerChoices[currentRound - 2];
-            if (pChoice === "Split") {
-                return "Split"
-            } else {
-                return "Steal"
-            }
-        }
-    }
+//     makeChoice() {
+//         if (currentRound === 1) {
+//             return "Steal";
+//         } else {
+//             let pChoice = playerChoices[currentRound - 2];
+//             if (pChoice === "Split") {
+//                 return "Split"
+//             } else {
+//                 return "Steal"
+//             }
+//         }
+//     }
 
-    constructor(name) {
-        this.name = name;
-    }
-}
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
