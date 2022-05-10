@@ -1,17 +1,80 @@
+import { OpponentTitForTatDefectFirst } from './OpponentTitForTatDefectFirst.js';
+import { OpponentAlwaysSplit } from "./OpponentAlwaysSplits.js"
+import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
+import { OpponentRandom } from "./OpponentRandom.js"
+import { OpponentTitForTatCoopFirst } from "./OpponentTitForTatCoopFirst.js"
 let rounds;
-let currentRound = 1;
-let playerChoices = [];
+export let currentRound = 1;
+export let playerChoices = [];
 let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
+let opponentType;
 let opponentChoices = [];
 let opponentPoints = 0;
+populatePossibleOpponents();
+
+const startButton = document.getElementById("createConsoleGame");
+startButton.addEventListener("click", createGame);
+
+const conSlpitButton = document.getElementById("consoleSplit");
+conSlpitButton.addEventListener("click", submitSplitActive);
+
+const conStealButton = document.getElementById("consoleSteal");
+conStealButton.addEventListener("click", submitStealActive);
+
+const submitSplitButton = document.getElementById("consoleSubmitSplit");
+submitSplitButton.addEventListener("click", playerChoiceSplit);
+
+const submitStealButton = document.getElementById("consoleSubmitSteal");
+submitStealButton.addEventListener("click", playerChoiceSteal);
+
+const replayButton = document.getElementById("consolePlayAgain");
+replayButton.addEventListener("click", playAgain);
+
+const AIButton = document.getElementById("AISelect");
+var ulList = document.getElementById("strategyList");
+AIButton.addEventListener("click", selectionButton);
+
+function selectionButton() {
+    document.getElementById('strategyDropdown').classList.toggle("show");
+    console.log("click");
+}
+
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        let i;
+        for (i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+    clickOnDropDownMenu(ulList, AIButton);
+}
+
+function clickOnDropDownMenu(ul, button) {
+    let items = ul.getElementsByTagName('li');
+    ul.addEventListener("click", function (e) {
+        for (let i = 0; i < items.length; i++) {
+            if (e.target == items[i]) {
+                console.log(items[i].textContent);
+                opponentType = items[i].textContent;
+                console.log("opponentType: "+opponentType);
+                button.textContent = items[i].textContent;
+            }
+        }
+    });
+}
 
 
 
 function createGame() {
     // v Deactivates create game button
     document.getElementById("createConsoleGame").style.display = 'none';
+    document.getElementById("AISelect").style.display = 'none';
     setGameRounds();
     setOpponent();
     playGame();
@@ -22,8 +85,28 @@ function setGameRounds() {
 }
 
 function setOpponent() {
-    populatePossibleOpponents();
-    pickOpponentRandomly();
+    // populatePossibleOpponents();
+    switch (opponentType) {
+        case "Always Split":
+            opponent = possibleOpponents[0]
+            break;
+        case "Always Steal":
+            opponent = possibleOpponents[1]
+            break;
+        case "Random":
+            opponent = possibleOpponents[2]
+            break;
+        case "Tit for Tat Defect":
+            opponent = possibleOpponents[4]
+            break;
+        case "Tit for Tat Coop.":
+            opponent = possibleOpponents[3]
+            break;
+        case "No Preffereance":
+            pickOpponentRandomly();
+            break;
+    }
+    //pickOpponentRandomly();
 }
 
 function populatePossibleOpponents() {
@@ -248,84 +331,4 @@ function printSummary() {
     printPlayerChoices();
     printOpponentChoices();
     console.log("====================");
-}
-
-class OpponentAlwaysSplit {
-    name
-
-    makeChoice() {
-        return "Split";
-    }
-
-    constructor(name) {
-        this.name = name;
-    }
-}
-
-class OpponentAlwaysSteal {
-    name
-
-    makeChoice() {
-        return "Steal";
-    }
-
-    constructor(name) {
-        this.name = name;
-    }
-}
-
-class OpponentRandom {
-    name
-
-    makeChoice() {
-        let actions = ["Split", "Steal"];
-        let random = Math.floor(Math.random() * actions.length);
-        return actions[random];
-    }
-
-    constructor(name) {
-        this.name = name;
-    }
-}
-
-class OpponentTitForTatCoopFirst {
-    name
-
-    makeChoice() {
-        if (currentRound === 1) {
-            return "Split";
-        } else {
-            let pChoice = playerChoices[currentRound - 2];
-            if (pChoice === "Split") {
-                return "Split"
-            } else {
-                return "Steal"
-            }
-        }
-    }
-
-    constructor(name) {
-        this.name = name;
-    }
-}
-
-class OpponentTitForTatDefectFirst {
-    name
-
-    makeChoice() {
-        if (currentRound === 1) {
-            return "Steal";
-        } else {
-            let pChoice = playerChoices[currentRound - 2];
-            if (pChoice === "Split") {
-                return "Split"
-            } else {
-                return "Steal"
-            }
-        }
-    }
-
-    constructor(name) {
-        this.name = name;
-    }
 }

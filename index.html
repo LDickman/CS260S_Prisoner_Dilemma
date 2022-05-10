@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script  type="module" src="./JS/"></script>
+    <script type="module" src="./JS/"></script>
     <link rel=stylesheet id="style" type="text/css" href="CSS/ScreenOutlines.css" />
     <title>Prisoner's Dilemma</title>
 </head>
-<body>
-<!------------------MAIN SCREEN------------------------->
-    <div class="header">
-        <h1 style="text-decoration-line: underline"><span style="color: Red">Steal</span> Or <span style="color: #00b700">Split!</span></h1>
-        <h2>The Prisoner's Dilemma</h2>
-        <p>Developed by: Lauren Dickman, Courtney Arrowood, Dale Donnelly</p>
-        <p>Approved by: Dr. Nate Kremer-Herman & Dr. Jared Bates</p>
-    </div>
-<form action = "./HTML/consoleGame.html" style = "text-align: center; margin: 10px">
-    <input type="submit" value="Play Game" class="toPlayableGameForm" style="font-size: 16px"/>
-</form>
-<!------------------END MAIN SCREEN------------------------->
-    
-<!------------------IN GAME SCREEN------------------------->
-<!------------------END IN GAME SCREEN------------------------->
 
-<!------------------GUIDE SCREEN------------------------->
-    <div class="guideFormDiv">
-        <form action = "HTML/guide.html">
-            <input type="submit" value="Guide" class="guideForm"/>
+<body>
+    <!------------------MAIN SCREEN------------------------->
+    <diV class="header">
+        <h1>Steal Or Split!</h1>
+        <p>Prisoner's Dilemma by: Lauren Dickman, Courtney Arrowood, Dale Donnelly</p>
+        <p>Approved by: Dr. Nate Kremer-Herman & Dr. Jared Bates</p>
+    </diV>
+    <ul>
+        <li>start game against random AI</li>
+        <li>Create game (choose AI)</li>
+        <li>Guide</li>
+    </ul>
+    <form action="./HTML/consoleGame.html">
+        <input type="submit" value="Play Game (Console)" class="toPlayableGameForm" />
+    </form>
+    <!------------------END MAIN SCREEN------------------------->
+
+    <!------------------IN GAME SCREEN------------------------->
+    <div class="inGameScreenFormDiv">
+        <form action="HTML/inGame.html">
+            <input type="submit" value="inGame" class="inGameForm" />
         </form>
     </div>
-<!------------------END GUIDE SCREEN------------------------->
+    <!------------------END IN GAME SCREEN------------------------->
+
+    <!------------------GUIDE SCREEN------------------------->
+    <div class="guideFormDiv">
+        <form action="HTML/guide.html">
+            <input type="submit" value="Guide" class="guideForm" />
+        </form>
+    </div>
+    <!------------------END GUIDE SCREEN------------------------->
 </body>
+
 </html>

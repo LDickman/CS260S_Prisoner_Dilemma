@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel=stylesheet id="style" type="text/css" href="../CSS/ScreenOutlines.css" />
     <title>Console Game</title>
-    <script src="../JS/consoleGame.js"></script>
+    <script type="module" src="../JS/consoleGame.js"></script>
 </head>
-<body onload="createGame()">
+<body>
     <h1>Console Game</h1>
     <h3>But you don't need to look at the console anymore!</h3>
     <div id="endOfGame">
@@ -21,29 +22,38 @@
         <p>Opponent AI: <span id="opponentAI"></span></p>
     </div>
     <table id="playerChoiceHistoryTable">
-        <tr id ="playerChoicesRow">
+        <tr id="playerChoicesRow">
             <th>Player Choices</th>
         </tr>
-        <tr id ="OpponentChoicesRow">
+        <tr id="OpponentChoicesRow">
             <th>Opponent Choices</th>
         </tr>
     </table>
-    <div style="text-align: center">
-        <button id="createConsoleGame" onclick="createGame()" >Create Game</button>
-        <button id="consoleSplit" onclick="submitSplitActive()">Split</button>
-        <button id="consoleSteal" onclick="submitStealActive()">Steal</button>
+    <button id="createConsoleGame">Create Game</button>
+    <br />
+    <div class="dropdown">
+        <button id='AISelect' class="dropbtn">AI Strategy </button>
+        <div id="strategyDropdown" class="dropdown-content">
+            <ul id="strategyList">
+                <li>Always Split</li>
+                <li>Always Steal</li>
+                <li>Random</li>
+                <li>Tit for Tat Defect</li>
+                <li>Tit for Tat Coop.</li>
+                <li>No Preffereance</li>
+            </ul>
+        </div>
     </div>
-    <div style="text-align: center">
-        <button id="dummySubmit">Submit</button>
-        <button id="consoleSubmitSplit" onclick="playerChoiceSplit()">Submit</button>
-        <button id="consoleSubmitSteal" onclick="playerChoiceSteal()">Submit</button>
-    </div>
-    <div style="text-align: center">
-        <button id="consolePlayAgain" onclick="playAgain()">Play again</button>
-    </div>
+
+    <button id="consoleSplit">Split</button>
+    <button id="consoleSteal">Steal</button>
+    <button id="consoleSubmitSplit">Submit</button>
+    <button id="consoleSubmitSteal">Submit</button>
+    <button id="consolePlayAgain">Play again</button>
+
     <div id="toMainMenuDiv">
-        <form action = "../index.html">
-            <input type="submit" value="Return to Main Menu" class="toMainMenu"/>
+        <form action="../index.html">
+            <input type="submit" value="Return to Main Menu" class="toMainMenu" />
         </form>
     </div>
 </body>
