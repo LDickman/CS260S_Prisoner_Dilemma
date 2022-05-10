@@ -30,11 +30,48 @@ submitStealButton.addEventListener("click", playerChoiceSteal);
 const replayButton = document.getElementById("consolePlayAgain");
 replayButton.addEventListener("click", playAgain);
 
+const AIButton = document.getElementById("AISelect");
+var ulList = document.getElementById("strategyList");
+AIButton.addEventListener("click", selectionButton);
+
+function selectionButton() {
+    document.getElementById('strategyDropdown').classList.toggle("show");
+    console.log("click");
+}
+
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        let i;
+        for (i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+    clickOnDropDownMenu(ulList, setOpponent, AIButton);
+}
+
+function clickOnDropDownMenu(ul, func, button) {
+    let items = ul.getElementsByTagName('li');
+    ul.addEventListener("click", function (e) {
+        for (let i = 0; i < items.length; i++) {
+            if (e.target == items[i]) {
+                console.log(items[i].textContent);
+                func(items[i].textContent);
+                button.textContent = items[i].textContent;
+            }
+        }
+    });
+}
+
 function createGame() {
     // v Deactivates create game button
     document.getElementById("createConsoleGame").style.display = 'none';
+    document.getElementById("AISelect").style.display = 'none';
     setGameRounds();
-    setOpponent();
+    //setOpponent();
     playGame();
 }
 
@@ -42,9 +79,29 @@ function setGameRounds() {
     rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
 }
 
-function setOpponent() {
+function setOpponent(input) {
     populatePossibleOpponents();
-    pickOpponentRandomly();
+    if (input == "Always Split") {
+        opponent = possibleOpponents[0]
+    }
+    if (input == "Always Steal") {
+        opponent = possibleOpponents[1]
+    }
+    if (input == "Random") {
+        opponent = possibleOpponents[2]
+    }
+    if (input == "Tit for Tat Defect") {
+        opponent = possibleOpponents[4]
+    }
+    if (input == "Tit for Tat Coop.") {
+        opponent = possibleOpponents[3]
+    }
+    if (input == "No Preffereance") {
+        pickOpponentRandomly();
+    } else {
+        pickOpponentRandomly();
+    }
+    //pickOpponentRandomly();
 }
 
 function populatePossibleOpponents() {
@@ -131,7 +188,7 @@ function printRound() {
     document.getElementById("roundNumDiv").style.display = 'block';
     updatePlayerPoints();
     if (currentRound === rounds) {
-        console.log ("==== Last Round ====");
+        console.log("==== Last Round ====");
         document.getElementById("finalRound").style.display = 'block';
         document.getElementById("roundNum").innerHTML = currentRound;
     } else {
