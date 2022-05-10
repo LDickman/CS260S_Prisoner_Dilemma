@@ -9,8 +9,10 @@ export let playerChoices = [];
 let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
+let opponentType;
 let opponentChoices = [];
 let opponentPoints = 0;
+populatePossibleOpponents();
 
 const startButton = document.getElementById("createConsoleGame");
 startButton.addEventListener("click", createGame);
@@ -50,16 +52,17 @@ window.onclick = function (event) {
             }
         }
     }
-    clickOnDropDownMenu(ulList, setOpponent, AIButton);
+    clickOnDropDownMenu(ulList, AIButton);
 }
 
-function clickOnDropDownMenu(ul, func, button) {
+function clickOnDropDownMenu(ul, button) {
     let items = ul.getElementsByTagName('li');
     ul.addEventListener("click", function (e) {
         for (let i = 0; i < items.length; i++) {
             if (e.target == items[i]) {
                 console.log(items[i].textContent);
-                func(items[i].textContent);
+                opponentType = items[i].textContent;
+                console.log("opponentType: "+opponentType);
                 button.textContent = items[i].textContent;
             }
         }
@@ -71,7 +74,7 @@ function createGame() {
     document.getElementById("createConsoleGame").style.display = 'none';
     document.getElementById("AISelect").style.display = 'none';
     setGameRounds();
-    //setOpponent();
+    setOpponent();
     playGame();
 }
 
@@ -79,26 +82,24 @@ function setGameRounds() {
     rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
 }
 
-function setOpponent(input) {
-    populatePossibleOpponents();
-    if (input == "Always Split") {
+function setOpponent() {
+    // populatePossibleOpponents();
+    if (opponentType == "Always Split") {
         opponent = possibleOpponents[0]
     }
-    if (input == "Always Steal") {
+    if (opponentType == "Always Steal") {
         opponent = possibleOpponents[1]
     }
-    if (input == "Random") {
+    if (opponentType == "Random") {
         opponent = possibleOpponents[2]
     }
-    if (input == "Tit for Tat Defect") {
+    if (opponentType == "Tit for Tat Defect") {
         opponent = possibleOpponents[4]
     }
-    if (input == "Tit for Tat Coop.") {
+    if (opponentType == "Tit for Tat Coop.") {
         opponent = possibleOpponents[3]
     }
-    if (input == "No Preffereance") {
-        pickOpponentRandomly();
-    } else {
+    if (opponentType == "No Preffereance") {
         pickOpponentRandomly();
     }
     //pickOpponentRandomly();
