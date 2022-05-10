@@ -85,7 +85,6 @@ function setGameRounds() {
 }
 
 function setOpponent() {
-    // populatePossibleOpponents();
     switch (opponentType) {
         case "Always Split":
             opponent = possibleOpponents[0]
@@ -109,7 +108,6 @@ function setOpponent() {
             pickOpponentRandomly();
             break;
     }
-    //pickOpponentRandomly();
 }
 
 function populatePossibleOpponents() {
