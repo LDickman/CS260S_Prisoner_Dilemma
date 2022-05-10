@@ -4,6 +4,7 @@ import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
 import { OpponentRandom } from "./OpponentRandom.js"
 import { OpponentTitForTatCoopFirst } from "./OpponentTitForTatCoopFirst.js"
 import { OpponentGrim } from "./OpponentGrim.js";
+import { OpponentPavlov } from "./OpponentPavlov.js"
 
 let rounds;
 export let currentRound = 1;
@@ -12,7 +13,7 @@ let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
 let opponentType = "";
-let opponentChoices = [];
+export let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
@@ -119,12 +120,14 @@ function populatePossibleOpponents() {
     let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
     let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
     let grim = new OpponentGrim("Grim");
+    let pavlov = new OpponentPavlov("Pavlov");
     possibleOpponents.push(alwaysSplit);
     possibleOpponents.push(alwaysSteal);
     possibleOpponents.push(randomChoice);
     possibleOpponents.push(titForTatCoop);
     possibleOpponents.push(titForTatDefect);
     possibleOpponents.push(grim);
+    possibleOpponents.push(pavlov);
 }
 
 function pickOpponentRandomly() {
