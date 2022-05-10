@@ -84,23 +84,25 @@ function setGameRounds() {
 
 function setOpponent() {
     // populatePossibleOpponents();
-    if (opponentType == "Always Split") {
-        opponent = possibleOpponents[0]
-    }
-    if (opponentType == "Always Steal") {
-        opponent = possibleOpponents[1]
-    }
-    if (opponentType == "Random") {
-        opponent = possibleOpponents[2]
-    }
-    if (opponentType == "Tit for Tat Defect") {
-        opponent = possibleOpponents[4]
-    }
-    if (opponentType == "Tit for Tat Coop.") {
-        opponent = possibleOpponents[3]
-    }
-    if (opponentType == "No Preffereance") {
-        pickOpponentRandomly();
+    switch (opponentType) {
+        case "Always Split":
+            opponent = possibleOpponents[0]
+            break;
+        case "Always Steal":
+            opponent = possibleOpponents[1]
+            break;
+        case "Random":
+            opponent = possibleOpponents[2]
+            break;
+        case "Tit for Tat Defect":
+            opponent = possibleOpponents[4]
+            break;
+        case "Tit for Tat Coop.":
+            opponent = possibleOpponents[3]
+            break;
+        case "No Preffereance":
+            pickOpponentRandomly();
+            break;
     }
     //pickOpponentRandomly();
 }
