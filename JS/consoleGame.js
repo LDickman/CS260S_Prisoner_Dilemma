@@ -69,6 +69,8 @@ function clickOnDropDownMenu(ul, button) {
     });
 }
 
+
+
 function createGame() {
     // v Deactivates create game button
     document.getElementById("createConsoleGame").style.display = 'none';
@@ -139,7 +141,7 @@ function playGame() {
     } else {
         printSummary();
         // v activates play again button
-        document.getElementById("consolePlayAgain").style.display = 'block';
+        document.getElementById("consolePlayAgain").style.display = 'inline';
         deactivatePlayerChoiceButtons()
     }
 }
@@ -147,11 +149,13 @@ function playGame() {
 function deactivatePlayerChoiceButtons() {
     document.getElementById("consoleSplit").style.display = 'none';
     document.getElementById("consoleSteal").style.display = 'none';
+    document.getElementById("dummySubmit").style.display = 'none';
 }
 
 function activatePlayerChoiceButtons() {
-    document.getElementById("consoleSplit").style.display = 'block';
-    document.getElementById("consoleSteal").style.display = 'block';
+    document.getElementById("consoleSplit").style.display = 'inline-block';
+    document.getElementById("consoleSteal").style.display = 'inline-block';
+    document.getElementById("dummySubmit").style.display = 'inline';
 }
 
 function populateChoiceHistoryTable() {
@@ -183,20 +187,19 @@ function givePoints() {
             opponentPoints += 500;
         }
     }
-
 }
 
 function printRound() {
     document.getElementById("consolePlayerPointsPara").style.display = 'block';
-    document.getElementById("roundNumDiv").style.display = 'block';
+    document.getElementById("roundNumDiv").style.display = 'inline-block';
     updatePlayerPoints();
     if (currentRound === rounds) {
-        console.log("==== Last Round ====");
-        document.getElementById("finalRound").style.display = 'block';
+        console.log ("==== Last Round ====");
+        document.getElementById("finalRound").style.display = 'inline-block';
         document.getElementById("roundNum").innerHTML = currentRound;
     } else {
         console.log("===== Round " + currentRound + " =====");
-        document.getElementById("roundNumDisplay").style.display = 'block';
+        document.getElementById("roundNumDisplay").style.display = 'inline-block';
         document.getElementById("roundNum").innerHTML = currentRound;
     }
     console.log("Click Split or Steal!");
@@ -235,16 +238,18 @@ function resetGame() {
 }
 
 function submitSplitActive() {
+    document.getElementById("dummySubmit").style.display = 'none';
     document.getElementById("consoleSplit").style.color = 'gray';
     document.getElementById("consoleSteal").style.color = 'black';
-    document.getElementById("consoleSubmitSplit").style.display = 'block';
+    document.getElementById("consoleSubmitSplit").style.display = 'inline';
     document.getElementById("consoleSubmitSteal").style.display = 'none';
 }
 
 function submitStealActive() {
+    document.getElementById("dummySubmit").style.display = 'none';
     document.getElementById("consoleSteal").style.color = 'gray';
     document.getElementById("consoleSplit").style.color = 'black';
-    document.getElementById("consoleSubmitSteal").style.display = 'block';
+    document.getElementById("consoleSubmitSteal").style.display = 'inline';
     document.getElementById("consoleSubmitSplit").style.display = 'none';
 }
 
