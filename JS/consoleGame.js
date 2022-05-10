@@ -9,7 +9,7 @@ export let playerChoices = [];
 let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
-let opponentType;
+let opponentType = "";
 let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
@@ -103,6 +103,9 @@ function setOpponent() {
             opponent = possibleOpponents[3]
             break;
         case "No Preffereance":
+            pickOpponentRandomly();
+            break;
+        case "":
             pickOpponentRandomly();
             break;
     }
