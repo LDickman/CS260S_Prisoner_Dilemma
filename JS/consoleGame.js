@@ -3,6 +3,8 @@ import { OpponentAlwaysSplit } from "./OpponentAlwaysSplits.js"
 import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
 import { OpponentRandom } from "./OpponentRandom.js"
 import { OpponentTitForTatCoopFirst } from "./OpponentTitForTatCoopFirst.js"
+import { OpponentGrim } from "./OpponentGrim.js";
+
 let rounds;
 export let currentRound = 1;
 export let playerChoices = [];
@@ -59,7 +61,7 @@ function clickOnDropDownMenu(ul, button) {
     let items = ul.getElementsByTagName('li');
     ul.addEventListener("click", function (e) {
         for (let i = 0; i < items.length; i++) {
-            if (e.target == items[i]) {
+            if (e.target === items[i]) {
                 console.log(items[i].textContent);
                 opponentType = items[i].textContent;
                 console.log("opponentType: "+opponentType);
@@ -116,11 +118,13 @@ function populatePossibleOpponents() {
     let randomChoice = new OpponentRandom("Random Choice");
     let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
     let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
+    let grim = new OpponentGrim("Grim");
     possibleOpponents.push(alwaysSplit);
     possibleOpponents.push(alwaysSteal);
     possibleOpponents.push(randomChoice);
     possibleOpponents.push(titForTatCoop);
     possibleOpponents.push(titForTatDefect);
+    possibleOpponents.push(grim);
 }
 
 function pickOpponentRandomly() {
@@ -251,8 +255,8 @@ function submitStealActive() {
 }
 
 function playerChoiceSplit() {
-    playerChoices.push("Split");
     opponentTurn();
+    playerChoices.push("Split");
     console.clear();
     document.getElementById("consoleSubmitSplit").style.display = 'none';
     document.getElementById("consoleSplit").style.color = 'black';
@@ -262,8 +266,8 @@ function playerChoiceSplit() {
 }
 
 function playerChoiceSteal() {
-    playerChoices.push("Steal");
     opponentTurn();
+    playerChoices.push("Steal");
     console.clear();
     document.getElementById("consoleSubmitSteal").style.display = 'none';
     document.getElementById("consoleSplit").style.color = 'black';
