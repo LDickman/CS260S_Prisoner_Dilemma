@@ -5,7 +5,7 @@
     <title>Console Game</title>
     <script src="../JS/consoleGame.js"></script>
 </head>
-<body>
+<body onload="createGame()">
     <h1>Console Game</h1>
     <h3>But you don't need to look at the console anymore!</h3>
     <div id="endOfGame">
@@ -28,12 +28,19 @@
             <th>Opponent Choices</th>
         </tr>
     </table>
-    <button id="createConsoleGame" onclick="createGame()" >Create Game</button>
-    <button id="consoleSplit" onclick="submitSplitActive()">Split</button>
-    <button id="consoleSteal" onclick="submitStealActive()">Steal</button>
-    <button id="consoleSubmitSplit" onclick="playerChoiceSplit()">Submit</button>
-    <button id="consoleSubmitSteal" onclick="playerChoiceSteal()">Submit</button>
-    <button id="consolePlayAgain" onclick="playAgain()">Play again</button>
+    <div style="text-align: center">
+        <button id="createConsoleGame" onclick="createGame()" >Create Game</button>
+        <button id="consoleSplit" onclick="submitSplitActive()">Split</button>
+        <button id="consoleSteal" onclick="submitStealActive()">Steal</button>
+    </div>
+    <div style="text-align: center">
+        <button id="dummySubmit">Submit</button>
+        <button id="consoleSubmitSplit" onclick="playerChoiceSplit()">Submit</button>
+        <button id="consoleSubmitSteal" onclick="playerChoiceSteal()">Submit</button>
+    </div>
+    <div style="text-align: center">
+        <button id="consolePlayAgain" onclick="playAgain()">Play again</button>
+    </div>
     <div id="toMainMenuDiv">
         <form action = "../index.html">
             <input type="submit" value="Return to Main Menu" class="toMainMenu"/>

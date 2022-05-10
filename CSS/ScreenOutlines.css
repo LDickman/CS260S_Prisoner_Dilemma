@@ -99,7 +99,7 @@
   display: none;
 }
 
-table, th, td {
+th, td {
   border: 1px solid black
 }
 
@@ -109,5 +109,24 @@ table, th, td {
 
 #toMainMenuDiv {
   text-align: center;
+  margin: 100px
+}
+
+.createConsoleGame {
+  margin: auto;
+}
+
+#consoleSplit {
+  margin: 10px
+}
+
+#consoleSteal {
+  margin: 10px
+}
+
+#dummySubmit {
+  display: none;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 /* END Console Game */
