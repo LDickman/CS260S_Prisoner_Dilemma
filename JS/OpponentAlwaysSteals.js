@@ -1,11 +1,7 @@
 export class OpponentAlwaysSteal {
-    name
+    name = "Unconditional Defect (Always Steal)";
 
     makeChoice() {
         return "Steal";
-    }
-
-    constructor(name) {
-        this.name = name;
     }
 }

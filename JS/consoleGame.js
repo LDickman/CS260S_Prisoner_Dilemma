@@ -36,7 +36,7 @@ const replayButton = document.getElementById("consolePlayAgain");
 replayButton.addEventListener("click", playAgain);
 
 const AIButton = document.getElementById("AISelect");
-var ulList = document.getElementById("strategyList");
+let ulList = document.getElementById("strategyList");
 AIButton.addEventListener("click", selectionButton);
 
 function selectionButton() {
@@ -114,13 +114,13 @@ function setOpponent() {
 }
 
 function populatePossibleOpponents() {
-    let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
-    let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
-    let randomChoice = new OpponentRandom("Random Choice");
-    let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
-    let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
-    let grim = new OpponentGrim("Grim");
-    let pavlov = new OpponentPavlov("Pavlov");
+    let alwaysSplit = new OpponentAlwaysSplit();
+    let alwaysSteal = new OpponentAlwaysSteal();
+    let randomChoice = new OpponentRandom();
+    let titForTatCoop = new OpponentTitForTatCoopFirst();
+    let titForTatDefect = new OpponentTitForTatDefectFirst();
+    let grim = new OpponentGrim();
+    let pavlov = new OpponentPavlov();
     possibleOpponents.push(alwaysSplit);
     possibleOpponents.push(alwaysSteal);
     possibleOpponents.push(randomChoice);

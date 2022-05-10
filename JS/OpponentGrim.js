@@ -1,11 +1,7 @@
 import {currentRound, playerChoices} from "./consoleGame.js";
 
 export class OpponentGrim {
-    name
-
-    constructor(name) {
-        this.name = name;
-    }
+    name = "Grim";
 
     makeChoice() {
         if (currentRound === 1) {

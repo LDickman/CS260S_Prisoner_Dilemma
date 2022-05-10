@@ -1,11 +1,7 @@
 import {currentRound, playerChoices, opponentChoices} from "./consoleGame.js";
 
 export class OpponentPavlov {
-    name
-
-    constructor(name) {
-        this.name = name;
-    }
+    name = "Pavlov (Win-Stay, Lose-Shift)"
 
     makeChoice() {
         if (currentRound === 1) {
