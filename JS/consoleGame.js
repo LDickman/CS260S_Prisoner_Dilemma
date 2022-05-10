@@ -149,13 +149,11 @@ function playGame() {
 function deactivatePlayerChoiceButtons() {
     document.getElementById("consoleSplit").style.display = 'none';
     document.getElementById("consoleSteal").style.display = 'none';
-    document.getElementById("dummySubmit").style.display = 'none';
 }
 
 function activatePlayerChoiceButtons() {
     document.getElementById("consoleSplit").style.display = 'inline-block';
     document.getElementById("consoleSteal").style.display = 'inline-block';
-    document.getElementById("dummySubmit").style.display = 'inline';
 }
 
 function populateChoiceHistoryTable() {
@@ -238,7 +236,6 @@ function resetGame() {
 }
 
 function submitSplitActive() {
-    document.getElementById("dummySubmit").style.display = 'none';
     document.getElementById("consoleSplit").style.color = 'gray';
     document.getElementById("consoleSteal").style.color = 'black';
     document.getElementById("consoleSubmitSplit").style.display = 'inline';
@@ -246,7 +243,6 @@ function submitSplitActive() {
 }
 
 function submitStealActive() {
-    document.getElementById("dummySubmit").style.display = 'none';
     document.getElementById("consoleSteal").style.color = 'gray';
     document.getElementById("consoleSplit").style.color = 'black';
     document.getElementById("consoleSubmitSteal").style.display = 'inline';
