@@ -150,7 +150,7 @@ th, td {
 }
 /* END Console Game */
 
-.dropbtn {
+.dropButton {
   background-color: #ff0000;
   color: white;
   border: none;
@@ -158,7 +158,7 @@ th, td {
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
+.dropButton:hover, .dropButton:focus {
   background-color: #b80028;
 }
 

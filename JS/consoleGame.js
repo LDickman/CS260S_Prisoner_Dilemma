@@ -18,8 +18,8 @@ export let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
-const conSlpitButton = document.getElementById("consoleSplit");
-conSlpitButton.addEventListener("click", submitSplitActive);
+const conSplitButton = document.getElementById("consoleSplit");
+conSplitButton.addEventListener("click", submitSplitActive);
 
 const conStealButton = document.getElementById("consoleSteal");
 conStealButton.addEventListener("click", submitStealActive);
@@ -40,11 +40,11 @@ if (toGameScreenBody == null) {
     startButton.addEventListener("click", createGame);
 
     const AIButton = document.getElementById("AISelect");
-    var ulList = document.getElementById("strategyList");
+    let ulList = document.getElementById("strategyList");
     AIButton.addEventListener("click", selectionButton);
 
     window.onclick = function (event) {
-        if (!event.target.matches('.dropbtn')) {
+        if (!event.target.matches('.dropButton')) {
             let dropdowns = document.getElementsByClassName("dropdown-content");
             let i;
             for (i = 0; i < dropdowns.length; i++) {
@@ -61,7 +61,7 @@ if (toGameScreenBody == null) {
         let items = ul.getElementsByTagName('li');
         ul.addEventListener("click", function (e) {
             for (let i = 0; i < items.length; i++) {
-                if (e.target == items[i]) {
+                if (e.target === items[i]) {
                     console.log(items[i].textContent);
                     opponentType = items[i].textContent;
                     console.log("opponentType: " + opponentType);
@@ -124,7 +124,7 @@ function setOpponent() {
         case "Tit For Two Tats":
             opponent = possibleOpponents[7]
             break;
-        case "No Preffereance":
+        case "No Preference":
             pickOpponentRandomly();
             break;
         case "":
