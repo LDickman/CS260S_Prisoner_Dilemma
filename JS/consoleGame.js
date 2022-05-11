@@ -160,17 +160,13 @@ function playGame() {
 function deactivatePlayerChoiceButtons() {
     document.getElementById("consoleSplit").style.display = 'none';
     document.getElementById("consoleSteal").style.display = 'none';
-    if (document.getElementById("dummySubmit") != null) {
-        document.getElementById("dummySubmit").style.display = 'none';
-    }
+    document.getElementById("dummySubmit").style.display = 'none';
 }
 
 function activatePlayerChoiceButtons() {
     document.getElementById("consoleSplit").style.display = 'inline-block';
     document.getElementById("consoleSteal").style.display = 'inline-block';
-    if (document.getElementById("dummySubmit") != null) {
-        document.getElementById("dummySubmit").style.display = 'inline';
-    }
+    document.getElementById("dummySubmit").style.display = 'inline';
 }
 
 function populateChoiceHistoryTable() {
