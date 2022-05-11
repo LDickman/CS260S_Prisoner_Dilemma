@@ -88,6 +88,8 @@ function createGame() {
     } else {
         document.getElementById("createConsoleGame").style.display = 'none';
         document.getElementById("AISelect").style.display = 'none';
+        document.getElementById("AIinfo").style.display = 'none';
+        document.getElementById("buttonInfo").style.display = 'none';
         setGameRounds();
         setOpponent();
         playGame();
