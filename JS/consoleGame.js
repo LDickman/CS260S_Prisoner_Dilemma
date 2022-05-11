@@ -3,6 +3,10 @@ import { OpponentAlwaysSplit } from "./OpponentAlwaysSplits.js"
 import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
 import { OpponentRandom } from "./OpponentRandom.js"
 import { OpponentTitForTatCoopFirst } from "./OpponentTitForTatCoopFirst.js"
+import { OpponentGrim } from "./OpponentGrim.js";
+import { OpponentPavlov } from "./OpponentPavlov.js"
+import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
+
 let rounds;
 export let currentRound = 1;
 export let playerChoices = [];
@@ -10,7 +14,7 @@ let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
 let opponentType = "";
-let opponentChoices = [];
+export let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
@@ -121,16 +125,22 @@ function setOpponent() {
 }
 
 function populatePossibleOpponents() {
-    let alwaysSplit = new OpponentAlwaysSplit("Unconditional Cooperate (Always Split)");
-    let alwaysSteal = new OpponentAlwaysSteal("Unconditional Defect (Always Steal)");
-    let randomChoice = new OpponentRandom("Random Choice");
-    let titForTatCoop = new OpponentTitForTatCoopFirst("Tit for Tat - Cooperate First");
-    let titForTatDefect = new OpponentTitForTatDefectFirst("Tit for Tat - Defect First");
+    let alwaysSplit = new OpponentAlwaysSplit();
+    let alwaysSteal = new OpponentAlwaysSteal();
+    let randomChoice = new OpponentRandom();
+    let titForTatCoop = new OpponentTitForTatCoopFirst();
+    let titForTatDefect = new OpponentTitForTatDefectFirst();
+    let grim = new OpponentGrim();
+    let pavlov = new OpponentPavlov();
+    let titForTwoTats = new OpponentTitForTwoTats();
     possibleOpponents.push(alwaysSplit);
     possibleOpponents.push(alwaysSteal);
     possibleOpponents.push(randomChoice);
     possibleOpponents.push(titForTatCoop);
     possibleOpponents.push(titForTatDefect);
+    possibleOpponents.push(grim);
+    possibleOpponents.push(pavlov);
+    possibleOpponents.push(titForTwoTats);
 }
 
 function pickOpponentRandomly() {
@@ -264,8 +274,8 @@ function submitStealActive() {
 }
 
 function playerChoiceSplit() {
-    playerChoices.push("Split");
     opponentTurn();
+    playerChoices.push("Split");
     console.clear();
     document.getElementById("consoleSubmitSplit").style.display = 'none';
     document.getElementById("consoleSplit").style.color = 'black';
@@ -275,8 +285,8 @@ function playerChoiceSplit() {
 }
 
 function playerChoiceSteal() {
-    playerChoices.push("Steal");
     opponentTurn();
+    playerChoices.push("Steal");
     console.clear();
     document.getElementById("consoleSubmitSteal").style.display = 'none';
     document.getElementById("consoleSplit").style.color = 'black';

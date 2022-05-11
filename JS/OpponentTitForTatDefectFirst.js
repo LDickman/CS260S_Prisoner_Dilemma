@@ -1,6 +1,6 @@
 import { currentRound, playerChoices } from './consoleGame.js';
 export class OpponentTitForTatDefectFirst {
-    name
+    name = "Tit for Tat - Defect First";
 
     makeChoice() {
         if (currentRound === 1) {
@@ -13,9 +13,5 @@ export class OpponentTitForTatDefectFirst {
                 return "Steal"
             }
         }
-    }
-
-    constructor(name) {
-        this.name = name;
     }
 }
