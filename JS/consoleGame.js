@@ -250,6 +250,7 @@ function resetGame() {
     playerPoints = 0;
     opponentChoices = [];
     opponentPoints = 0;
+    opponentType = "";
 }
 
 function submitSplitActive() {
