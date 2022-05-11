@@ -14,9 +14,6 @@ let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
-const startButton = document.getElementById("createConsoleGame");
-startButton.addEventListener("click", createGame);
-
 const conSlpitButton = document.getElementById("consoleSplit");
 conSlpitButton.addEventListener("click", submitSplitActive);
 
@@ -35,6 +32,9 @@ replayButton.addEventListener("click", playAgain);
 const toGameScreenBody = document.getElementById("consoleGameScreen");
 
 if (toGameScreenBody == null) {
+    const startButton = document.getElementById("createConsoleGame");
+    startButton.addEventListener("click", createGame);
+
     const AIButton = document.getElementById("AISelect");
     var ulList = document.getElementById("strategyList");
     AIButton.addEventListener("click", selectionButton);
@@ -67,7 +67,7 @@ if (toGameScreenBody == null) {
         });
     }
 } else {
-    toGameScreenBody.addEventListener("load", createGame);
+    window.addEventListener("load", createGame);
 }
 
 function selectionButton() {
@@ -77,12 +77,12 @@ function selectionButton() {
 
 function createGame() {
     // v Deactivates create game button
-    document.getElementById("createConsoleGame").style.display = 'none';
     if (document.getElementById("AISelect") == null) {
         setGameRounds();
         pickOpponentRandomly();
         playGame();
     } else {
+        document.getElementById("createConsoleGame").style.display = 'none';
         document.getElementById("AISelect").style.display = 'none';
         setGameRounds();
         setOpponent();
