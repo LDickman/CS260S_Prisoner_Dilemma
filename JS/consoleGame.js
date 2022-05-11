@@ -18,6 +18,15 @@ export let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
+document.getElementById("helpButton").addEventListener("click", openGuide)
+
+function openGuide() {
+    let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes');
+    popup.window.onload = function() {
+        popup.document.getElementById("fromGuideToMenu").style.display='none'
+    }
+}
+
 const conSplitButton = document.getElementById("consoleSplit");
 conSplitButton.addEventListener("click", submitSplitActive);
 
