@@ -1,11 +1,7 @@
 export class OpponentAlwaysSplit {
-    name
+    name = "Unconditional Cooperate (Always Split)";
 
     makeChoice() {
         return "Split";
-    }
-
-    constructor(name) {
-        this.name = name;
     }
 }
