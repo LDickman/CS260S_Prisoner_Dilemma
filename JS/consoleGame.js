@@ -115,6 +115,15 @@ function setOpponent() {
         case "Tit for Tat Coop.":
             opponent = possibleOpponents[3]
             break;
+        case "Grim":
+            opponent = possibleOpponents[5]
+            break;
+        case "Pavlov":
+            opponent = possibleOpponents[6]
+            break;
+        case "Tit For Two Tats":
+            opponent = possibleOpponents[7]
+            break;
         case "No Preffereance":
             pickOpponentRandomly();
             break;
