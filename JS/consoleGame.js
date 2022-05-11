@@ -18,7 +18,7 @@ export let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
-document.getElementById("helpButton").addEventListener("click", openGuide)
+document.getElementById("helpButton").addEventListener("click", openGuide);
 
 function openGuide() {
     let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes');
