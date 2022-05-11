@@ -6,7 +6,7 @@
     <title>Console Game</title>
     <script type="module" src="../JS/consoleGame.js"></script>
 </head>
-<body id="consoleGameScreen">
+<body>
     <h1>Console Game</h1>
     <h3>But you don't need to look at the console anymore!</h3>
     <div id="endOfGame">
@@ -29,6 +29,21 @@
             <th>Opponent Choices</th>
         </tr>
     </table>
+    <button id="createConsoleGame">Create Game</button>
+    <br />
+    <div class="dropdown">
+        <button id='AISelect' class="dropbtn">AI Strategy </button>
+        <div id="strategyDropdown" class="dropdown-content">
+            <ul id="strategyList">
+                <li>Always Split</li>
+                <li>Always Steal</li>
+                <li>Random</li>
+                <li>Tit for Tat Defect</li>
+                <li>Tit for Tat Coop.</li>
+                <li>No Preffereance</li>
+            </ul>
+        </div>
+    </div>
 
     <div style="text-align: center">
         <button id="consoleSplit">Split</button>
@@ -42,6 +57,7 @@
     <div style="text-align: center">
         <button id="consolePlayAgain">Play again</button>
     </div>
+
     <div id="toMainMenuDiv">
         <form action="../index.html">
             <input type="submit" value="Return to Main Menu" class="toMainMenu" />
