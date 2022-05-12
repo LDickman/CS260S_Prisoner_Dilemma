@@ -18,7 +18,8 @@ export let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
-document.getElementById("helpButton").addEventListener("click", openGuide);
+const helpButton = document.getElementById("helpButton");
+helpButton.addEventListener("click", openGuide);
 
 function openGuide() {
     let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes');
@@ -98,7 +99,7 @@ function createGame() {
     } else {
         document.getElementById("createConsoleGame").style.display = 'none';
         document.getElementById("AISelect").style.display = 'none';
-        document.getElementById("AIinfo").style.display = 'none';
+        document.getElementById("opponentStrategyInfo").style.display = 'none';
         document.getElementById("buttonInfo").style.display = 'none';
         document.getElementById("AIName").style.display = 'none';
         document.getElementById("AIDes").style.display = 'none';
@@ -163,11 +164,11 @@ function displayOpponentInfo() {
             break;
         case "Tit for Tat Defect":
             document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "Your opponent will first betray you, but depending on if you betry them then they will bertay you. If you cooperate thn your opponent will cooperate with you";
+            document.getElementById("AIDes").textContent = "Your opponent will first betray you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
             break;
         case "Tit for Tat Coop.":
             document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "Your opponent will first cooperate you, but depending on if you betry them then they will bertay you. If you cooperate thn your opponent will cooperate with you";
+            document.getElementById("AIDes").textContent = "Your opponent will first cooperate you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
             break;
         case "Grim":
             document.getElementById("AIName").textContent = opponentType;
