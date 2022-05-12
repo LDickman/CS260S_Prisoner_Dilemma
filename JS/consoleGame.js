@@ -78,6 +78,7 @@ if (toGameScreenBody == null) {
                 }
             }
         });
+        displayOpponentInfo();
     }
 } else {
     window.addEventListener("load", createGame);
@@ -99,6 +100,8 @@ function createGame() {
         document.getElementById("AISelect").style.display = 'none';
         document.getElementById("AIinfo").style.display = 'none';
         document.getElementById("buttonInfo").style.display = 'none';
+        document.getElementById("AIName").style.display = 'none';
+        document.getElementById("AIDes").style.display = 'none';
         setGameRounds();
         setOpponent();
         playGame();
@@ -140,6 +143,51 @@ function setOpponent() {
             break;
         case "":
             pickOpponentRandomly();
+            break;
+    }
+}
+
+function displayOpponentInfo() {
+    switch (opponentType) {
+        case "Always Split":
+            document.getElementById("AIName").textContent = opponentType;
+            document.getElementById("AIDes").textContent = "Your opponent will always choose to cooperate with you";
+            break;
+        case "Always Steal":
+            document.getElementById("AIName").textContent = opponentType;
+            document.getElementById("AIDes").textContent = "Your opponent will always choose to defect with you";
+            break;
+        case "Random":
+            document.getElementById("AIName").textContent = opponentType;
+            document.getElementById("AIDes").textContent = "Your opponent will randomly be supporting or be against you";
+            break;
+        case "Tit for Tat Defect":
+            document.getElementById("AIName").textContent = opponentType;
+            document.getElementById("AIDes").textContent = "Your opponent will first betray you, but depending on if you betry them then they will bertay you. If you cooperate thn your opponent will cooperate with you";
+            break;
+        case "Tit for Tat Coop.":
+            document.getElementById("AIName").textContent = opponentType;
+            document.getElementById("AIDes").textContent = "Your opponent will first cooperate you, but depending on if you betry them then they will bertay you. If you cooperate thn your opponent will cooperate with you";
+            break;
+        case "Grim":
+            document.getElementById("AIName").textContent = opponentType;
+            document.getElementById("AIDes").textContent = "something";
+            break;
+        case "Pavlov":
+            document.getElementById("AIName").textContent = opponentType;
+            document.getElementById("AIDes").textContent = "something";
+            break;
+        case "Tit For Two Tats":
+            document.getElementById("AIName").textContent = opponentType;
+            document.getElementById("AIDes").textContent = "something";
+            break;
+        case "No Preference":
+            document.getElementById("AIName").textContent = " ";
+            document.getElementById("AIDes").textContent = " ";
+            break;
+        case "":
+            document.getElementById("AIName").textContent = " ";
+            document.getElementById("AIDes").textContent = " ";
             break;
     }
 }
