@@ -21,6 +21,7 @@ let opponentPoints = 0;
 populatePossibleOpponents();
 
 let createGameButton;
+let selectStratgeyButton;
 const helpButton = document.getElementById("helpButton");
 helpButton.addEventListener("click", openGuide);
 
@@ -52,9 +53,9 @@ if (toGameScreenBody == null) {
     createGameButton = document.getElementById("createConsoleGame");
     createGameButton.addEventListener("click", createGame);
 
-    const AIButton = document.getElementById("AISelect");
+    selectStratgeyButton = document.getElementById("AISelect");
     let ulList = document.getElementById("strategyList");
-    AIButton.addEventListener("click", selectionButton);
+    selectStratgeyButton.addEventListener("click", selectionButton);
 
     window.onclick = function (event) {
         if (!event.target.matches('.dropButton')) {
@@ -67,7 +68,7 @@ if (toGameScreenBody == null) {
                 }
             }
         }
-        clickOnDropDownMenu(ulList, AIButton);
+        clickOnDropDownMenu(ulList, selectStratgeyButton);
     }
 
     function clickOnDropDownMenu(ul, button) {
@@ -95,13 +96,13 @@ function selectionButton() {
 
 function createGame() {
     // v Deactivates create game button
-    if (document.getElementById("AISelect") == null) {
+    if (selectStratgeyButton == null) {
         setGameRounds();
         pickOpponentRandomly();
         playGame();
     } else {
         createGameButton.style.display = 'none';
-        document.getElementById("AISelect").style.display = 'none';
+        selectStratgeyButton.style.display = 'none';
         document.getElementById("opponentStrategyInfo").style.display = 'none';
         document.getElementById("buttonInfo").style.display = 'none';
         strategyName.style.display = 'none';
