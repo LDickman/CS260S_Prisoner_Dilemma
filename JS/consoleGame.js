@@ -10,6 +10,8 @@ import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
 let rounds;
 export let currentRound = 1;
 export let playerChoices = [];
+var strategyName = document.getElementById("AIName");
+var strategyDes = document.getElementById("AIDes");
 let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
@@ -102,8 +104,8 @@ function createGame() {
         document.getElementById("AISelect").style.display = 'none';
         document.getElementById("opponentStrategyInfo").style.display = 'none';
         document.getElementById("buttonInfo").style.display = 'none';
-        document.getElementById("AIName").style.display = 'none';
-        document.getElementById("AIDes").style.display = 'none';
+        strategyName.style.display = 'none';
+        strategyDes.style.display = 'none';
         setGameRounds();
         setOpponent();
         playGame();
@@ -152,44 +154,44 @@ function setOpponent() {
 function displayOpponentInfo() {
     switch (opponentType) {
         case "Always Split":
-            document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "Your opponent will always choose to cooperate with you";
+            strategyName.textContent = opponentType;
+            strategyDes.textContent = "Your opponent will always choose to cooperate with you";
             break;
         case "Always Steal":
-            document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "Your opponent will always choose to defect with you";
+            strategyName.textContent = opponentType;
+            strategyDes.textContent = "Your opponent will always choose to defect with you";
             break;
         case "Random":
-            document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "Your opponent will randomly be supporting or be against you";
+            strategyName.textContent = opponentType;
+            strategyDes.textContent = "Your opponent will randomly be supporting or be against you";
             break;
         case "Tit for Tat Defect":
-            document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "Your opponent will first betray you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
+            strategyName.textContent = opponentType;
+            strategyDes.textContent = "Your opponent will first betray you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
             break;
         case "Tit for Tat Coop.":
-            document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "Your opponent will first cooperate you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
+            strategyName.textContent = opponentType;
+            strategyDes.textContent = "Your opponent will first cooperate you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
             break;
         case "Grim":
-            document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "something";
+            strategyName.textContent = opponentType;
+            strategyDes.textContent = "something";
             break;
         case "Pavlov":
-            document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "something";
+            strategyName.textContent = opponentType;
+            strategyDes.textContent = "something";
             break;
         case "Tit For Two Tats":
-            document.getElementById("AIName").textContent = opponentType;
-            document.getElementById("AIDes").textContent = "something";
+            strategyName.textContent = opponentType;
+            strategyDes.textContent = "something";
             break;
         case "No Preference":
-            document.getElementById("AIName").textContent = " ";
-            document.getElementById("AIDes").textContent = " ";
+            strategyName.textContent = " ";
+            strategyDes.textContent = " ";
             break;
         case "":
-            document.getElementById("AIName").textContent = " ";
-            document.getElementById("AIDes").textContent = " ";
+            strategyName.textContent = " ";
+            strategyDes.textContent = " ";
             break;
     }
 }
