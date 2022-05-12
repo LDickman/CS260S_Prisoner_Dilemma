@@ -18,6 +18,7 @@ export let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
+var createGameButton;
 const helpButton = document.getElementById("helpButton");
 helpButton.addEventListener("click", openGuide);
 
@@ -46,8 +47,8 @@ replayButton.addEventListener("click", playAgain);
 const toGameScreenBody = document.getElementById("consoleGameScreen");
 
 if (toGameScreenBody == null) {
-    const startButton = document.getElementById("createConsoleGame");
-    startButton.addEventListener("click", createGame);
+    createGameButton = document.getElementById("createConsoleGame");
+    createGameButton.addEventListener("click", createGame);
 
     const AIButton = document.getElementById("AISelect");
     let ulList = document.getElementById("strategyList");
@@ -97,7 +98,7 @@ function createGame() {
         pickOpponentRandomly();
         playGame();
     } else {
-        document.getElementById("createConsoleGame").style.display = 'none';
+        createGameButton.style.display = 'none';
         document.getElementById("AISelect").style.display = 'none';
         document.getElementById("opponentStrategyInfo").style.display = 'none';
         document.getElementById("buttonInfo").style.display = 'none';
