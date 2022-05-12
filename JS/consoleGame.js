@@ -16,7 +16,7 @@ let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
 let opponentType = "";
-export let opponentChoices = populatePossibleOpponents();
+export let opponentChoices = [];
 let opponentPoints = 0;
 const helpButton = document.getElementById("helpButton");
 const conSplitButton = document.getElementById("consoleSplit");
@@ -27,6 +27,8 @@ const replayButton = document.getElementById("consolePlayAgain");
 const toGameScreenBody = document.getElementById("consoleGameScreen");
 let createGameButton;
 let selectStrategyButton;
+
+populatePossibleOpponents();
 
 helpButton.addEventListener("click", function() {
     let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes');
@@ -161,8 +163,6 @@ function playGame() {
         printRound();
         console.log("Player Points: " + playerPoints);
         console.log("Opponent Points: " + opponentPoints);
-        printPlayerChoices();
-        printOpponentChoices();
         console.log("====================");
     } else {
         printSummary();
@@ -270,27 +270,6 @@ function printRound() {
     console.log("Opponent AI: " + opponent.name);
 }
 
-function printPlayerChoices() {
-    if (currentRound === 1) {
-        console.log("You have made no choices yet!");
-    } else {
-        console.log("Your previous choices:");
-        for (let i = 0; i < playerChoices.length; i++) {
-            console.log((i + 1) + ". " + playerChoices[i]);
-        }
-    }
-}
-
-function printOpponentChoices() {
-    if (currentRound === 1) {
-        console.log("Opponent has made no choices yet!");
-    } else {
-        console.log("Opponent's previous choices:");
-        for (let i = 0; i < opponentChoices.length; i++) {
-            console.log((i + 1) + ". " + opponentChoices[i]);
-        }
-    }
-}
 
 function printSummary() {
     // show end of game header
@@ -314,8 +293,6 @@ function printSummary() {
     console.log("Player Points: " + playerPoints);
     console.log("Opponent Points: " + opponentPoints);
     console.log("Opponent AI: " + opponent.name);
-    printPlayerChoices();
-    printOpponentChoices();
     console.log("====================");
 }
 function deactivatePlayerChoiceButtons() {
@@ -327,7 +304,6 @@ function deactivatePlayerChoiceButtons() {
 // END Play Game
 
 function populatePossibleOpponents() {
-    let opponents =[]
     let alwaysSplit = new OpponentAlwaysSplit();
     let alwaysSteal = new OpponentAlwaysSteal();
     let randomChoice = new OpponentRandom();
@@ -336,15 +312,15 @@ function populatePossibleOpponents() {
     let grim = new OpponentGrim();
     let pavlov = new OpponentPavlov();
     let titForTwoTats = new OpponentTitForTwoTats();
-    opponents.push(alwaysSplit);
-    opponents.push(alwaysSteal);
-    opponents.push(randomChoice);
-    opponents.push(titForTatCoop);
-    opponents.push(titForTatDefect);
-    opponents.push(grim);
-    opponents.push(pavlov);
-    opponents.push(titForTwoTats);
-    return opponents;
+    possibleOpponents.push(alwaysSplit);
+    possibleOpponents.push(alwaysSteal);
+    possibleOpponents.push(randomChoice);
+    possibleOpponents.push(titForTatCoop);
+    possibleOpponents.push(titForTatDefect);
+    possibleOpponents.push(grim);
+    possibleOpponents.push(pavlov);
+    possibleOpponents.push(titForTwoTats);
+    return possibleOpponents;
 }
 
 // Reset Game
