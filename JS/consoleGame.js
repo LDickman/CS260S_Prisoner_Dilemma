@@ -213,36 +213,36 @@ function givePoints() {
 function displayOpponentInfo() {
     switch (opponentType) {
         case "Always Split":
-            strategyName.textContent = opponentType;
-            strategyDes.textContent = "Your opponent will always choose to cooperate with you";
+            strategyName.textContent = possibleOpponents[0].name;
+            strategyDes.textContent = possibleOpponents[0].desc; 
             break;
         case "Always Steal":
-            strategyName.textContent = opponentType;
-            strategyDes.textContent = "Your opponent will always choose to defect with you";
+            strategyName.textContent = possibleOpponents[1].name;
+            strategyDes.textContent = possibleOpponents[1].desc; 
             break;
         case "Random":
-            strategyName.textContent = opponentType;
-            strategyDes.textContent = "Your opponent will randomly be supporting or be against you";
+            strategyName.textContent = possibleOpponents[2].name;
+            strategyDes.textContent = possibleOpponents[2].desc; 
             break;
         case "Tit for Tat Defect":
-            strategyName.textContent = opponentType;
-            strategyDes.textContent = "Your opponent will first betray you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
+            strategyName.textContent = possibleOpponents[4].name;
+            strategyDes.textContent = possibleOpponents[4].desc; 
             break;
         case "Tit for Tat Coop.":
-            strategyName.textContent = opponentType;
-            strategyDes.textContent = "Your opponent will first cooperate you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
+            strategyName.textContent = possibleOpponents[3].name;
+            strategyDes.textContent = possibleOpponents[3].desc; 
             break;
         case "Grim":
-            strategyName.textContent = opponentType;
-            strategyDes.textContent = "something";
+            strategyName.textContent = possibleOpponents[5].name;
+            strategyDes.textContent = possibleOpponents[5].desc; 
             break;
         case "Pavlov":
-            strategyName.textContent = opponentType;
-            strategyDes.textContent = "something";
+            strategyName.textContent = possibleOpponents[6].name;
+            strategyDes.textContent = possibleOpponents[6].desc; 
             break;
         case "Tit For Two Tats":
-            strategyName.textContent = opponentType;
-            strategyDes.textContent = "something";
+            strategyName.textContent = possibleOpponents[7].name;
+            strategyDes.textContent = possibleOpponents[7].desc; 
             break;
         case "No Preference":
             strategyName.textContent = " ";
