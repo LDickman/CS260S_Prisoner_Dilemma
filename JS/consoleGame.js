@@ -7,7 +7,7 @@ import { OpponentGrim } from "./OpponentGrim.js";
 import { OpponentPavlov } from "./OpponentPavlov.js"
 import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
 
-let rounds;
+let rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
 export let currentRound = 1;
 export let playerChoices = [];
 let strategyName = document.getElementById("AIName");
@@ -16,46 +16,44 @@ let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
 let opponentType = "";
-export let opponentChoices = [];
+export let opponentChoices = populatePossibleOpponents();
 let opponentPoints = 0;
-populatePossibleOpponents();
-
-let createGameButton;
-let selectStratgeyButton;
 const helpButton = document.getElementById("helpButton");
-helpButton.addEventListener("click", openGuide);
+const conSplitButton = document.getElementById("consoleSplit");
+const conStealButton = document.getElementById("consoleSteal");
+const submitSplitButton = document.getElementById("consoleSubmitSplit");
+const submitStealButton = document.getElementById("consoleSubmitSteal");
+const replayButton = document.getElementById("consolePlayAgain");
+const toGameScreenBody = document.getElementById("consoleGameScreen");
+let createGameButton;
+let selectStrategyButton;
 
-function openGuide() {
+helpButton.addEventListener("click", function() {
     let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes');
     popup.window.onload = function() {
         popup.document.getElementById("fromGuideToMenu").style.display='none'
     }
-}
+});
 
-const conSplitButton = document.getElementById("consoleSplit");
 conSplitButton.addEventListener("click", submitSplitActive);
-
-const conStealButton = document.getElementById("consoleSteal");
 conStealButton.addEventListener("click", submitStealActive);
-
-const submitSplitButton = document.getElementById("consoleSubmitSplit");
 submitSplitButton.addEventListener("click", playerChoiceSplit);
-
-const submitStealButton = document.getElementById("consoleSubmitSteal");
 submitStealButton.addEventListener("click", playerChoiceSteal);
+replayButton.addEventListener("click", function() {
+    replayButton.style.display = 'none';
+    resetGame();
+    console.clear();
+    createGame();
+});
 
-const replayButton = document.getElementById("consolePlayAgain");
-replayButton.addEventListener("click", playAgain);
-
-const toGameScreenBody = document.getElementById("consoleGameScreen");
-
+// long if-statement
 if (toGameScreenBody == null) {
     createGameButton = document.getElementById("createConsoleGame");
     createGameButton.addEventListener("click", createGame);
 
-    selectStratgeyButton = document.getElementById("AISelect");
+    selectStrategyButton = document.getElementById("AISelect");
     let ulList = document.getElementById("strategyList");
-    selectStratgeyButton.addEventListener("click", selectionButton);
+    selectStrategyButton.addEventListener("click", selectionButton);
 
     window.onclick = function (event) {
         if (!event.target.matches('.dropButton')) {
@@ -68,55 +66,31 @@ if (toGameScreenBody == null) {
                 }
             }
         }
-        clickOnDropDownMenu(ulList, selectStratgeyButton);
+        clickOnDropDownMenu(ulList, selectStrategyButton);
     }
 
-    function clickOnDropDownMenu(ul, button) {
-        let items = ul.getElementsByTagName('li');
-        ul.addEventListener("click", function (e) {
-            for (let i = 0; i < items.length; i++) {
-                if (e.target === items[i]) {
-                    console.log(items[i].textContent);
-                    opponentType = items[i].textContent;
-                    console.log("opponentType: " + opponentType);
-                    button.textContent = items[i].textContent;
-                }
-            }
-        });
-        displayOpponentInfo();
-    }
 } else {
     window.addEventListener("load", createGame);
 }
-
 function selectionButton() {
     document.getElementById('strategyDropdown').classList.toggle("show");
     console.log("click");
 }
 
-function createGame() {
-    // v Deactivates create game button
-    if (selectStratgeyButton == null) {
-        setGameRounds();
-        pickOpponentRandomly();
-        playGame();
-    } else {
-        createGameButton.style.display = 'none';
-        selectStratgeyButton.style.display = 'none';
-        document.getElementById("opponentStrategyInfo").style.display = 'none';
-        document.getElementById("buttonInfo").style.display = 'none';
-        strategyName.style.display = 'none';
-        strategyDes.style.display = 'none';
-        setGameRounds();
-        setOpponent();
-        playGame();
-    }
+function clickOnDropDownMenu(ul, button) {
+    let items = ul.getElementsByTagName('li');
+    ul.addEventListener("click", function (e) {
+        for (let i = 0; i < items.length; i++) {
+            if (e.target === items[i]) {
+                console.log(items[i].textContent);
+                opponentType = items[i].textContent;
+                console.log("opponentType: " + opponentType);
+                button.textContent = items[i].textContent;
+            }
+        }
+    });
+    displayOpponentInfo();
 }
-
-function setGameRounds() {
-    rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
-}
-
 function setOpponent() {
     switch (opponentType) {
         case "Always Split":
@@ -149,6 +123,88 @@ function setOpponent() {
         case "":
             pickOpponentRandomly();
             break;
+    }
+}
+// END long if-statement
+
+// Create Game
+function createGame() {
+    if (selectStrategyButton == null) {
+        pickOpponentRandomly();
+        playGame();
+    } else {
+        createGameButton.style.display = 'none';
+        selectStrategyButton.style.display = 'none';
+        document.getElementById("opponentStrategyInfo").style.display = 'none';
+        document.getElementById("buttonInfo").style.display = 'none';
+        strategyName.style.display = 'none';
+        strategyDes.style.display = 'none';
+        setOpponent();
+        playGame();
+    }
+}
+
+function pickOpponentRandomly() {
+    let random = Math.floor(Math.random() * possibleOpponents.length);
+    opponent = possibleOpponents[random];
+}
+
+
+// END Create Game
+
+// Play Game
+function playGame() {
+    activatePlayerChoiceButtons();
+    populateChoiceHistoryTable();
+    givePoints();
+    if (currentRound <= rounds) {
+        printRound();
+        console.log("Player Points: " + playerPoints);
+        console.log("Opponent Points: " + opponentPoints);
+        printPlayerChoices();
+        printOpponentChoices();
+        console.log("====================");
+    } else {
+        printSummary();
+        replayButton.style.display = 'inline';
+        deactivatePlayerChoiceButtons()
+    }
+}
+
+function activatePlayerChoiceButtons() {
+    conSplitButton.style.display = 'inline-block';
+    conStealButton.style.display = 'inline-block';
+    document.getElementById("dummySubmit").style.display = 'inline';
+}
+
+function populateChoiceHistoryTable() {
+    document.getElementById("playerChoiceHistoryTable").style.display = 'block';
+    if (currentRound !== 1) {
+        for (let i = 0; i < playerChoices.length; i++) {
+            if (i === playerChoices.length - 1) {
+                let playerRow = document.getElementById("playerChoicesRow");
+                let opponentRow = document.getElementById("OpponentChoicesRow");
+                playerRow.insertCell(-1).innerHTML = (currentRound - 1) + ". " + playerChoices[i];
+                opponentRow.insertCell(-1).innerHTML = (currentRound - 1) + ". " + opponentChoices[i];
+            }
+        }
+    }
+}
+
+function givePoints() {
+    let pChoice = playerChoices[playerChoices.length - 1];
+    let oChoice = opponentChoices[opponentChoices.length - 1];
+    if (currentRound > 1) {
+        if (pChoice === "Split" && oChoice === "Split") {
+            playerPoints += 250;
+            opponentPoints += 250;
+        } else if (pChoice === "Steal" && oChoice === "Split") {
+            playerPoints += 500;
+            opponentPoints -= 50;
+        } else if (pChoice === "Split" && oChoice === "Steal") {
+            playerPoints -= 50;
+            opponentPoints += 500;
+        }
     }
 }
 
@@ -197,92 +253,6 @@ function displayOpponentInfo() {
     }
 }
 
-function populatePossibleOpponents() {
-    let alwaysSplit = new OpponentAlwaysSplit();
-    let alwaysSteal = new OpponentAlwaysSteal();
-    let randomChoice = new OpponentRandom();
-    let titForTatCoop = new OpponentTitForTatCoopFirst();
-    let titForTatDefect = new OpponentTitForTatDefectFirst();
-    let grim = new OpponentGrim();
-    let pavlov = new OpponentPavlov();
-    let titForTwoTats = new OpponentTitForTwoTats();
-    possibleOpponents.push(alwaysSplit);
-    possibleOpponents.push(alwaysSteal);
-    possibleOpponents.push(randomChoice);
-    possibleOpponents.push(titForTatCoop);
-    possibleOpponents.push(titForTatDefect);
-    possibleOpponents.push(grim);
-    possibleOpponents.push(pavlov);
-    possibleOpponents.push(titForTwoTats);
-}
-
-function pickOpponentRandomly() {
-    let random = Math.floor(Math.random() * possibleOpponents.length);
-    opponent = possibleOpponents[random];
-}
-
-function playGame() {
-    activatePlayerChoiceButtons();
-    populateChoiceHistoryTable();
-    givePoints();
-    if (currentRound <= rounds) {
-        printRound();
-        console.log("Player Points: " + playerPoints);
-        console.log("Opponent Points: " + opponentPoints);
-        printPlayerChoices();
-        printOpponentChoices();
-        console.log("====================");
-    } else {
-        printSummary();
-        // v activates play again button
-        replayButton.style.display = 'inline';
-        deactivatePlayerChoiceButtons()
-    }
-}
-
-function deactivatePlayerChoiceButtons() {
-    conSplitButton.style.display = 'none';
-    conStealButton.style.display = 'none';
-    document.getElementById("dummySubmit").style.display = 'none';
-}
-
-function activatePlayerChoiceButtons() {
-    conSplitButton.style.display = 'inline-block';
-    conStealButton.style.display = 'inline-block';
-    document.getElementById("dummySubmit").style.display = 'inline';
-}
-
-function populateChoiceHistoryTable() {
-    document.getElementById("playerChoiceHistoryTable").style.display = 'block';
-    if (currentRound !== 1) {
-        for (let i = 0; i < playerChoices.length; i++) {
-            if (i === playerChoices.length - 1) {
-                let playerRow = document.getElementById("playerChoicesRow");
-                let opponentRow = document.getElementById("OpponentChoicesRow");
-                playerRow.insertCell(-1).innerHTML = (currentRound - 1) + ". " + playerChoices[i];
-                opponentRow.insertCell(-1).innerHTML = (currentRound - 1) + ". " + opponentChoices[i];
-            }
-        }
-    }
-}
-
-function givePoints() {
-    let pChoice = playerChoices[playerChoices.length - 1];
-    let oChoice = opponentChoices[opponentChoices.length - 1];
-    if (currentRound > 1) {
-        if (pChoice === "Split" && oChoice === "Split") {
-            playerPoints += 250;
-            opponentPoints += 250;
-        } else if (pChoice === "Steal" && oChoice === "Split") {
-            playerPoints += 500;
-            opponentPoints -= 50;
-        } else if (pChoice === "Split" && oChoice === "Steal") {
-            playerPoints -= 50;
-            opponentPoints += 500;
-        }
-    }
-}
-
 function printRound() {
     document.getElementById("consolePlayerPointsPara").style.display = 'block';
     document.getElementById("roundNumDiv").style.display = 'inline-block';
@@ -300,23 +270,84 @@ function printRound() {
     console.log("Opponent AI: " + opponent.name);
 }
 
-function clearChoiceHistoryTable() {
-    for (let i = 0; i < playerChoices.length; i++) {
-        let playerRow = document.getElementById("playerChoicesRow");
-        let opponentRow = document.getElementById("OpponentChoicesRow");
-        playerRow.deleteCell(-1);
-        opponentRow.deleteCell(-1);
+function printPlayerChoices() {
+    if (currentRound === 1) {
+        console.log("You have made no choices yet!");
+    } else {
+        console.log("Your previous choices:");
+        for (let i = 0; i < playerChoices.length; i++) {
+            console.log((i + 1) + ". " + playerChoices[i]);
+        }
     }
 }
 
-function playAgain() {
-    // v Deactivates play again button
-    replayButton.style.display = 'none';
-    resetGame();
-    console.clear();
-    createGame();
+function printOpponentChoices() {
+    if (currentRound === 1) {
+        console.log("Opponent has made no choices yet!");
+    } else {
+        console.log("Opponent's previous choices:");
+        for (let i = 0; i < opponentChoices.length; i++) {
+            console.log((i + 1) + ". " + opponentChoices[i]);
+        }
+    }
 }
 
+function printSummary() {
+    // show end of game header
+    document.getElementById("endOfGame").style.display = 'block';
+    // show & update opponent details
+    document.getElementById("opponentDetails").style.display = 'block';
+    document.getElementById("opponentPoints").innerHTML = opponentPoints;
+    document.getElementById("opponentAI").innerHTML = opponent.name;
+    // show updated player score
+    updatePlayerPoints();
+    // hide round num info
+    document.getElementById("roundNumDiv").style.display = 'none';
+    console.log("=== Game Results ===");
+    if (playerPoints > opponentPoints) {
+        console.log("You win! Congrats!");
+    } else if (playerPoints === opponentPoints) {
+        console.log("It's a draw!");
+    } else {
+        console.log("You lose! Try again!")
+    }
+    console.log("Player Points: " + playerPoints);
+    console.log("Opponent Points: " + opponentPoints);
+    console.log("Opponent AI: " + opponent.name);
+    printPlayerChoices();
+    printOpponentChoices();
+    console.log("====================");
+}
+function deactivatePlayerChoiceButtons() {
+    conSplitButton.style.display = 'none';
+    conStealButton.style.display = 'none';
+    document.getElementById("dummySubmit").style.display = 'none';
+}
+
+// END Play Game
+
+function populatePossibleOpponents() {
+    let opponents =[]
+    let alwaysSplit = new OpponentAlwaysSplit();
+    let alwaysSteal = new OpponentAlwaysSteal();
+    let randomChoice = new OpponentRandom();
+    let titForTatCoop = new OpponentTitForTatCoopFirst();
+    let titForTatDefect = new OpponentTitForTatDefectFirst();
+    let grim = new OpponentGrim();
+    let pavlov = new OpponentPavlov();
+    let titForTwoTats = new OpponentTitForTwoTats();
+    opponents.push(alwaysSplit);
+    opponents.push(alwaysSteal);
+    opponents.push(randomChoice);
+    opponents.push(titForTatCoop);
+    opponents.push(titForTatDefect);
+    opponents.push(grim);
+    opponents.push(pavlov);
+    opponents.push(titForTwoTats);
+    return opponents;
+}
+
+// Reset Game
 function resetGame() {
     // Hide opponent details
     document.getElementById("opponentDetails").style.display = 'none';
@@ -331,6 +362,16 @@ function resetGame() {
     opponentPoints = 0;
     opponentType = "";
 }
+function clearChoiceHistoryTable() {
+    for (let i = 0; i < playerChoices.length; i++) {
+        let playerRow = document.getElementById("playerChoicesRow");
+        let opponentRow = document.getElementById("OpponentChoicesRow");
+        playerRow.deleteCell(-1);
+        opponentRow.deleteCell(-1);
+    }
+}
+
+// END Reset Game
 
 function submitSplitActive() {
     conSplitButton.style.color = 'gray';
@@ -368,60 +409,11 @@ function playerChoiceSteal() {
     playGame()
 }
 
-function printPlayerChoices() {
-    if (currentRound === 1) {
-        console.log("You have made no choices yet!");
-    } else {
-        console.log("Your previous choices:");
-        for (let i = 0; i < playerChoices.length; i++) {
-            console.log((i + 1) + ". " + playerChoices[i]);
-        }
-    }
-}
-
 function opponentTurn() {
     let opponentChoice = opponent.makeChoice();
     opponentChoices.push(opponentChoice);
 }
 
-function printOpponentChoices() {
-    if (currentRound === 1) {
-        console.log("Opponent has made no choices yet!");
-    } else {
-        console.log("Opponent's previous choices:");
-        for (let i = 0; i < opponentChoices.length; i++) {
-            console.log((i + 1) + ". " + opponentChoices[i]);
-        }
-    }
-}
-
 function updatePlayerPoints() {
     document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
-}
-
-function printSummary() {
-    // show end of game header
-    document.getElementById("endOfGame").style.display = 'block';
-    // show & update opponent details
-    document.getElementById("opponentDetails").style.display = 'block';
-    document.getElementById("opponentPoints").innerHTML = opponentPoints;
-    document.getElementById("opponentAI").innerHTML = opponent.name;
-    // show updated player score
-    updatePlayerPoints();
-    // hide round num info
-    document.getElementById("roundNumDiv").style.display = 'none';
-    console.log("=== Game Results ===");
-    if (playerPoints > opponentPoints) {
-        console.log("You win! Congrats!");
-    } else if (playerPoints === opponentPoints) {
-        console.log("It's a draw!");
-    } else {
-        console.log("You lose! Try again!")
-    }
-    console.log("Player Points: " + playerPoints);
-    console.log("Opponent Points: " + opponentPoints);
-    console.log("Opponent AI: " + opponent.name);
-    printPlayerChoices();
-    printOpponentChoices();
-    console.log("====================");
 }
