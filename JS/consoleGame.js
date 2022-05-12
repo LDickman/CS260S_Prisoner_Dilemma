@@ -10,8 +10,8 @@ import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
 let rounds;
 export let currentRound = 1;
 export let playerChoices = [];
-var strategyName = document.getElementById("AIName");
-var strategyDes = document.getElementById("AIDes");
+let strategyName = document.getElementById("AIName");
+let strategyDes = document.getElementById("AIDes");
 let playerPoints = 0;
 let possibleOpponents = [];
 let opponent;
@@ -20,7 +20,7 @@ export let opponentChoices = [];
 let opponentPoints = 0;
 populatePossibleOpponents();
 
-var createGameButton;
+let createGameButton;
 const helpButton = document.getElementById("helpButton");
 helpButton.addEventListener("click", openGuide);
 
