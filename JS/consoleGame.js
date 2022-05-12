@@ -13,7 +13,7 @@ export let playerChoices = [];
 let strategyName = document.getElementById("AIName");
 let strategyDes = document.getElementById("AIDes");
 let playerPoints = 0;
-let possibleOpponents = [];
+export let possibleOpponents = [];
 let opponent;
 let opponentType = "";
 export let opponentChoices = [];
@@ -21,6 +21,9 @@ let opponentPoints = 0;
 
 
 populatePossibleOpponents();
+if (document.getElementById("guideForm") != null){
+    populateStrategyGuideDescription();
+}
 
 document.getElementById("helpButton").addEventListener("click", function() {
     let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes');
@@ -28,6 +31,7 @@ document.getElementById("helpButton").addEventListener("click", function() {
         popup.document.getElementById("fromGuideToMenu").style.display='none'
     }
 });
+
 const conSplitButton = document.getElementById("consoleSplit");
 conSplitButton.addEventListener("click", submitSplitActive);
 
@@ -312,6 +316,16 @@ function populatePossibleOpponents() {
     return possibleOpponents;
 }
 
+function populateStrategyGuideDescription(){
+    document.getElementById("splitStargetyDesc").textContent = possibleOpponents[0].desc;
+    document.getElementById("stealStargetyDesc").textContent = possibleOpponents[1].desc;
+    document.getElementById("randomStargetyDesc").textContent = possibleOpponents[2].desc;
+    document.getElementById("titForTatCoopStargetyDesc").textContent = possibleOpponents[3].desc;
+    document.getElementById("titForTatDefectStargetyDesc").textContent = possibleOpponents[4].desc;
+    document.getElementById("grimStargetyDesc").textContent = possibleOpponents[5].desc;
+    document.getElementById("pavlovStargetyDesc").textContent = possibleOpponents[6].desc;
+    document.getElementById("titForTatStargetyDesc").textContent = possibleOpponents[7].desc;
+}
 // Reset Game
 function resetGame() {
     // Hide opponent details
@@ -325,7 +339,6 @@ function resetGame() {
     playerPoints = 0;
     opponentChoices = [];
     opponentPoints = 0;
-    opponentType = "";
 }
 function clearChoiceHistoryTable() {
     for (let i = 0; i < playerChoices.length; i++) {
