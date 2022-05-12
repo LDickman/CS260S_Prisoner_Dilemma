@@ -234,7 +234,7 @@ function playGame() {
     } else {
         printSummary();
         // v activates play again button
-        document.getElementById("consolePlayAgain").style.display = 'inline';
+        replayButton.style.display = 'inline';
         deactivatePlayerChoiceButtons()
     }
 }
@@ -310,7 +310,7 @@ function clearChoiceHistoryTable() {
 
 function playAgain() {
     // v Deactivates play again button
-    document.getElementById("consolePlayAgain").style.display = 'none';
+    replayButton.style.display = 'none';
     resetGame();
     console.clear();
     createGame();
