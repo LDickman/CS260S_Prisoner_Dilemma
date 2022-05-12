@@ -334,22 +334,22 @@ function resetGame() {
 function submitSplitActive() {
     conSplitButton.style.color = 'gray';
     conStealButton.style.color = 'black';
-    document.getElementById("consoleSubmitSplit").style.display = 'inline';
-    document.getElementById("consoleSubmitSteal").style.display = 'none';
+    submitSplitButton.style.display = 'inline';
+    submitStealButton.style.display = 'none';
 }
 
 function submitStealActive() {
     conStealButton.style.color = 'gray';
     conSplitButton.style.color = 'black';
-    document.getElementById("consoleSubmitSteal").style.display = 'inline';
-    document.getElementById("consoleSubmitSplit").style.display = 'none';
+    submitStealButton.style.display = 'inline';
+    submitSplitButton.style.display = 'none';
 }
 
 function playerChoiceSplit() {
     opponentTurn();
     playerChoices.push("Split");
     console.clear();
-    document.getElementById("consoleSubmitSplit").style.display = 'none';
+    submitSplitButton.style.display = 'none';
     conSplitButton.style.color = 'black';
     conStealButton.style.color = 'black';
     currentRound += 1;
@@ -360,7 +360,7 @@ function playerChoiceSteal() {
     opponentTurn();
     playerChoices.push("Steal");
     console.clear();
-    document.getElementById("consoleSubmitSteal").style.display = 'none';
+    submitStealButton.style.display = 'none';
     conSplitButton.style.color = 'black';
     conStealButton.style.color = 'black';
     currentRound += 1;
