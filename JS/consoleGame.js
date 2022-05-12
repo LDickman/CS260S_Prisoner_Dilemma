@@ -76,7 +76,6 @@ if (toGameScreenBody == null) {
 }
 function selectionButton() {
     document.getElementById('strategyDropdown').classList.toggle("show");
-    console.log("click");
 }
 
 function clickOnDropDownMenu(ul, button) {
@@ -84,7 +83,6 @@ function clickOnDropDownMenu(ul, button) {
     ul.addEventListener("click", function (e) {
         for (let i = 0; i < items.length; i++) {
             if (e.target === items[i]) {
-                console.log(items[i].textContent);
                 opponentType = items[i].textContent;
                 console.log("opponentType: " + opponentType);
                 button.textContent = items[i].textContent;
@@ -161,9 +159,7 @@ function playGame() {
     givePoints();
     if (currentRound <= rounds) {
         printRound();
-        console.log("Player Points: " + playerPoints);
         console.log("Opponent Points: " + opponentPoints);
-        console.log("====================");
     } else {
         printSummary();
         replayButton.style.display = 'inline';
@@ -258,15 +254,12 @@ function printRound() {
     document.getElementById("roundNumDiv").style.display = 'inline-block';
     updatePlayerPoints();
     if (currentRound === rounds) {
-        console.log("==== Last Round ====");
         document.getElementById("finalRound").style.display = 'inline-block';
         document.getElementById("roundNum").innerHTML = currentRound;
     } else {
-        console.log("===== Round " + currentRound + " =====");
         document.getElementById("roundNumDisplay").style.display = 'inline-block';
         document.getElementById("roundNum").innerHTML = currentRound;
     }
-    console.log("Click Split or Steal!");
     console.log("Opponent AI: " + opponent.name);
 }
 
@@ -282,18 +275,8 @@ function printSummary() {
     updatePlayerPoints();
     // hide round num info
     document.getElementById("roundNumDiv").style.display = 'none';
-    console.log("=== Game Results ===");
-    if (playerPoints > opponentPoints) {
-        console.log("You win! Congrats!");
-    } else if (playerPoints === opponentPoints) {
-        console.log("It's a draw!");
-    } else {
-        console.log("You lose! Try again!")
-    }
-    console.log("Player Points: " + playerPoints);
     console.log("Opponent Points: " + opponentPoints);
     console.log("Opponent AI: " + opponent.name);
-    console.log("====================");
 }
 function deactivatePlayerChoiceButtons() {
     conSplitButton.style.display = 'none';
