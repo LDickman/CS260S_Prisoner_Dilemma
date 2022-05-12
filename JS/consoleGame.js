@@ -240,14 +240,14 @@ function playGame() {
 }
 
 function deactivatePlayerChoiceButtons() {
-    document.getElementById("consoleSplit").style.display = 'none';
-    document.getElementById("consoleSteal").style.display = 'none';
+    conSplitButton.style.display = 'none';
+    conStealButton.style.display = 'none';
     document.getElementById("dummySubmit").style.display = 'none';
 }
 
 function activatePlayerChoiceButtons() {
-    document.getElementById("consoleSplit").style.display = 'inline-block';
-    document.getElementById("consoleSteal").style.display = 'inline-block';
+    conSplitButton.style.display = 'inline-block';
+    conStealButton.style.display = 'inline-block';
     document.getElementById("dummySubmit").style.display = 'inline';
 }
 
@@ -332,15 +332,15 @@ function resetGame() {
 }
 
 function submitSplitActive() {
-    document.getElementById("consoleSplit").style.color = 'gray';
-    document.getElementById("consoleSteal").style.color = 'black';
+    conSplitButton.style.color = 'gray';
+    conStealButton.style.color = 'black';
     document.getElementById("consoleSubmitSplit").style.display = 'inline';
     document.getElementById("consoleSubmitSteal").style.display = 'none';
 }
 
 function submitStealActive() {
-    document.getElementById("consoleSteal").style.color = 'gray';
-    document.getElementById("consoleSplit").style.color = 'black';
+    conStealButton.style.color = 'gray';
+    conSplitButton.style.color = 'black';
     document.getElementById("consoleSubmitSteal").style.display = 'inline';
     document.getElementById("consoleSubmitSplit").style.display = 'none';
 }
@@ -350,8 +350,8 @@ function playerChoiceSplit() {
     playerChoices.push("Split");
     console.clear();
     document.getElementById("consoleSubmitSplit").style.display = 'none';
-    document.getElementById("consoleSplit").style.color = 'black';
-    document.getElementById("consoleSteal").style.color = 'black';
+    conSplitButton.style.color = 'black';
+    conStealButton.style.color = 'black';
     currentRound += 1;
     playGame()
 }
@@ -361,8 +361,8 @@ function playerChoiceSteal() {
     playerChoices.push("Steal");
     console.clear();
     document.getElementById("consoleSubmitSteal").style.display = 'none';
-    document.getElementById("consoleSplit").style.color = 'black';
-    document.getElementById("consoleSteal").style.color = 'black';
+    conSplitButton.style.color = 'black';
+    conStealButton.style.color = 'black';
     currentRound += 1;
     playGame()
 }
