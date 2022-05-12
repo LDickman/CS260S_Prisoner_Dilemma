@@ -18,29 +18,37 @@ let opponent;
 let opponentType = "";
 export let opponentChoices = [];
 let opponentPoints = 0;
-const helpButton = document.getElementById("helpButton");
-const conSplitButton = document.getElementById("consoleSplit");
-const conStealButton = document.getElementById("consoleSteal");
-const submitSplitButton = document.getElementById("consoleSubmitSplit");
-const submitStealButton = document.getElementById("consoleSubmitSteal");
-const replayButton = document.getElementById("consolePlayAgain");
-const toGameScreenBody = document.getElementById("consoleGameScreen");
-let createGameButton;
-let selectStrategyButton;
+
 
 populatePossibleOpponents();
 
-helpButton.addEventListener("click", function() {
+document.getElementById("helpButton").addEventListener("click", function() {
     let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes');
     popup.window.onload = function() {
         popup.document.getElementById("fromGuideToMenu").style.display='none'
     }
 });
-
+const conSplitButton = document.getElementById("consoleSplit");
 conSplitButton.addEventListener("click", submitSplitActive);
+
+const conStealButton = document.getElementById("consoleSteal");
 conStealButton.addEventListener("click", submitStealActive);
+
+const submitSplitButton = document.getElementById("consoleSubmitSplit");
 submitSplitButton.addEventListener("click", playerChoiceSplit);
+
+const submitStealButton = document.getElementById("consoleSubmitSteal");
 submitStealButton.addEventListener("click", playerChoiceSteal);
+
+const dummySubmitButton = document.getElementById("dummySubmit");
+
+const replayButton = document.getElementById("consolePlayAgain");
+
+const toGameScreenBody = document.getElementById("consoleGameScreen");
+
+let createGameButton;
+let selectStrategyButton;
+
 replayButton.addEventListener("click", function() {
     replayButton.style.display = 'none';
     resetGame();
@@ -148,8 +156,6 @@ function pickOpponentRandomly() {
     let random = Math.floor(Math.random() * possibleOpponents.length);
     opponent = possibleOpponents[random];
 }
-
-
 // END Create Game
 
 // Play Game
@@ -333,6 +339,7 @@ function clearChoiceHistoryTable() {
 // END Reset Game
 
 function submitSplitActive() {
+    dummySubmitButton.style.display = 'none';
     conSplitButton.style.color = 'gray';
     conStealButton.style.color = 'black';
     submitSplitButton.style.display = 'inline';
@@ -340,6 +347,7 @@ function submitSplitActive() {
 }
 
 function submitStealActive() {
+    dummySubmitButton.style.display = 'none';
     conStealButton.style.color = 'gray';
     conSplitButton.style.color = 'black';
     submitStealButton.style.display = 'inline';
