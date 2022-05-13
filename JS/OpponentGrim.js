@@ -2,7 +2,7 @@ import {currentRound, playerChoices} from "./consoleGame.js";
 
 export class OpponentGrim {
     name = "Grim";
-    desc = "Your opponent will first cooperate with you, but as soon as you defect, your opponent will defect for the remainder of the iterated game"
+    desc = "This opponent strategy cooperates with you until you have defected once, and will then defect for the rest of the game."
 
     makeChoice() {
         if (currentRound === 1) {

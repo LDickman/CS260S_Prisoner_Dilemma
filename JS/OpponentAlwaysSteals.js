@@ -1,6 +1,6 @@
 export class OpponentAlwaysSteal {
     name = "Unconditional Defect (Always Steal)";
-    desc = "Your opponent will always choose to defect with you";
+    desc = "This opponent strategy steals from you unconditionally.";
     makeChoice() {
         return "Steal";
     }

@@ -1,7 +1,7 @@
 import { currentRound, playerChoices } from './consoleGame.js';
 export class OpponentTitForTatDefectFirst {
     name = "Tit for Tat - Defect First";
-    desc = "Your opponent will first betray you, but depending on if you betray them then they will betray you. If you cooperate thn your opponent will cooperate with you";
+    desc = "This opponent strategy defects on the first round and imitates your previous move thereafter.";
 
     makeChoice() {
         if (currentRound === 1) {

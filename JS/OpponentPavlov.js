@@ -2,7 +2,7 @@ import {currentRound, playerChoices, opponentChoices} from "./consoleGame.js";
 
 export class OpponentPavlov {
     name = "Pavlov (Win-Stay, Lose-Shift)"
-    desc = "Your opponent will start off cooperating.  If the you both cooperates, then your opponent will keeps doing whatever it is doing. If the you defect, then your opponent will switches its behavior."
+    desc = "This opponent strategy cooperates if it and yourself moved alike in the previous round and defects if you moved differently."
     makeChoice() {
         if (currentRound === 1) {
             return "Split";

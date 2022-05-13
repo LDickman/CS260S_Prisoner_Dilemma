@@ -1,6 +1,6 @@
 export class OpponentRandom {
     name = "Random Choice";
-    desc = "Your opponent will randomly be supporting or be against you";
+    desc = "This opponent strategy will randomly split or steal with/from you.";
     
     makeChoice() {
         let actions = ["Split", "Steal"];
