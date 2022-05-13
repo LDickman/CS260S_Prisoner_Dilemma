@@ -6,8 +6,10 @@ import { OpponentTitForTatCoopFirst } from "./OpponentTitForTatCoopFirst.js"
 import { OpponentGrim } from "./OpponentGrim.js";
 import { OpponentPavlov } from "./OpponentPavlov.js"
 import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
+import {OpponentThresher} from "./OpponentThresher.js";
 
-let rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
+export let rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
+console.log("Rounds: " + rounds);
 export let currentRound = 1;
 export let playerChoices = [];
 let strategyName = document.getElementById("AIName");
@@ -305,6 +307,7 @@ function populatePossibleOpponents() {
     let grim = new OpponentGrim();
     let pavlov = new OpponentPavlov();
     let titForTwoTats = new OpponentTitForTwoTats();
+    let thresher = new OpponentThresher();
     possibleOpponents.push(alwaysSplit);
     possibleOpponents.push(alwaysSteal);
     possibleOpponents.push(randomChoice);
@@ -313,18 +316,19 @@ function populatePossibleOpponents() {
     possibleOpponents.push(grim);
     possibleOpponents.push(pavlov);
     possibleOpponents.push(titForTwoTats);
+    possibleOpponents.push(thresher);
     return possibleOpponents;
 }
 
 function populateStrategyGuideDescription(){
-    document.getElementById("splitStargetyDesc").textContent = possibleOpponents[0].desc;
-    document.getElementById("stealStargetyDesc").textContent = possibleOpponents[1].desc;
-    document.getElementById("randomStargetyDesc").textContent = possibleOpponents[2].desc;
-    document.getElementById("titForTatCoopStargetyDesc").textContent = possibleOpponents[3].desc;
-    document.getElementById("titForTatDefectStargetyDesc").textContent = possibleOpponents[4].desc;
-    document.getElementById("grimStargetyDesc").textContent = possibleOpponents[5].desc;
-    document.getElementById("pavlovStargetyDesc").textContent = possibleOpponents[6].desc;
-    document.getElementById("titForTatStargetyDesc").textContent = possibleOpponents[7].desc;
+    document.getElementById("splitStrategyDesc").textContent = possibleOpponents[0].desc;
+    document.getElementById("stealStrategyDesc").textContent = possibleOpponents[1].desc;
+    document.getElementById("randomStrategyDesc").textContent = possibleOpponents[2].desc;
+    document.getElementById("titForTwoTatStrategy").textContent = possibleOpponents[3].desc;
+    document.getElementById("titForTatDefectStrategyDesc").textContent = possibleOpponents[4].desc;
+    document.getElementById("grimStrategyDesc").textContent = possibleOpponents[5].desc;
+    document.getElementById("pavlovStrategyDesc").textContent = possibleOpponents[6].desc;
+    document.getElementById("titForTatCoopStrategyDesc").textContent = possibleOpponents[7].desc;
 }
 // Reset Game
 function resetGame() {
