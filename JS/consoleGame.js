@@ -131,6 +131,9 @@ function setOpponent() {
         case "Tit For Two Tats":
             opponent = possibleOpponents[7]
             break;
+        case "Threshold":
+            opponent = possibleOpponents[8]
+            break;
         case "No Preference":
             pickOpponentRandomly();
             break;
@@ -250,6 +253,10 @@ function displayOpponentInfo() {
             strategyName.textContent = possibleOpponents[7].name;
             strategyDes.textContent = possibleOpponents[7].desc; 
             break;
+        case "Threshold":
+            strategyName.textContent = possibleOpponents[8].name;
+            strategyDes.textContent = possibleOpponents[8].desc;
+            break;
         case "No Preference":
             strategyName.textContent = " ";
             strategyDes.textContent = " ";
@@ -329,6 +336,7 @@ function populateStrategyGuideDescription(){
     document.getElementById("grimStrategyDesc").textContent = possibleOpponents[5].desc;
     document.getElementById("pavlovStrategyDesc").textContent = possibleOpponents[6].desc;
     document.getElementById("titForTatCoopStrategyDesc").textContent = possibleOpponents[7].desc;
+    document.getElementById("thresholdStrategyDesc").textContent = possibleOpponents[8].desc;
 }
 // Reset Game
 function resetGame() {
