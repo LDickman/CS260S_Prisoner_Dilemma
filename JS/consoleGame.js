@@ -189,6 +189,7 @@ function activatePlayerChoiceButtons() {
 
 function populateChoiceHistoryTable() {
     document.getElementById("playerChoiceHistoryTable").style.display = 'block';
+    document.getElementById("scoreTable").style.display = 'block';
     if (currentRound !== 1) {
         for (let i = 0; i < playerChoices.length; i++) {
             if (i === playerChoices.length - 1) {
