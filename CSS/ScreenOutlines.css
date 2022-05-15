@@ -135,11 +135,17 @@ body {
 }
 
 th, td {
+  padding: 5px;
   border: 1px solid black
+}
+
+#roundRow, #playerChoicesRow, #OpponentChoicesRow {
+  text-align: center;
 }
 
 #playerChoiceHistoryTable {
   display: none;
+  float: left;
 }
 
 #toMainMenuDiv {

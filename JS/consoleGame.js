@@ -21,7 +21,6 @@ let opponentType = "";
 export let opponentChoices = [];
 let opponentPoints = 0;
 
-
 populatePossibleOpponents();
 if (document.getElementById("guideForm") != null){
     populateStrategyGuideDescription();
@@ -195,10 +194,26 @@ function populateChoiceHistoryTable() {
             if (i === playerChoices.length - 1) {
                 let playerRow = document.getElementById("playerChoicesRow");
                 let opponentRow = document.getElementById("OpponentChoicesRow");
-                playerRow.insertCell(-1).innerHTML = (currentRound - 1) + ". " + playerChoices[i];
-                opponentRow.insertCell(-1).innerHTML = (currentRound - 1) + ". " + opponentChoices[i];
+                let roundsRow = document.getElementById("roundRow");
+                roundsRow.insertCell(-1).innerHTML = (currentRound - 1);
+                playerRow.insertCell(-1).innerHTML = playerChoices[i];
+                opponentRow.insertCell(-1).innerHTML = opponentChoices[i];
+                updateChangeColorOfCell("playerChoicesRow",i);
+                updateChangeColorOfCell("OpponentChoicesRow", i);
             }
         }
+    }
+
+}
+
+function updateChangeColorOfCell(name, index) {
+    let tabelcell = document.getElementById(name).getElementsByTagName("td");
+    console.log(name +" " + tabelcell[index]);
+    if (tabelcell[index].textContent == "Steal") {
+        tabelcell[index].style.backgroundColor = "red";  
+    }
+    if (tabelcell[index].textContent == "Split") {
+        tabelcell[index].style.backgroundColor = "green";  
     }
 }
 
@@ -408,4 +423,7 @@ function opponentTurn() {
 
 function updatePlayerPoints() {
     document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
+    //// The score table is updated 
+    document.getElementById("playerScoreUpdate").textContent = playerPoints;
+    document.getElementById("opponentScoreUpdate").textContent = opponentPoints;
 }

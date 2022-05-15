@@ -22,6 +22,9 @@
         <p>Opponent AI: <span id="opponentAI"></span></p>
     </div>
     <table id="playerChoiceHistoryTable">
+        <tr id="roundRow">
+            <th>Rounds Played</th>
+        </tr>
         <tr id="playerChoicesRow">
             <th>Player Choices</th>
         </tr>
@@ -29,7 +32,18 @@
             <th>Opponent Choices</th>
         </tr>
     </table>
-
+    <table id="scoreTable">
+        <tr id="scoreRow">
+            <th>Score</th>
+        </tr>
+        <tr>
+            <td><label id="playerScoreUpdate"> 0</label></td>
+        </tr>
+        <tr>
+            <td><label id="opponentScoreUpdate"> 0</label></td>
+        </tr>
+    </table>
+    
     <div style="text-align: center">
         <button id="consoleSplit">Split</button>
         <button id="consoleSteal">Steal</button>
