@@ -168,6 +168,7 @@ function pickOpponentRandomly() {
 
 // Play Game
 function playGame() {
+    //updatePointTable();
     activatePlayerChoiceButtons();
     populateChoiceHistoryTable();
     givePoints();
@@ -196,7 +197,7 @@ function populateChoiceHistoryTable() {
                 let playerRow = document.getElementById("playerChoicesRow");
                 let opponentRow = document.getElementById("OpponentChoicesRow");
                 let roundsRow = document.getElementById("roundRow");
-                roundsRow.insertCell(-1).innerHTML = (currentRound - 1);
+                roundsRow.insertCell(-1).innerHTML = String(currentRound - 1);
                 playerRow.insertCell(-1).innerHTML = playerChoices[i];
                 opponentRow.insertCell(-1).innerHTML = opponentChoices[i];
                 updateChangeColorOfCell("playerChoicesRow",i);
@@ -210,10 +211,10 @@ function populateChoiceHistoryTable() {
 function updateChangeColorOfCell(name, index) {
     let tabelcell = document.getElementById(name).getElementsByTagName("td");
     console.log(name +" " + tabelcell[index]);
-    if (tabelcell[index].textContent == "Steal") {
+    if (tabelcell[index].textContent === "Steal") {
         tabelcell[index].style.backgroundColor = "red";  
     }
-    if (tabelcell[index].textContent == "Split") {
+    if (tabelcell[index].textContent === "Split") {
         tabelcell[index].style.backgroundColor = "green";  
     }
 }
@@ -231,6 +232,42 @@ function givePoints() {
         } else if (pChoice === "Split" && oChoice === "Steal") {
             playerPoints -= 50;
             opponentPoints += 500;
+        }
+    }
+}
+
+function updatePointTable() {
+    let bothSplit = document.getElementById("bothSplitCell");
+    bothSplit.style.background = "none"
+    let bothSteal = document.getElementById("bothStealCell");
+    bothSteal.style.background = "none"
+    let pSplitOppSteal = document.getElementById("pSplit-oppStealCell");
+    pSplitOppSteal.style.background = "none"
+    let pStealOppSplit = document.getElementById("pSteal-oppSplitCell");
+    pStealOppSplit.style.background = "none"
+    if (currentRound > 1) {
+        let pChoice = playerChoices[currentRound - 2]
+        let oChoice = opponentChoices[currentRound - 2]
+        if (pChoice === "Split" && oChoice === "Split") {
+            bothSplit.style.background = "yellow"
+            bothSteal.style.background = "none"
+            pSplitOppSteal.style.background = "none"
+            pStealOppSplit.style.background = "none"
+        } else if (pChoice === "Split" && oChoice ==="Steal") {
+            bothSplit.style.background = "none"
+            bothSteal.style.background = "none"
+            pSplitOppSteal.style.background = "yellow"
+            pStealOppSplit.style.background = "none"
+        } else if (pChoice === "Steal" && oChoice === "Split") {
+            bothSplit.style.background = "none"
+            bothSteal.style.background = "none"
+            pSplitOppSteal.style.background = "none"
+            pStealOppSplit.style.background = "yellow"
+        } else if (pChoice === "Steal" && oChoice === "Steal") {
+            bothSplit.style.background = "none"
+            bothSteal.style.background = "yellow"
+            pSplitOppSteal.style.background = "none"
+            pStealOppSplit.style.background = "none"
         }
     }
 }

@@ -10,30 +10,23 @@
     <div class="HowtoPlayContainer">
         <h1 class="text-center margin-top 10 ">Guide</h1>
         <div class="left m-5">
-            <p>Dr. Jared Bates would like to allow students to explore the Prisoner's Dilemma. The
-            game would consist of playing an indeterminate number of rounds against a computer opponent
-            who has implemented a strategy against the player. Each round, the player is given two choices:
-            cooperate or defect. Some strategies are more effective than others, and after playing against an
-            opponent the player is provided information about the chosen strategy. As the player continues
-            through the game, they are introduced to more strategies (with varying degrees of
-            sophistication). This game is meant to provide experiential learning as opposed to a laid out
-            lesson, and the player should be encouraged to experiment with their own strategies to score the
-            most points possible.
-                <p> The Prisoner's Dilemma scenario sees two prisoners placed into separated into individual interrogation rooms,
-                and they must choose to cooperate with each or defect from one another. This will determine their individual prison sentences.
-            </p>
-            <p>
-                Split or Steal: The Prisoner's Dilemma will pit you against a strategy that acts as your opponent
-                and your goal will be to score as many points as possible by choosing whether to split or steal points
-                with/from your opponent. Your opponent will choose to make the same decision, iterated across 10-15 rounds.
-                This version of the prisoner's dilemma uses the verbs "Split" and "Steal" as opposed to
-                the traditional wording of "Cooperate" and "Defect".
-            </p>
+                <p>
+                    The traditional Prisoner's Dilemma scenario sees two prisoners placed into individual interrogation rooms,
+                    and they must choose to cooperate with or defect from one another. This will determine their individual prison sentences.
+                    Both prisoner's have been given the same deal, that being if they defect from their partner and rat them out they will
+                    receive a reduced sentence. The prisoner's may also remain silent and cooperate with one another to receive normal sentences.
+                    However, if only one prisoner defects from the other, the defector will be released. Their silent partner will then serve a longer sentence.
+                </p>
+                <p>
+                    In this version of the Prisoner's Dilemma, dubbed "Split or Steal", you must choose whether to split or steal points from
+                    a computer opponent over a series of 10-15 rounds. Your opponent will also make the same decision using one of the strategies
+                    listed below. Your goal is to beat your opponent, and try to gain as many points as possible.
+                </p>
         </div>
     </div>
         <h2 class="text-left m-5">How to Play</h2>
     <div class="OpponentContainer">
-        <h2 class="text-left m-5">Opponent AIs</h2>
+        <h2 class="text-left m-5">Opponent Strategies</h2>
         <div class="text-left margin-top -40"  style="margin-left: 100px">
             <p class="text-left m-5">
                 <ol class="text-left m-5">
@@ -51,9 +44,35 @@
             <a href="https://plato.stanford.edu/entries/prisoner-dilemma/strategy-table.html" target="_blank"> Stanford Encyclopedia of Philosophy</a>
         </div>
     </div>
-
-    <h2 class="text-left m-5">Scoring System Breakdown</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="text-left m-5">
+        <h2>Scoring System Breakdown</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2"></th>  <!---Dummy--->
+                    <th style="position: relative; left: 45px" colspan="2" >Opponent</th>
+                </tr>
+            </thead>
+            <tr>
+                <td colspan="2"></td> <!---Dummy--->
+                <td style="border: 1px solid black">Split</td>
+                <td style="border: 1px solid black">Steal</td>
+            </tr>
+            <tr>
+                <th rowspan="3">Player</th>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black">Split</td>
+                <td style="border: 1px solid black">+250, +250</td>
+                <td style="border: 1px solid black">-50, +500</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black">Steal</td>
+                <td style="border: 1px solid black">+500, -50</td>
+                <td style="border: 1px solid black">+/-0, +/-0</td>
+            </tr>
+        </table>
+    </div>
     <div class="mainMenuFormDiv">
         <form id="fromGuideToMenu" action = "../index.html">
             <input type="submit" value="Return to Main Menu" class ="mainMenuForm"/>
