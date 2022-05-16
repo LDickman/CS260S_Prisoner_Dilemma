@@ -90,7 +90,7 @@ function clickOnDropDownMenu(ul, button) {
             if (e.target === items[i]) {
                 opponentType = items[i].textContent;
                 console.log("opponentType: " + opponentType);
-                button.textContent = items[i].textContent;
+                button.textContent = items[i].textContent + " ▼";
             }
         }
     });
@@ -110,7 +110,7 @@ function setOpponent() {
         case "Tit for Tat Defect":
             opponent = possibleOpponents[4]
             break;
-        case "Tit for Tat Coop.":
+        case "Tit for Tat Coop":
             opponent = possibleOpponents[3]
             break;
         case "Grim":
@@ -281,7 +281,7 @@ function displayOpponentInfo() {
             strategyName.textContent = possibleOpponents[4].name;
             strategyDes.textContent = possibleOpponents[4].desc; 
             break;
-        case "Tit for Tat Coop.":
+        case "Tit for Tat Coop":
             strategyName.textContent = possibleOpponents[3].name;
             strategyDes.textContent = possibleOpponents[3].desc; 
             break;
