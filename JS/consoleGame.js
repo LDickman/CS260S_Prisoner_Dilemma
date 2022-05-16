@@ -34,18 +34,10 @@ document.getElementById("helpButton").addEventListener("click", function() {
 });
 
 const conSplitButton = document.getElementById("consoleSplit");
-conSplitButton.addEventListener("click", submitSplitActive);
+conSplitButton.addEventListener("click", playerChoiceSplit);
 
 const conStealButton = document.getElementById("consoleSteal");
-conStealButton.addEventListener("click", submitStealActive);
-
-const submitSplitButton = document.getElementById("consoleSubmitSplit");
-submitSplitButton.addEventListener("click", playerChoiceSplit);
-
-const submitStealButton = document.getElementById("consoleSubmitSteal");
-submitStealButton.addEventListener("click", playerChoiceSteal);
-
-const dummySubmitButton = document.getElementById("dummySubmit");
+conStealButton.addEventListener("click", playerChoiceSteal);
 
 const replayButton = document.getElementById("consolePlayAgain");
 
@@ -185,7 +177,6 @@ function playGame() {
 function activatePlayerChoiceButtons() {
     conSplitButton.style.display = 'inline-block';
     conStealButton.style.display = 'inline-block';
-    document.getElementById("dummySubmit").style.display = 'inline';
 }
 
 function populateChoiceHistoryTable() {
@@ -353,7 +344,6 @@ function printSummary() {
 function deactivatePlayerChoiceButtons() {
     conSplitButton.style.display = 'none';
     conStealButton.style.display = 'none';
-    document.getElementById("dummySubmit").style.display = 'none';
 }
 
 // END Play Game
@@ -393,6 +383,7 @@ function populateStrategyGuideDescription(){
 }
 // Reset Game
 function resetGame() {
+    rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
     // Hide opponent details
     document.getElementById("opponentDetails").style.display = 'none';
     // Hide Game Over and final round headers
@@ -409,36 +400,19 @@ function clearChoiceHistoryTable() {
     for (let i = 0; i < playerChoices.length; i++) {
         let playerRow = document.getElementById("playerChoicesRow");
         let opponentRow = document.getElementById("OpponentChoicesRow");
+        let roundRow = document.getElementById("roundRow")
         playerRow.deleteCell(-1);
         opponentRow.deleteCell(-1);
+        roundRow.deleteCell(-1);
     }
 }
 
 // END Reset Game
 
-function submitSplitActive() {
-    dummySubmitButton.style.display = 'none';
-    conSplitButton.style.color = 'gray';
-    conStealButton.style.color = 'black';
-    submitSplitButton.style.display = 'inline';
-    submitStealButton.style.display = 'none';
-}
-
-function submitStealActive() {
-    dummySubmitButton.style.display = 'none';
-    conStealButton.style.color = 'gray';
-    conSplitButton.style.color = 'black';
-    submitStealButton.style.display = 'inline';
-    submitSplitButton.style.display = 'none';
-}
-
 function playerChoiceSplit() {
     opponentTurn();
     playerChoices.push("Split");
     console.clear();
-    submitSplitButton.style.display = 'none';
-    conSplitButton.style.color = 'black';
-    conStealButton.style.color = 'black';
     currentRound += 1;
     playGame()
 }
@@ -447,9 +421,6 @@ function playerChoiceSteal() {
     opponentTurn();
     playerChoices.push("Steal");
     console.clear();
-    submitStealButton.style.display = 'none';
-    conSplitButton.style.color = 'black';
-    conStealButton.style.color = 'black';
     currentRound += 1;
     playGame()
 }
