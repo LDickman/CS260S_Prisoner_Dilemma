@@ -160,7 +160,7 @@ function pickOpponentRandomly() {
 
 // Play Game
 function playGame() {
-    //updatePointTable();
+    updatePointTable();
     activatePlayerChoiceButtons();
     populateChoiceHistoryTable();
     givePoints();
