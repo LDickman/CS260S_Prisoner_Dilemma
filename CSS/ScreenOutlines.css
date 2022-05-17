@@ -166,12 +166,12 @@ th, td {
 }
 
 #consoleSplit {
-  margin: 10px
+  margin-right: 160px
 }
 
 #consoleSteal {
   color: white;
-  margin: 10px
+  margin-left: 160px
 }
 
 #dummySubmit {
@@ -181,6 +181,12 @@ th, td {
   opacity: 0.5;
   cursor: not-allowed;
 }
+#playerQuestion {
+  font-size: 16px;
+  font-weight: bold;
+  display: none;
+}
+
 /* Game over  */
 #endOfGame {
   text-align: center;

@@ -175,6 +175,7 @@ function playGame() {
 }
 
 function activatePlayerChoiceButtons() {
+    document.getElementById("playerQuestion").style.display = 'block';
     conSplitButton.style.display = 'inline-block';
     conStealButton.style.display = 'inline-block';
 }
@@ -344,6 +345,7 @@ function printSummary() {
     console.log("Opponent AI: " + opponent.name);
 }
 function deactivatePlayerChoiceButtons() {
+    document.getElementById("playerQuestion").style.display = 'none';
     conSplitButton.style.display = 'none';
     conStealButton.style.display = 'none';
 }
