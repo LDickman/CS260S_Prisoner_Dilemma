@@ -8,7 +8,7 @@ import { OpponentPavlov } from "./OpponentPavlov.js"
 import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
 import {OpponentThresher} from "./OpponentThresher.js";
 
-export let rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
+export let rounds = Math.floor(Math.random() * (20 - 11 + 1) + 11);
 console.log("Rounds: " + rounds);
 export let currentRound = 1;
 export let playerChoices = [];
