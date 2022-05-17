@@ -314,8 +314,8 @@ function displayOpponentInfo() {
 }
 
 function printRound() {
-    // document.getElementById("consolePlayerPointsPara").style.display = 'block';
-    document.getElementById("roundNumDiv").style.display = 'inline-block';
+   document.getElementById("pointTable").style.display = 'block';
+    document.getElementById("roundNumDiv").style.display = 'block';
     updatePlayerPoints();
     if (currentRound === rounds) {
         document.getElementById("finalRound").style.display = 'inline-block';
@@ -378,13 +378,14 @@ function populateStrategyGuideDescription(){
     document.getElementById("splitStrategyDesc").textContent = possibleOpponents[0].desc;
     document.getElementById("stealStrategyDesc").textContent = possibleOpponents[1].desc;
     document.getElementById("randomStrategyDesc").textContent = possibleOpponents[2].desc;
-    document.getElementById("titForTwoTatStrategy").textContent = possibleOpponents[3].desc;
+    document.getElementById("titForTatCoopStrategyDesc").textContent = possibleOpponents[3].desc;
     document.getElementById("titForTatDefectStrategyDesc").textContent = possibleOpponents[4].desc;
     document.getElementById("grimStrategyDesc").textContent = possibleOpponents[5].desc;
     document.getElementById("pavlovStrategyDesc").textContent = possibleOpponents[6].desc;
-    document.getElementById("titForTatCoopStrategyDesc").textContent = possibleOpponents[7].desc;
+    document.getElementById("titForTwoTatStrategy").textContent = possibleOpponents[7].desc;
     document.getElementById("thresholdStrategyDesc").textContent = possibleOpponents[8].desc;
 }
+
 // Reset Game
 function resetGame() {
     rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);

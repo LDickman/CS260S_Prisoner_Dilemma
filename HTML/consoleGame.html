@@ -3,53 +3,54 @@
 
 <head>
     <link rel=stylesheet id="style" type="text/css" href="../CSS/ScreenOutlines.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Console Game</title>
     <script type="module" src="../JS/consoleGame.js"></script>
 </head>
 <body id="consoleGameScreen">
-    <h1>Console Game</h1>
-    <h3>But you don't need to look at the console anymore!</h3>
-    <table>
-        <thead>
-        <tr>
-            <th colspan="2" style="border: none"></th>  <!---Dummy--->
-            <th style="position: relative; left: 45px; border: none" >Opponent</th>
-        </tr>
-        </thead>
-        <tr>
-            <td colspan="2" style="border: none"></td> <!---Dummy--->
-            <td style="border: 1px solid black">Split</td>
-            <td style="border: 1px solid black">Steal</td>
-        </tr>
-        <tr>
-            <th rowspan="3" style="border: none">Player</th>
-        </tr>
-        <tr>
-            <td style="border: 1px solid black">Split</td>
-            <td style="border: 1px solid black" id="bothSplitCell">+250, +250</td>
-            <td style="border: 1px solid black" id="pSplit-oppStealCell">-50, +500</td>
-        </tr>
-        <tr>
-            <td style="border: 1px solid black">Steal</td>
-            <td style="border: 1px solid black" id="pSteal-oppSplitCell">+500, -50</td>
-            <td style="border: 1px solid black" id="bothStealCell">+/-0, +/-0</td>
-        </tr>
-    </table>
-    <br/>
-    <div id="roundNumDiv">
-        <h1 id="roundNumDisplay">Round <span id="roundNum"></span></h1>
-        <h1 id="finalRound">Final Round</h1>
+    <h1 class="text-center my-5">Split or Steal!
+        <br>The Prisoner's Dilemma
+    </h1>
+    <div id="roundNumDiv" style="text-align: center">
+        <h1 id="finalRound">Final </h1>
+        <h1 id="roundNumDisplay">Round: <span id="roundNum"></span></h1>
     </div>
-    <br/>
-    <div id="endOfGame">
+    <div id="endOfGame" style="margin-bottom: 0">
         <h1>Game Over</h1>
     </div>
-    <p id="consolePlayerPointsPara">Player Points: <span id="consolePlayerPoints">0</span> </p>
     <div id="opponentDetails">
+        <p id="consolePlayerPointsPara">Player Points: <span id="consolePlayerPoints">0</span> </p>
         <p>Opponent Points: <span id="opponentPoints"></span></p>
         <p>Opponent AI: <span id="opponentAI"></span></p>
     </div>
-    <br/>
+    <div style="display: none" id="pointTable">
+        <table style="margin-right: auto; margin-left: auto">
+            <thead>
+            <tr>
+                <th colspan="2" style="border: none"></th>  <!---Dummy--->
+                <th style="position: relative; left: 45px; border: none" >Opponent</th>
+            </tr>
+            </thead>
+            <tr>
+                <td colspan="2" style="border: none"></td> <!---Dummy--->
+                <td style="border: 1px solid black">Split</td>
+                <td style="border: 1px solid black">Steal</td>
+            </tr>
+            <tr>
+                <th rowspan="3" style="border: none">Player</th>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black">Split</td>
+                <td style="border: 1px solid black" id="bothSplitCell">+250, +250</td>
+                <td style="border: 1px solid black" id="pSplit-oppStealCell">-50, +500</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black">Steal</td>
+                <td style="border: 1px solid black" id="pSteal-oppSplitCell">+500, -50</td>
+                <td style="border: 1px solid black" id="bothStealCell">+/-0, +/-0</td>
+            </tr>
+        </table>
+    </div>
     <table id="playerChoiceHistoryTable">
         <tr id="roundRow">
             <th>Rounds Played</th>
@@ -72,7 +73,6 @@
             <td><label id="opponentScoreUpdate"> 0</label></td>
         </tr>
     </table>
-    <br/>
     <div style="text-align: center">
         <p id="playerQuestion">Do you wish to hoard all the point or do you split points with your opponent?</p>
         <button id="consoleSplit">Split</button>
