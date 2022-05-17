@@ -54,7 +54,7 @@ replayButton.addEventListener("click", function() {
 });
 
 // long if-statement
-if (toGameScreenBody == null) {
+if (toGameScreenBody != null) {
     createGameButton = document.getElementById("createConsoleGame");
     createGameButton.addEventListener("click", createGame);
 
@@ -79,6 +79,7 @@ if (toGameScreenBody == null) {
 } else {
     window.addEventListener("load", createGame);
 }
+
 function selectionButton() {
     document.getElementById('strategyDropdown').classList.toggle("show");
 }
