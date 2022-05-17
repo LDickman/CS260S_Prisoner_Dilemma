@@ -42,6 +42,7 @@ conStealButton.addEventListener("click", playerChoiceSteal);
 const replayButton = document.getElementById("consolePlayAgain");
 
 const toGameScreenBody = document.getElementById("consoleGameScreen");
+const toChooseGameScreen = document.getElementById("consoleChooseGameScreen");
 
 let createGameButton;
 let selectStrategyButton;
@@ -54,7 +55,7 @@ replayButton.addEventListener("click", function() {
 });
 
 // long if-statement
-if (toGameScreenBody != null) {
+if (toChooseGameScreen != null) {
     createGameButton = document.getElementById("createConsoleGame");
     createGameButton.addEventListener("click", createGame);
 
@@ -76,7 +77,8 @@ if (toGameScreenBody != null) {
         clickOnDropDownMenu(ulList, selectStrategyButton);
     }
 
-} else {
+} 
+if (toGameScreenBody != null) {
     window.addEventListener("load", createGame);
 }
 
