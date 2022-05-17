@@ -197,11 +197,14 @@ th, td {
   margin-bottom: -21.5px;
 }
 
-#opponentDetails, #consolePlayerPointsPara {
+#opponentDetails {
+  float: right;
   font-size: 14px;
-  background-color: rgb(106, 213, 255);
-  margin-top: -14px;
+  background-color: lightgray;
+  padding: 10px;
+  margin-top: -100px;
 }
+
 /* END Game over  */
 /* END Console Game */
 
