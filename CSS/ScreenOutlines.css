@@ -181,6 +181,19 @@ th, td {
   opacity: 0.5;
   cursor: not-allowed;
 }
+/* Game over  */
+#endOfGame {
+  text-align: center;
+  background-color: rgb(55, 150, 238);
+  margin-bottom: -21.5px;
+}
+
+#opponentDetails, #consolePlayerPointsPara {
+  font-size: 14px;
+  background-color: rgb(106, 213, 255);
+  margin-top: -14px;
+}
+/* END Game over  */
 /* END Console Game */
 
 .dropButton {

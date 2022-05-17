@@ -313,7 +313,7 @@ function displayOpponentInfo() {
 }
 
 function printRound() {
-    document.getElementById("consolePlayerPointsPara").style.display = 'block';
+    // document.getElementById("consolePlayerPointsPara").style.display = 'block';
     document.getElementById("roundNumDiv").style.display = 'inline-block';
     updatePlayerPoints();
     if (currentRound === rounds) {
@@ -331,7 +331,9 @@ function printSummary() {
     // show end of game header
     document.getElementById("endOfGame").style.display = 'block';
     // show & update opponent details
+    document.getElementById("consolePlayerPointsPara").style.display = 'block';
     document.getElementById("opponentDetails").style.display = 'block';
+    document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
     document.getElementById("opponentPoints").innerHTML = opponentPoints;
     document.getElementById("opponentAI").innerHTML = opponent.name;
     // show updated player score
@@ -386,6 +388,7 @@ function resetGame() {
     rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
     // Hide opponent details
     document.getElementById("opponentDetails").style.display = 'none';
+    document.getElementById("consolePlayerPointsPara").style.display = 'none';
     // Hide Game Over and final round headers
     document.getElementById("endOfGame").style.display = 'none';
     document.getElementById("finalRound").style.display = 'none';
@@ -400,7 +403,7 @@ function clearChoiceHistoryTable() {
     for (let i = 0; i < playerChoices.length; i++) {
         let playerRow = document.getElementById("playerChoicesRow");
         let opponentRow = document.getElementById("OpponentChoicesRow");
-        let roundRow = document.getElementById("roundRow")
+        let roundRow = document.getElementById("roundRow");
         playerRow.deleteCell(-1);
         opponentRow.deleteCell(-1);
         roundRow.deleteCell(-1);
@@ -431,7 +434,6 @@ function opponentTurn() {
 }
 
 function updatePlayerPoints() {
-    document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
     //// The score table is updated 
     document.getElementById("playerScoreUpdate").textContent = playerPoints;
     document.getElementById("opponentScoreUpdate").textContent = opponentPoints;
