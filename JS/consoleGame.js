@@ -109,12 +109,16 @@ if (toGameScreenBody != null) {
 }
 /* HTML If-Statement*/
 
-/* selectionButton() manages what the dropdown menu displays when an option is selected */
+/* selectionButton():
+* manages what the dropdown menu displays when an option is selected
+*/
 function selectionButton() {
     document.getElementById('strategyDropdown').classList.toggle("show");
 }
 
-/* clickOnDropDownMenu() displays opponent information for selected option */
+/* clickOnDropDownMenu():
+* displays opponent information for selected option
+*/
 function clickOnDropDownMenu(ul, button) {
     let items = ul.getElementsByTagName('li');
     ul.addEventListener("click", function (e) {
@@ -130,7 +134,9 @@ function clickOnDropDownMenu(ul, button) {
     displayOpponentInfo();
 }
 
-/* setOpponent() sets the games opponent using the chooseAI.html dropdown menu */
+/* setOpponent():
+* sets the games opponent using the chooseAI.html dropdown menu
+*/
 
 function setOpponent() {
     switch (opponentType) {
@@ -170,7 +176,10 @@ function setOpponent() {
     }
 }
 
-// Create Game
+/* createGame():
+* sets up game opponent strategy using the random or choose methods and
+* begins the game loop by calling playGame()
+*/
 function createGame() {
     if (selectStrategyButton == null) {
         pickOpponentRandomly();
@@ -182,6 +191,9 @@ function createGame() {
     }
 }
 
+/* deactivatePlayerSelectionButtons():
+* disables display for chooseAI.html elements for choosing an opponent
+*/
 function deactivatePlayerSelectionButtons(){
     document.getElementById("createConsoleGame").style.display = 'none';
     document.getElementById("AISelect").style.display = 'none';
@@ -191,7 +203,9 @@ function deactivatePlayerSelectionButtons(){
     strategyName.style.display = 'none';
     strategyDes.style.display = 'none';
 }
-
+/* activatePlayerSelectionButtons():
+* enables display for chooseAI.html elements for choosing and opponent
+*/
 function activatePlayerSelectionButtons(){
     document.getElementById("createConsoleGame").style.display = 'block';
     document.getElementById("AISelect").style.display = 'block';
@@ -204,13 +218,18 @@ function activatePlayerSelectionButtons(){
     strategyDes.style.display = 'block';
 }
 
+/* pickOpponentRandomly():
+* picks opponent strategy for non-created games and created games with no selection
+*/
 function pickOpponentRandomly() {
     let random = Math.floor(Math.random() * possibleOpponents.length);
     opponent = possibleOpponents[random];
 }
-// END Create Game
 
-// Play Game
+/* playGame():
+* this method contains the entire gameplay loop of updating backend game variables
+* and HTML elements
+*/
 function playGame() {
     updatePointTable();
     activatePlayerChoiceButtons();
@@ -226,12 +245,19 @@ function playGame() {
     }
 }
 
+/* activePlayerChoiceButtons():
+* enables player controls for split/steal
+*/
 function activatePlayerChoiceButtons() {
     document.getElementById("playerQuestion").style.display = 'block';
     conSplitButton.style.display = 'inline-block';
     conStealButton.style.display = 'inline-block';
 }
 
+/* populateChoiceHistoryTable():
+* updates the html table to display choices as player & opponent
+* move through game rounds
+*/
 function populateChoiceHistoryTable() {
     document.getElementById("playerChoiceHistoryTable").style.display = 'block';
     document.getElementById("scoreTable").style.display = 'block';
@@ -249,17 +275,16 @@ function populateChoiceHistoryTable() {
             }
         }
     }
-
 }
 
 function updateChangeColorOfCell(name, index) {
-    let tabelcell = document.getElementById(name).getElementsByTagName("td");
-    console.log(name +" " + tabelcell[index]);
-    if (tabelcell[index].textContent === "Steal") {
-        tabelcell[index].style.backgroundColor = "red";  
+    let tableCell = document.getElementById(name).getElementsByTagName("td");
+    console.log(name +" " + tableCell[index]);
+    if (tableCell[index].textContent === "Steal") {
+        tableCell[index].style.backgroundColor = "red";
     }
-    if (tabelcell[index].textContent === "Split") {
-        tabelcell[index].style.backgroundColor = "green";  
+    if (tableCell[index].textContent === "Split") {
+        tableCell[index].style.backgroundColor = "green";
     }
 }
 
