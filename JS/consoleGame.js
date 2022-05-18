@@ -51,7 +51,15 @@ replayButton.addEventListener("click", function() {
     replayButton.style.display = 'none';
     resetGame();
     console.clear();
-    createGame();
+    if (toChooseGameScreen != null) {
+        document.getElementById("playerChoiceHistoryTable").style.display = 'none';
+        document.getElementById("scoreTable").style.display = 'none';
+        document.getElementById("pointTable").style.display = 'none';
+        deactivatePlayerChoiceButtons();
+        activatePlayerSelectionButtons();
+    } else {
+        createGame();
+    }
 });
 
 // long if-statement
@@ -144,15 +152,28 @@ function createGame() {
         pickOpponentRandomly();
         playGame();
     } else {
-        createGameButton.style.display = 'none';
-        selectStrategyButton.style.display = 'none';
-        document.getElementById("opponentStrategyInfo").style.display = 'none';
-        document.getElementById("buttonInfo").style.display = 'none';
-        strategyName.style.display = 'none';
-        strategyDes.style.display = 'none';
+        deactivatePlayerSelectionButtons();
         setOpponent();
         playGame();
     }
+}
+
+function deactivatePlayerSelectionButtons(){
+    document.getElementById("createConsoleGame").style.display = 'none';
+    document.getElementById("AISelect").style.display = 'none';
+    document.getElementById("opponentStrategyInfo").style.display = 'none';
+    document.getElementById("buttonInfo").style.display = 'none';
+    strategyName.style.display = 'none';
+    strategyDes.style.display = 'none';
+}
+
+function activatePlayerSelectionButtons(){
+    document.getElementById("createConsoleGame").style.display = 'block';
+    document.getElementById("AISelect").style.display = 'block';
+    document.getElementById("opponentStrategyInfo").style.display = 'block';
+    document.getElementById("buttonInfo").style.display = 'block';
+    strategyName.style.display = 'block';
+    strategyDes.style.display = 'block';
 }
 
 function pickOpponentRandomly() {
@@ -391,7 +412,7 @@ function populateStrategyGuideDescription(){
 
 // Reset Game
 function resetGame() {
-    rounds = Math.floor(Math.random() * (15 - 10 + 1) + 10);
+    rounds = Math.floor(Math.random() * (20 - 11 + 1) + 11);
     // Hide opponent details
     document.getElementById("opponentDetails").style.display = 'none';
     document.getElementById("consolePlayerPointsPara").style.display = 'none';
@@ -405,6 +426,7 @@ function resetGame() {
     opponentChoices = [];
     opponentPoints = 0;
 }
+
 function clearChoiceHistoryTable() {
     for (let i = 0; i < playerChoices.length; i++) {
         let playerRow = document.getElementById("playerChoicesRow");
