@@ -1,6 +1,6 @@
 /* consoleGame.js
 * consoleGame.js manages and game logic and visuals, and is used by
-* chooseAI.html and consoleGame.html.
+* chooseStrategy.html and consoleGame.html.
 */
 
 /* Opponent Strategy Imports */
@@ -20,9 +20,9 @@ export let rounds = Math.floor(Math.random() * (20 - 11 + 1) + 11);
 console.log("Rounds: " + rounds);
 export let currentRound = 1;
 export let playerChoices = [];
-let strategyName = document.getElementById("AIName");
-let strategyDes = document.getElementById("AIDes");
-let strategyDetails = document.getElementById("AIStrategyInfo");
+let strategyName = document.getElementById("strategyName");
+let strategyDes = document.getElementById("strategyDesc");
+let strategyDetails = document.getElementById("strategyInfo");
 let playerPoints = 0;
 export let possibleOpponents = [];
 populatePossibleOpponents();
@@ -85,7 +85,7 @@ if (toChooseGameScreen != null) {
     createGameButton = document.getElementById("createConsoleGame");
     createGameButton.addEventListener("click", createGame);
 
-    selectStrategyButton = document.getElementById("AISelect");
+    selectStrategyButton = document.getElementById("strategySelect");
     let ulList = document.getElementById("strategyList");
     selectStrategyButton.addEventListener("click", selectionButton);
 
@@ -135,7 +135,7 @@ function clickOnDropDownMenu(ul, button) {
 }
 
 /* setOpponent():
-* sets the games opponent using the chooseAI.html dropdown menu
+* sets the games opponent using the chooseStrategy.html dropdown menu
 */
 
 function setOpponent() {
@@ -192,11 +192,11 @@ function createGame() {
 }
 
 /* deactivatePlayerSelectionButtons():
-* disables display for chooseAI.html elements for choosing an opponent
+* disables display for chooseStrategy.html elements for choosing an opponent
 */
 function deactivatePlayerSelectionButtons(){
     document.getElementById("createConsoleGame").style.display = 'none';
-    document.getElementById("AISelect").style.display = 'none';
+    document.getElementById("strategySelect").style.display = 'none';
     document.getElementById("opponentStrategyInfo").style.display = 'none';
     document.getElementById("buttonInfo").style.display = 'none';
     strategyDetails.style.display = 'none';
@@ -204,12 +204,12 @@ function deactivatePlayerSelectionButtons(){
     strategyDes.style.display = 'none';
 }
 /* activatePlayerSelectionButtons():
-* enables display for chooseAI.html elements for choosing and opponent
+* enables display for chooseStrategy.html elements for choosing and opponent
 */
 function activatePlayerSelectionButtons(){
     document.getElementById("createConsoleGame").style.display = 'block';
-    document.getElementById("AISelect").style.display = 'block';
-    document.getElementById("AISelect").textContent = "Choose Strategy ▼";
+    document.getElementById("strategySelect").style.display = 'block';
+    document.getElementById("strategySelect").textContent = "Choose Strategy ▼";
     opponentType = "";
     document.getElementById("opponentStrategyInfo").style.display = 'block';
     document.getElementById("buttonInfo").style.display = 'block';
@@ -414,7 +414,7 @@ function printSummary() {
     document.getElementById("opponentDetails").style.display = 'block';
     document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
     document.getElementById("opponentPoints").innerHTML = opponentPoints;
-    document.getElementById("opponentAI").innerHTML = opponent.name;
+    document.getElementById("opponentStrategy").innerHTML = opponent.name;
     // show updated player score
     updatePlayerPoints();
     // hide round num info

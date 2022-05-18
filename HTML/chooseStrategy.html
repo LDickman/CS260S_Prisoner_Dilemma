@@ -18,7 +18,7 @@
     <div id="opponentDetails">
         <p id="consolePlayerPointsPara">Player Points: <span id="consolePlayerPoints">0</span> </p>
         <p>Opponent Points: <span id="opponentPoints"></span></p>
-        <p>Opponent AI: <span id="opponentAI"></span></p>
+        <p>Opponent Strategy: <span id="opponentStrategy"></span></p>
     </div>
     <div style="display:none;" id="pointTable">
         <table style="margin-right: auto; margin-left: auto">
@@ -71,9 +71,9 @@
             <td><label id="opponentScoreUpdate"> 0</label></td>
         </tr>
     </table>
-    <p id="opponentStrategyInfo">Select which AI Strategy to be your opponent:</p>
+    <p id="opponentStrategyInfo">Select a strategy to be your opponent:</p>
     <div class="dropdown">
-        <button id='AISelect' class="dropButton">Choose Strategy &#9660;</button>
+        <button id='strategySelect' class="dropButton">Choose Strategy &#9660;</button>
         <div id="strategyDropdown" class="dropdown-content">
             <ul id="strategyList" style="padding: 0 0 0 0;">
                 <li>Always Split</li>
@@ -89,12 +89,12 @@
             </ul>
         </div>
     </div>
-    <div id="AIStrategyInfo">
-        <label id="AIName"></label>
+    <div id="strategyInfo">
+        <label id="strategyName"></label>
         <br />
-        <label id="AIDes"></label>
+        <label id="strategyDesc"></label>
     </div>
-    <p id="buttonInfo">One you have selected which AI opponent you like to challenge you can click on the start Game option to begin!</p>
+    <p id="buttonInfo">One you have selected which opponent strategy you like to challenge you can click on the start Game option to begin!</p>
     <button id="createConsoleGame">Create Game</button>
     <div style="text-align: center">
         <p id="playerQuestion">Do you wish to hoard all the point or do you split points with your opponent?</p>

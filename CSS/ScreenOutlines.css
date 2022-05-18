@@ -285,7 +285,7 @@ th, td {
   padding-left: 20px;
 }
 
-#AIStrategyInfo{
+#strategyInfo{
   background-color: lightgrey;
   color: black;
   margin-top: 20px;
@@ -294,6 +294,6 @@ th, td {
   float: right;
 }
 
-#AIName {
+#strategyName {
   font-weight: bold;
 }
