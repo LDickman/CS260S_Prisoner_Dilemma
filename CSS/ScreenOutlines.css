@@ -288,3 +288,16 @@ th, td {
   font-weight: bold;
   padding-left: 20px;
 }
+
+#AIStrategyInfo{
+  background-color: lightgrey;
+  color: black;
+  margin-top: 20px;
+  margin-right: 100px;
+  padding: 20px;
+  float: right;
+}
+
+#AIName {
+  font-weight: bold;
+}
