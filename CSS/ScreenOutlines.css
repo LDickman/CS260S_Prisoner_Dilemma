@@ -116,7 +116,7 @@ html {
 
 
 #consoleSteal {
-  background-color: #A91B0D;
+  background-color: #B90E0A;
   border-color: #B90E0A;
   font-size: 16px;
   padding: 5px;
@@ -192,11 +192,13 @@ th, td {
 }
 
 #consoleSplit {
-  margin-right: 160px
+  margin-right: 20px;
+  margin-left: 180px
 }
 
 #consoleSteal {
-  margin-right: 160px
+  margin-right: 170px;
+  margin-left: 180px
 }
 
 #playerQuestion {
