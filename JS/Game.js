@@ -1,6 +1,6 @@
-/* consoleGame.js
-* consoleGame.js manages and game logic and visuals, and is used by
-* chooseStrategy.html and consoleGame.html.
+/* Game.js
+* Game.js manages and game logic and visuals, and is used by
+* chooseStrategy.html and game.html.
 */
 
 /* Opponent Strategy Imports */
@@ -46,16 +46,16 @@ document.getElementById("helpButton").addEventListener("click", function() {
 /* In-Game Guide/How-to-Play Management */
 
 /* Button Management */
-const conSplitButton = document.getElementById("consoleSplit");
+const conSplitButton = document.getElementById("splitButton");
 conSplitButton.addEventListener("click", playerChoiceSplit);
 
-const conStealButton = document.getElementById("consoleSteal");
+const conStealButton = document.getElementById("stealButton");
 conStealButton.addEventListener("click", playerChoiceSteal);
 
-const replayButton = document.getElementById("consolePlayAgain");
+const replayButton = document.getElementById("playAgainButton");
 
-const toGameScreenBody = document.getElementById("consoleGameScreen");
-const toChooseGameScreen = document.getElementById("consoleChooseGameScreen");
+const toGameScreenBody = document.getElementById("gameScreen");
+const toChooseGameScreen = document.getElementById("chooseGameScreen");
 
 replayButton.addEventListener("click", function() {
     replayButton.style.display = 'none';
@@ -82,7 +82,7 @@ let selectStrategyButton;
 
 if (toChooseGameScreen != null) {
     strategyDetails.style.display="none";
-    createGameButton = document.getElementById("createConsoleGame");
+    createGameButton = document.getElementById("createGameButton");
     createGameButton.addEventListener("click", createGame);
 
     selectStrategyButton = document.getElementById("strategySelect");
@@ -195,7 +195,7 @@ function createGame() {
 * disables display for chooseStrategy.html elements for choosing an opponent
 */
 function deactivatePlayerSelectionButtons(){
-    document.getElementById("createConsoleGame").style.display = 'none';
+    document.getElementById("createGameButton").style.display = 'none';
     document.getElementById("strategySelect").style.display = 'none';
     document.getElementById("opponentStrategyInfo").style.display = 'none';
     document.getElementById("buttonInfo").style.display = 'none';
@@ -207,7 +207,7 @@ function deactivatePlayerSelectionButtons(){
 * enables display for chooseStrategy.html elements for choosing and opponent
 */
 function activatePlayerSelectionButtons(){
-    document.getElementById("createConsoleGame").style.display = 'block';
+    document.getElementById("createGameButton").style.display = 'block';
     document.getElementById("strategySelect").style.display = 'block';
     document.getElementById("strategySelect").textContent = "Choose Strategy ▼";
     opponentType = "";
@@ -410,9 +410,9 @@ function printSummary() {
     // show end of game header
     document.getElementById("endOfGame").style.display = 'block';
     // show & update opponent details
-    document.getElementById("consolePlayerPointsPara").style.display = 'block';
+    document.getElementById("playerPointsPara").style.display = 'block';
     document.getElementById("opponentDetails").style.display = 'block';
-    document.getElementById("consolePlayerPoints").innerHTML = playerPoints;
+    document.getElementById("playerPoints").innerHTML = playerPoints;
     document.getElementById("opponentPoints").innerHTML = opponentPoints;
     document.getElementById("opponentStrategy").innerHTML = opponent.name;
     // show updated player score
@@ -420,7 +420,7 @@ function printSummary() {
     // hide round num info
     document.getElementById("roundNumDiv").style.display = 'none';
     console.log("Opponent Points: " + opponentPoints);
-    console.log("Opponent AI: " + opponent.name);
+    console.log("Opponent Strategy: " + opponent.name);
 }
 function deactivatePlayerChoiceButtons() {
     document.getElementById("playerQuestion").style.display = 'none';
@@ -469,7 +469,7 @@ function resetGame() {
     rounds = Math.floor(Math.random() * (20 - 11 + 1) + 11);
     // Hide opponent details
     document.getElementById("opponentDetails").style.display = 'none';
-    document.getElementById("consolePlayerPointsPara").style.display = 'none';
+    document.getElementById("playerPointsPara").style.display = 'none';
     // Hide Game Over and final round headers
     document.getElementById("endOfGame").style.display = 'none';
     document.getElementById("finalRound").style.display = 'none';

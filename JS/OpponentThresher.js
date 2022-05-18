@@ -1,5 +1,5 @@
-import {currentRound} from "./consoleGame.js";
-import { rounds } from "./consoleGame.js";
+import {currentRound} from "./Game.js";
+import { rounds } from "./Game.js";
 
 export class OpponentThresher {
     name="Thresher"

@@ -1,4 +1,4 @@
-import { currentRound, playerChoices } from './consoleGame.js';
+import { currentRound, playerChoices } from './Game.js';
 export class OpponentTitForTatDefectFirst {
     name = "Tit for Tat - Defect First";
     desc = "This opponent strategy defects on the first round and imitates your previous move thereafter.";

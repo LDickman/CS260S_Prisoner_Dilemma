@@ -1,4 +1,4 @@
-import { currentRound, playerChoices } from './consoleGame.js';
+import { currentRound, playerChoices } from './Game.js';
 export class OpponentTitForTatCoopFirst {
     name = "Tit for Tat - Cooperate First";
     desc = "This opponent strategy cooperates on the first round and imitates your previous move thereafter.";

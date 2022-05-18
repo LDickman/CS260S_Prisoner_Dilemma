@@ -1,4 +1,4 @@
-import {currentRound, playerChoices, opponentChoices} from "./consoleGame.js";
+import {currentRound, playerChoices, opponentChoices} from "./Game.js";
 
 export class OpponentPavlov {
     name = "Pavlov (Win-Stay, Lose-Shift)"

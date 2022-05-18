@@ -5,7 +5,7 @@ html {
   background-size: cover;
 }
 
-#consoleGameScreen, #consoleChooseGameScreen, #guideForm {
+#gameScreen, #chooseGameScreen, #guideForm {
   background-color: navajowhite;
 }
 
@@ -100,13 +100,13 @@ html {
 /* END Guide Page */
 
 /* Console Game */
-#consolePlayAgain {
+#playAgainButton {
   font-size: 16px;
   padding: 10px;
   display: none;
 }
 
-#consoleSplit {
+#splitButton {
   background-color: #028A0F;
   border-color: #03AC13;
   font-size: 16px;
@@ -115,7 +115,7 @@ html {
 }
 
 
-#consoleSteal {
+#stealButton {
   background-color: #B90E0A;
   border-color: #B90E0A;
   font-size: 16px;
@@ -123,19 +123,7 @@ html {
   display: none;
 }
 
-#consoleSubmitSplit {
-  font-size: 16px;
-  padding: 10px;
-  display: none;
-}
-
-#consoleSubmitSteal {
-  font-size: 16px;
-  padding: 10px;
-  display: none;
-}
-
-#consolePlayerPointsPara {
+#playerPointsPara {
   display: none;
 }
 
@@ -184,19 +172,19 @@ th, td {
   text-align: center;
 }
 
-#createConsoleGame {
+#createGameButton {
   margin-top: 10px;
   margin-left: 22px;
   font-size: 16px;
   padding: 10px;
 }
 
-#consoleSplit {
+#splitButton {
   margin-right: 20px;
   margin-left: 180px
 }
 
-#consoleSteal {
+#stealButton {
   margin-right: 170px;
   margin-left: 180px
 }
