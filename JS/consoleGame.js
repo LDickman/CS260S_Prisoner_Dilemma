@@ -22,6 +22,7 @@ export let currentRound = 1;
 export let playerChoices = [];
 let strategyName = document.getElementById("AIName");
 let strategyDes = document.getElementById("AIDes");
+let strategyDetails = document.getElementById("AIStrategyInfo");
 let playerPoints = 0;
 export let possibleOpponents = [];
 populatePossibleOpponents();
@@ -80,6 +81,7 @@ let createGameButton;
 let selectStrategyButton;
 
 if (toChooseGameScreen != null) {
+    strategyDetails.style.display="none";
     createGameButton = document.getElementById("createConsoleGame");
     createGameButton.addEventListener("click", createGame);
 
@@ -121,6 +123,7 @@ function clickOnDropDownMenu(ul, button) {
                 opponentType = items[i].textContent;
                 console.log("opponentType: " + opponentType);
                 button.textContent = items[i].textContent + " ▼";
+                strategyDetails.style.display="block";
             }
         }
     });
@@ -184,6 +187,7 @@ function deactivatePlayerSelectionButtons(){
     document.getElementById("AISelect").style.display = 'none';
     document.getElementById("opponentStrategyInfo").style.display = 'none';
     document.getElementById("buttonInfo").style.display = 'none';
+    strategyDetails.style.display = 'none';
     strategyName.style.display = 'none';
     strategyDes.style.display = 'none';
 }
@@ -195,6 +199,7 @@ function activatePlayerSelectionButtons(){
     opponentType = "";
     document.getElementById("opponentStrategyInfo").style.display = 'block';
     document.getElementById("buttonInfo").style.display = 'block';
+    strategyDetails.style.display = 'block';
     strategyName.style.display = 'block';
     strategyDes.style.display = 'block';
 }
@@ -350,10 +355,12 @@ function displayOpponentInfo() {
             strategyDes.textContent = possibleOpponents[8].desc;
             break;
         case "No Preference":
+            strategyDetails.style.display="none";
             strategyName.textContent = " ";
             strategyDes.textContent = " ";
             break;
         case "":
+            strategyDetails.style.display="none";
             strategyName.textContent = " ";
             strategyDes.textContent = " ";
             break;
