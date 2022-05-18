@@ -1,3 +1,9 @@
+/* consoleGame.js
+* consoleGame.js manages and game logic and visuals, and is used by
+* chooseAI.html and consoleGame.html.
+*/
+
+/* Opponent Strategy Imports */
 import { OpponentTitForTatDefectFirst } from './OpponentTitForTatDefectFirst.js';
 import { OpponentAlwaysSplit } from "./OpponentAlwaysSplits.js"
 import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
@@ -7,7 +13,9 @@ import { OpponentGrim } from "./OpponentGrim.js";
 import { OpponentPavlov } from "./OpponentPavlov.js"
 import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
 import {OpponentThresher} from "./OpponentThresher.js";
+/* Opponent Strategy Imports */
 
+/* Field Declarations and Initializations*/
 export let rounds = Math.floor(Math.random() * (20 - 11 + 1) + 11);
 console.log("Rounds: " + rounds);
 export let currentRound = 1;
@@ -16,23 +24,27 @@ let strategyName = document.getElementById("AIName");
 let strategyDes = document.getElementById("AIDes");
 let playerPoints = 0;
 export let possibleOpponents = [];
+populatePossibleOpponents();
 let opponent;
 let opponentType = "";
 export let opponentChoices = [];
 let opponentPoints = 0;
+/* Field Declarations and Initializations */
 
-populatePossibleOpponents();
+/* In-Game Guide/How-to-Play Management */
 if (document.getElementById("guideForm") != null){
     populateStrategyGuideDescription();
 }
 
 document.getElementById("helpButton").addEventListener("click", function() {
-    let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes');
+    let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes,resizeable=yes');
     popup.window.onload = function() {
         popup.document.getElementById("fromGuideToMenu").style.display='none'
     }
 });
+/* In-Game Guide/How-to-Play Management */
 
+/* Button Management */
 const conSplitButton = document.getElementById("consoleSplit");
 conSplitButton.addEventListener("click", playerChoiceSplit);
 
@@ -43,9 +55,6 @@ const replayButton = document.getElementById("consolePlayAgain");
 
 const toGameScreenBody = document.getElementById("consoleGameScreen");
 const toChooseGameScreen = document.getElementById("consoleChooseGameScreen");
-
-let createGameButton;
-let selectStrategyButton;
 
 replayButton.addEventListener("click", function() {
     replayButton.style.display = 'none';
@@ -61,8 +70,15 @@ replayButton.addEventListener("click", function() {
         createGame();
     }
 });
+/* Button Management */
 
-// long if-statement
+/* HTML If-Statement
+* This if-statement is used to check which html file (either consoleGame or chooseAI)
+* is accessing the javascript, so as to display the appropriate elements.
+*/
+let createGameButton;
+let selectStrategyButton;
+
 if (toChooseGameScreen != null) {
     createGameButton = document.getElementById("createConsoleGame");
     createGameButton.addEventListener("click", createGame);
@@ -89,11 +105,14 @@ if (toChooseGameScreen != null) {
 if (toGameScreenBody != null) {
     window.addEventListener("load", createGame);
 }
+/* HTML If-Statement*/
 
+/* selectionButton() manages what the dropdown menu displays when an option is selected */
 function selectionButton() {
     document.getElementById('strategyDropdown').classList.toggle("show");
 }
 
+/* clickOnDropDownMenu() displays opponent information for selected option */
 function clickOnDropDownMenu(ul, button) {
     let items = ul.getElementsByTagName('li');
     ul.addEventListener("click", function (e) {
@@ -107,6 +126,8 @@ function clickOnDropDownMenu(ul, button) {
     });
     displayOpponentInfo();
 }
+
+/* setOpponent() sets the games opponent using the chooseAI.html dropdown menu */
 function setOpponent() {
     switch (opponentType) {
         case "Always Split":
@@ -144,7 +165,6 @@ function setOpponent() {
             break;
     }
 }
-// END long if-statement
 
 // Create Game
 function createGame() {
