@@ -107,6 +107,7 @@ function clickOnDropDownMenu(ul, button) {
     });
     displayOpponentInfo();
 }
+
 function setOpponent() {
     switch (opponentType) {
         case "Always Split":
@@ -170,6 +171,8 @@ function deactivatePlayerSelectionButtons(){
 function activatePlayerSelectionButtons(){
     document.getElementById("createConsoleGame").style.display = 'block';
     document.getElementById("AISelect").style.display = 'block';
+    document.getElementById("AISelect").textContent = "Choose Strategy ▼";
+    opponentType = "";
     document.getElementById("opponentStrategyInfo").style.display = 'block';
     document.getElementById("buttonInfo").style.display = 'block';
     strategyName.style.display = 'block';
