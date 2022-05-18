@@ -107,17 +107,19 @@ html {
 }
 
 #consoleSplit {
+  background-color: #028A0F;
+  border-color: #03AC13;
   font-size: 16px;
-  padding: 10px;
-  background-color: rgb(29, 255, 29);
+  padding: 5px;
   display: none;
 }
 
+
 #consoleSteal {
-  color: white;
+  background-color: #B90E0A;
+  border-color: #B90E0A;
   font-size: 16px;
-  padding: 10px;
-  background-color: red;
+  padding: 5px;
   display: none;
 }
 
@@ -190,21 +192,15 @@ th, td {
 }
 
 #consoleSplit {
-  margin-right: 160px
+  margin-right: 20px;
+  margin-left: 180px
 }
 
 #consoleSteal {
-  color: white;
-  margin-left: 160px
+  margin-right: 170px;
+  margin-left: 180px
 }
 
-#dummySubmit {
-  font-size: 16px;
-  padding: 10px;
-  display: none;
-  opacity: 0.5;
-  cursor: not-allowed;
-}
 #playerQuestion {
   font-size: 16px;
   font-weight: bold;

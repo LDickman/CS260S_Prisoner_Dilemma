@@ -355,9 +355,8 @@ function displayOpponentInfo() {
             strategyDes.textContent = possibleOpponents[8].desc;
             break;
         case "No Preference":
-            strategyDetails.style.display="none";
-            strategyName.textContent = " ";
-            strategyDes.textContent = " ";
+            strategyName.textContent = "No Preference";
+            strategyDes.textContent = "The opponent will be randomly selected for you";
             break;
         case "":
             strategyDetails.style.display="none";
