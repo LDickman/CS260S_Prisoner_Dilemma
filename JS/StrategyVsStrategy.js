@@ -21,7 +21,7 @@ let rounds = 10;
 document.getElementById("nextRound").addEventListener("click", nextRound)
 
 function nextRound() {
-    console.clear();
+    console.clear()
     givePoints();
     console.log("Strat 1: " + strategy1.name + " Points: " + strategy1Points);
     console.log("Strat 2: " + strategy2.name + " Points: " + strategy2Points);

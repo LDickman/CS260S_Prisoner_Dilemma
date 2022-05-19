@@ -13,6 +13,7 @@ import { OpponentGrim } from "./OpponentGrim.js";
 import { OpponentPavlov } from "./OpponentPavlov.js"
 import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
 import {OpponentThresher} from "./OpponentThresher.js";
+import { OpponentImperfectTitForTat} from "./OpponentImperfectTitForTat.js";
 /* Opponent Strategy Imports */
 
 /* Field Declarations and Initializations*/
@@ -165,6 +166,9 @@ function setOpponent() {
             break;
         case "Threshold":
             opponent = possibleOpponents[8]
+            break;
+        case "Imperfect Tit for Tat":
+            opponent = possibleOpponents[9];
             break;
         case "No Preference":
             pickOpponentRandomly();
@@ -395,6 +399,10 @@ function displayOpponentInfo() {
             strategyName.textContent = possibleOpponents[8].name;
             strategyDes.textContent = possibleOpponents[8].desc;
             break;
+        case "Imperfect Tit for Tat":
+            strategyName.textContent = possibleOpponents[9].name;
+            strategyDes.textContent = possibleOpponents[9].desc;
+            break;
         case "No Preference":
             strategyName.textContent = "No Preference";
             strategyDes.textContent = "The opponent will be randomly selected for you";
@@ -460,6 +468,7 @@ function populatePossibleOpponents() {
     let pavlov = new OpponentPavlov();
     let titForTwoTats = new OpponentTitForTwoTats();
     let thresher = new OpponentThresher();
+    let impTitForTat = new OpponentImperfectTitForTat();
     possibleOpponents.push(alwaysSplit);
     possibleOpponents.push(alwaysSteal);
     possibleOpponents.push(randomChoice);
@@ -469,12 +478,13 @@ function populatePossibleOpponents() {
     possibleOpponents.push(pavlov);
     possibleOpponents.push(titForTwoTats);
     possibleOpponents.push(thresher);
+    possibleOpponents.push(impTitForTat);
 }
 
 /* populateStrategyGuideDescription():
 * writes description field of opponent classes to guide.html
 * used so that all strategy descriptions remain consistent if the class description is changed
- */
+*/
 function populateStrategyGuideDescription(){
     document.getElementById("splitStrategyDesc").textContent = possibleOpponents[0].desc;
     document.getElementById("stealStrategyDesc").textContent = possibleOpponents[1].desc;
@@ -485,6 +495,7 @@ function populateStrategyGuideDescription(){
     document.getElementById("pavlovStrategyDesc").textContent = possibleOpponents[6].desc;
     document.getElementById("titForTwoTatStrategy").textContent = possibleOpponents[7].desc;
     document.getElementById("thresholdStrategyDesc").textContent = possibleOpponents[8].desc;
+    document.getElementById("impTitForTatDesc").textContent = possibleOpponents[9].desc;
 }
 
 /* resetGame():
