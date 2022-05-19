@@ -139,10 +139,6 @@ html {
   display: none;
 }
 
-#finalRound {
-  display: none;
-}
-
 #roundNumDiv {
   display: none;
 }
@@ -212,7 +208,10 @@ th, td {
   font-size: 14px;
   background-color: lightgray;
   padding: 10px;
-  margin-top: -8px;
+  padding-bottom: 0;
+  padding-right: 100px;
+  margin-top: 20px;
+  margin-left: -460px;
 }
 
 /* END Game over  */
