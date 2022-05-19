@@ -74,7 +74,7 @@ replayButton.addEventListener("click", function() {
 /* Button Management */
 
 /* HTML If-Statement
-* This if-statement is used to check which html file (either consoleGame or chooseAI)
+* This if-statement is used to check which html file (either Game or chooseStrategy)
 * is accessing the javascript, so as to display the appropriate elements.
 */
 let createGameButton;
@@ -137,7 +137,6 @@ function clickOnDropDownMenu(ul, button) {
 /* setOpponent():
 * sets the games opponent using the chooseStrategy.html dropdown menu
 */
-
 function setOpponent() {
     switch (opponentType) {
         case "Always Split":
@@ -203,6 +202,7 @@ function deactivatePlayerSelectionButtons(){
     strategyName.style.display = 'none';
     strategyDes.style.display = 'none';
 }
+
 /* activatePlayerSelectionButtons():
 * enables display for chooseStrategy.html elements for choosing and opponent
 */
@@ -277,6 +277,10 @@ function populateChoiceHistoryTable() {
     }
 }
 
+/* updateChangeColorOfCell():
+* updates the background color of cells in the choice history table
+* depending on text content
+*/
 function updateChangeColorOfCell(name, index) {
     let tableCell = document.getElementById(name).getElementsByTagName("td");
     console.log(name +" " + tableCell[index]);
@@ -288,6 +292,10 @@ function updateChangeColorOfCell(name, index) {
     }
 }
 
+/* givePoints():
+* distributes points to player an opponent as they move through
+* the game rounds
+*/
 function givePoints() {
     let pChoice = playerChoices[playerChoices.length - 1];
     let oChoice = opponentChoices[opponentChoices.length - 1];
@@ -305,6 +313,10 @@ function givePoints() {
     }
 }
 
+/* updatePointTable():
+* updates the point breakdown chart in the game screen to
+* correspond to previous round choices
+*/
 function updatePointTable() {
     let bothSplit = document.getElementById("bothSplitCell");
     bothSplit.style.background = "none"
@@ -341,6 +353,10 @@ function updatePointTable() {
     }
 }
 
+/* displayOpponentInfo():
+* provides information for strategy chosen from the selection
+* dropdown menu
+*/
 function displayOpponentInfo() {
     switch (opponentType) {
         case "Always Split":
@@ -391,21 +407,28 @@ function displayOpponentInfo() {
     }
 }
 
+/* printRound():
+* updates HTML visuals to correspond to the current round
+* calls helper methods to update necessary elements, such as updatePlayerPoints()
+*/
 function printRound() {
-   document.getElementById("pointTable").style.display = 'block';
+    document.getElementById("pointTable").style.display = 'block';
     document.getElementById("roundNumDiv").style.display = 'block';
     updatePlayerPoints();
     if (currentRound === rounds) {
         document.getElementById("finalRound").style.display = 'inline-block';
-        document.getElementById("roundNum").innerHTML = currentRound;
     } else {
         document.getElementById("roundNumDisplay").style.display = 'inline-block';
-        document.getElementById("roundNum").innerHTML = currentRound;
     }
+    document.getElementById("roundNum").innerHTML = currentRound;
     console.log("Opponent AI: " + opponent.name);
 }
 
-
+/* printSummary():
+* Provides and shows details for end-of-game, such as opponent details
+* that were hidden from the player
+* also hides elements of the game meant for playing
+*/
 function printSummary() {
     // show end of game header
     document.getElementById("endOfGame").style.display = 'block';
@@ -415,7 +438,7 @@ function printSummary() {
     document.getElementById("playerPoints").innerHTML = playerPoints;
     document.getElementById("opponentPoints").innerHTML = opponentPoints;
     document.getElementById("opponentStrategy").innerHTML = opponent.name;
-    // show updated player score
+    // show & update player points
     updatePlayerPoints();
     // hide round num info
     document.getElementById("roundNumDiv").style.display = 'none';
@@ -428,8 +451,9 @@ function deactivatePlayerChoiceButtons() {
     conStealButton.style.display = 'none';
 }
 
-// END Play Game
-
+/* populatePossibleOpponents():
+* adds each type of opponent strategy to an array
+*/
 function populatePossibleOpponents() {
     let alwaysSplit = new OpponentAlwaysSplit();
     let alwaysSteal = new OpponentAlwaysSteal();
@@ -449,9 +473,12 @@ function populatePossibleOpponents() {
     possibleOpponents.push(pavlov);
     possibleOpponents.push(titForTwoTats);
     possibleOpponents.push(thresher);
-    return possibleOpponents;
 }
 
+/* populateStrategyGuideDescription():
+* writes description field of opponent classes to guide.html
+* used so that all strategy descriptions remain consistent if the class description is changed
+ */
 function populateStrategyGuideDescription(){
     document.getElementById("splitStrategyDesc").textContent = possibleOpponents[0].desc;
     document.getElementById("stealStrategyDesc").textContent = possibleOpponents[1].desc;
@@ -464,7 +491,10 @@ function populateStrategyGuideDescription(){
     document.getElementById("thresholdStrategyDesc").textContent = possibleOpponents[8].desc;
 }
 
-// Reset Game
+/* resetGame():
+* resets variables that are important to the gameplay loop,
+* as well as visual elements
+*/
 function resetGame() {
     rounds = Math.floor(Math.random() * (20 - 11 + 1) + 11);
     // Hide opponent details
@@ -481,6 +511,9 @@ function resetGame() {
     opponentPoints = 0;
 }
 
+/* clearChoiceHistoryTable():
+* resets HTML table containing player and opponent choices for a game
+*/
 function clearChoiceHistoryTable() {
     for (let i = 0; i < playerChoices.length; i++) {
         let playerRow = document.getElementById("playerChoicesRow");
@@ -492,8 +525,10 @@ function clearChoiceHistoryTable() {
     }
 }
 
-// END Reset Game
-
+/* playerChoiceSplit():
+* this is the function executed when the 'Split' button is pushed
+* during the gameplay loop. Logs the choice for the round, and iterates round
+*/
 function playerChoiceSplit() {
     opponentTurn();
     playerChoices.push("Split");
@@ -502,6 +537,10 @@ function playerChoiceSplit() {
     playGame()
 }
 
+/* playerChoiceSteal():
+* this is the function executed when the 'Steal' button is pushed
+* during the gameplay loop. Logs the choice for the round, and iterates round
+*/
 function playerChoiceSteal() {
     opponentTurn();
     playerChoices.push("Steal");
@@ -510,11 +549,18 @@ function playerChoiceSteal() {
     playGame()
 }
 
+/* opponentTurn():
+* gets opponent choice (Split/Steal) from the 'opponent' object after
+* the player has made their selection
+*/
 function opponentTurn() {
     let opponentChoice = opponent.makeChoice();
     opponentChoices.push(opponentChoice);
 }
 
+/* updatePlayerPoints():
+* updates the HTML elements for player and opponent points
+*/
 function updatePlayerPoints() {
     //// The score table is updated 
     document.getElementById("playerScoreUpdate").textContent = playerPoints;
