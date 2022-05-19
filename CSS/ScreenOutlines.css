@@ -165,6 +165,10 @@ th, td {
   display: none; 
 }
 
+#pointTable {
+  align-content: center;
+}
+
 #toMainMenuDiv {
   font-size: 16px;
   padding: 10px;
