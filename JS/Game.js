@@ -415,11 +415,7 @@ function printRound() {
     document.getElementById("pointTable").style.display = 'block';
     document.getElementById("roundNumDiv").style.display = 'block';
     updatePlayerPoints();
-    if (currentRound === rounds) {
-        document.getElementById("finalRound").style.display = 'inline-block';
-    } else {
-        document.getElementById("roundNumDisplay").style.display = 'inline-block';
-    }
+    document.getElementById("roundNumDisplay").style.display = 'inline-block';
     document.getElementById("roundNum").innerHTML = currentRound;
     console.log("Opponent AI: " + opponent.name);
 }
@@ -502,7 +498,6 @@ function resetGame() {
     document.getElementById("playerPointsPara").style.display = 'none';
     // Hide Game Over and final round headers
     document.getElementById("endOfGame").style.display = 'none';
-    document.getElementById("finalRound").style.display = 'none';
     clearChoiceHistoryTable();
     currentRound = 1;
     playerChoices = [];
