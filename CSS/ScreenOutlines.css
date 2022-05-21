@@ -5,7 +5,7 @@ html {
   background-size: cover;
 }
 
-#gameScreen, #chooseGameScreen, #guideForm {
+#gameScreen, #chooseGameScreen, #guideForm, #strategyVsStrategyScreen {
   background-color: #989898;
 }
 
@@ -148,7 +148,7 @@ th, td {
   text-align: center;
 }
 
-#playerChoiceHistoryTable {
+#playerChoiceHistoryTable, #stratChoiceHistoryTable {
   display: none;
   float: left;
 }
