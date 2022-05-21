@@ -34,16 +34,13 @@ let opponentPoints = 0;
 /* Field Declarations and Initializations */
 
 /* In-Game Guide/How-to-Play Management */
-if (document.getElementById("guideForm") != null){
-    populateStrategyGuideDescription();
-}
-
-document.getElementById("helpButton").addEventListener("click", function() {
+document.getElementById("helpButton").addEventListener("click", displayGuide);
+function displayGuide() {
     let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes,resizeable=yes');
     popup.window.onload = function() {
         popup.document.getElementById("fromGuideToMenu").style.display='none'
     }
-});
+}
 /* In-Game Guide/How-to-Play Management */
 
 /* Button Management */
@@ -479,23 +476,6 @@ function populatePossibleOpponents() {
     possibleOpponents.push(titForTwoTats);
     possibleOpponents.push(thresher);
     possibleOpponents.push(impTitForTat);
-}
-
-/* populateStrategyGuideDescription():
-* writes description field of opponent classes to guide.html
-* used so that all strategy descriptions remain consistent if the class description is changed
-*/
-function populateStrategyGuideDescription(){
-    document.getElementById("splitStrategyDesc").textContent = possibleOpponents[0].desc;
-    document.getElementById("stealStrategyDesc").textContent = possibleOpponents[1].desc;
-    document.getElementById("randomStrategyDesc").textContent = possibleOpponents[2].desc;
-    document.getElementById("titForTatCoopStrategyDesc").textContent = possibleOpponents[3].desc;
-    document.getElementById("titForTatDefectStrategyDesc").textContent = possibleOpponents[4].desc;
-    document.getElementById("grimStrategyDesc").textContent = possibleOpponents[5].desc;
-    document.getElementById("pavlovStrategyDesc").textContent = possibleOpponents[6].desc;
-    document.getElementById("titForTwoTatStrategy").textContent = possibleOpponents[7].desc;
-    document.getElementById("thresholdStrategyDesc").textContent = possibleOpponents[8].desc;
-    document.getElementById("impTitForTatDesc").textContent = possibleOpponents[9].desc;
 }
 
 /* resetGame():

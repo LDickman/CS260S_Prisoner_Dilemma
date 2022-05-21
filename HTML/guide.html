@@ -3,7 +3,6 @@
     <head>
         <link rel=stylesheet id="style" type="text/css" href="../CSS/ScreenOutlines.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script type="module" src="../JS/Game.js"></script>
         <title>Split or Steal: Guide</title>
     </head>
     <body id="guideForm">
@@ -31,16 +30,16 @@
             <div id="strategyList" style="position: relative; top: -5px; left: 20px">
             <p>
                 <ol>
-                    <li>Grim: <label id="grimStrategyDesc" type="text"></label></li>
-                    <li>Pavlov: <label id="pavlovStrategyDesc" type="text"></label></li>
-                    <li>Random: <label id="randomStrategyDesc" type="text"></label></li>
-                    <li>Threshold: <label id="thresholdStrategyDesc" type="text"></label></li>
-                    <li>Tit for Two Tat: <label id="titForTwoTatStrategy" type="text"></label></li>
-                    <li>Tit for Tat Defect First: <label id="titForTatDefectStrategyDesc" type="text"></label></li>
-                    <li>Tit for Tat Coop First: <label id="titForTatCoopStrategyDesc" type="text"></label></li>
-                    <li>Unconditional Split: <label id="splitStrategyDesc" type="text"></label></li>
-                    <li>Unconditional Steal: <label id="stealStrategyDesc" type="text"></label></li>
-                    <li>Imperfect Tit for Tat: <label id="impTitForTatDesc" type="text"></label></li>
+                    <li>Grim: This opponent strategy cooperates with you until you have defected once, and will then defect for the rest of the game.</li>
+                    <li>Pavlov: This opponent strategy cooperates if it and yourself moved alike in the previous round and defects if you moved differently.</li>
+                    <li>Random: This opponent strategy will randomly split or steal with/from you.</li>
+                    <li>Threshold: This opponent strategy, which is the work of Dr. Jared Bates, will cooperate with you until the last few rounds of the game.</li>
+                    <li>Tit for Two Tats: This opponent strategy cooperates with you unless defected against twice in a row.</li>
+                    <li>Tit for Tat Defect First: This opponent strategy defects on the first round and imitates your previous move thereafter.</li>
+                    <li>Tit for Tat Coop First: This opponent strategy cooperates on the first round and imitates your previous move thereafter.</li>
+                    <li>Unconditional Split: This opponent strategy cooperates with you unconditionally.</li>
+                    <li>Unconditional Steal: This opponent strategy steals from you unconditionally.</li>
+                    <li>Imperfect Tit for Tat: Imitates opponent's last move with high (but less than one) probability.</li>
                 </ol>
             These strategies were sourced from and developed using the
             <a href="https://plato.stanford.edu/entries/prisoner-dilemma/strategy-table.html" target="_blank"> Stanford Encyclopedia of Philosophy</a>
