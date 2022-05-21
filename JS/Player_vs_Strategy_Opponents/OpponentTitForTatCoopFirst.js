@@ -1,11 +1,11 @@
-import { currentRound, playerChoices } from './Game.js';
-export class OpponentTitForTatDefectFirst {
-    name = "Tit for Tat - Defect First";
-    desc = "This opponent strategy defects on the first round and imitates your previous move thereafter.";
+import { currentRound, playerChoices } from '../Game.js';
+export class OpponentTitForTatCoopFirst {
+    name = "Tit for Tat - Cooperate First";
+    desc = "This opponent strategy cooperates on the first round and imitates your previous move thereafter.";
 
     makeChoice() {
         if (currentRound === 1) {
-            return "Steal";
+            return "Split";
         } else {
             let pChoice = playerChoices[currentRound - 2];
             if (pChoice === "Split") {

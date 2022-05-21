@@ -4,16 +4,16 @@
 */
 
 /* Opponent Strategy Imports */
-import { OpponentTitForTatDefectFirst } from './OpponentTitForTatDefectFirst.js';
-import { OpponentAlwaysSplit } from "./OpponentAlwaysSplits.js"
-import { OpponentAlwaysSteal } from "./OpponentAlwaysSteals.js"
-import { OpponentRandom } from "./OpponentRandom.js"
-import { OpponentTitForTatCoopFirst } from "./OpponentTitForTatCoopFirst.js"
-import { OpponentGrim } from "./OpponentGrim.js";
-import { OpponentPavlov } from "./OpponentPavlov.js"
-import { OpponentTitForTwoTats} from "./OpponentTitForTwoTats.js";
-import {OpponentThresher} from "./OpponentThresher.js";
-import { OpponentImperfectTitForTat} from "./OpponentImperfectTitForTat.js";
+import { OpponentTitForTatDefectFirst } from './Player_vs_Strategy_Opponents/OpponentTitForTatDefectFirst.js';
+import { OpponentAlwaysSplit } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSplits.js"
+import { OpponentAlwaysSteal } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSteals.js"
+import { OpponentRandom } from "./Player_vs_Strategy_Opponents/OpponentRandom.js"
+import { OpponentTitForTatCoopFirst } from "./Player_vs_Strategy_Opponents/OpponentTitForTatCoopFirst.js"
+import { OpponentGrim } from "./Player_vs_Strategy_Opponents/OpponentGrim.js";
+import { OpponentPavlov } from "./Player_vs_Strategy_Opponents/OpponentPavlov.js"
+import { OpponentTitForTwoTats} from "./Player_vs_Strategy_Opponents/OpponentTitForTwoTats.js";
+import {OpponentThresher} from "./Player_vs_Strategy_Opponents/OpponentThresher.js";
+import { OpponentImperfectTitForTat} from "./Player_vs_Strategy_Opponents/OpponentImperfectTitForTat.js";
 /* Opponent Strategy Imports */
 
 /* Field Declarations and Initializations*/

@@ -1,4 +1,4 @@
-import {currentRound, playerChoices} from "./Game.js";
+import {currentRound, playerChoices} from "../Game.js";
 
 export class OpponentGrim {
     name = "Grim";
