@@ -51,7 +51,6 @@ function setStrategy1() {
     console.clear();
     console.log("Function 1 triggered");
     let selection = dropdown1.options[dropdown1.selectedIndex].value
-<<<<<<< Updated upstream
     if (selection === 'notChosen') {
         strategy1 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
     }
@@ -66,20 +65,7 @@ function setStrategy1() {
     else if (selection === 'thresher') { strategy1 = thresher; }
     else if (selection === 'impTitForTat') { strategy1 = impTitForTat; }
     setStrat1Desc(selection);
-=======
-    if (selection === 'notChosen') { strategy1 = unChosenStrategy1;}
-    if (selection === 'alwaysSplit') { strategy1 = alwaysSplit; }
-    if (selection === 'alwaysSteal') { strategy1 = alwaysSteal; }
-    if (selection === 'random') { strategy1 = randomChoice; }
-    if (selection === 'coopTitForTat') { strategy1 = titForTatCoop; }
-    if (selection === 'defectTitForTat') { strategy1 = titForTatDefect; }
-    if (selection === 'grim') { strategy1 = grim; }
-    if (selection === 'pavlov') { strategy1 = pavlov; }
-    if (selection === 'titForTwoTats') { strategy1 = titForTwoTats; }
-    if (selection === 'thresher') { strategy1 = thresher; }
-    if (selection === 'impTitForTat') { strategy1 = impTitForTat; }
     document.getElementById("strat1ChoiceName").textContent = strategy1.name;
->>>>>>> Stashed changes
     console.log("Strat 1: " + strategy1.name)
     console.log("Selection: " + selection)
 }
@@ -98,7 +84,6 @@ function setStrategy2() {
     console.clear();
     console.log("Function 2 triggered");
     let selection = dropdown2.options[dropdown2.selectedIndex].value
-<<<<<<< Updated upstream
     if (selection === 'notChosen') { strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];}
     else if (selection === 'alwaysSplit') { strategy2 = alwaysSplit; }
     else if (selection === 'alwaysSteal') { strategy2 = alwaysSteal; }
@@ -111,20 +96,7 @@ function setStrategy2() {
     else if (selection === 'thresher') { strategy2 = thresher; }
     else if (selection === 'impTitForTat') { strategy2 = impTitForTat; }
     setStrat2Desc(selection);
-=======
-    if (selection === 'notChosen') { strategy2 = unChosenStrategy1;}
-    if (selection === 'alwaysSplit') { strategy2 = alwaysSplit; }
-    if (selection === 'alwaysSteal') { strategy2 = alwaysSteal; }
-    if (selection === 'random') { strategy2 = randomChoice; }
-    if (selection === 'coopTitForTat') { strategy2 = titForTatCoop; }
-    if (selection === 'defectTitForTat') { strategy2 = titForTatDefect; }
-    if (selection === 'grim') { strategy2 = grim; }
-    if (selection === 'pavlov') { strategy2 = pavlov; }
-    if (selection === 'titForTwoTats') { strategy2 = titForTwoTats; }
-    if (selection === 'thresher') { strategy2 = thresher; }
-    if (selection === 'impTitForTat') { strategy2 = impTitForTat; }
     document.getElementById("strat2ChoiceName").textContent = strategy2.name;
->>>>>>> Stashed changes
     console.log("Strat 2: " + strategy2.name)
     console.log("Selection: " + selection)
 }
@@ -148,12 +120,9 @@ function startGame() {
     document.getElementById("chooseStrat2").style.display ='none';
     document.getElementById("startGame").style.display='none';
     document.getElementById("nextRound").style.display='block';
-<<<<<<< Updated upstream
     nextRound();
-=======
     document.getElementById("stratChoiceHistoryTable").style.display = 'block';
     document.getElementById("scoreTable").style.display = 'block';
->>>>>>> Stashed changes
 }
 
 function nextRound() {
@@ -161,8 +130,6 @@ function nextRound() {
     console.log("Current Round: " + currentRound)
     console.log("Strat 1: " + strategy1.name + " Points: " + strategy1Points);
     console.log("Strat 2: " + strategy2.name + " Points: " + strategy2Points);
-    document.getElementById("Strat1ScoreUpdate").textContent = strategy1Points;
-    document.getElementById("Strat2ScoreUpdate").textContent = strategy2Points;
     if (currentRound <= rounds) {
         strategy1Choices.push(strategy1.makeChoice());
         strategy2Choices.push(strategy2.makeChoice());
@@ -181,7 +148,7 @@ function printRound() {
     let strat2Row = document.getElementById("strat2ChoicesRow");
     console.log("Round " + currentRound);
     let roundsRow = document.getElementById("roundRow");
-    roundsRow.insertCell(-1).innerHTML = String(currentRound - 1);
+    roundsRow.insertCell(-1).innerHTML = String(currentRound);
     console.log("Strategy 1 did: " + strategy1Choices[currentRound - 1]);
     console.log("Strategy 2 did: " + strategy2Choices[currentRound - 1]);
     strat2Row.insertCell(-1).innerHTML = strategy2Choices[currentRound - 1];
@@ -211,16 +178,15 @@ function givePoints() {
 function updatePointDisplay() {
     document.getElementById("strat1Points").innerHTML="Strategy 1 Points: " + strategy1Points;
     document.getElementById("strat2Points").innerHTML="Strategy 2 Points: " + strategy2Points;
+    document.getElementById("Strat1ScoreUpdate").textContent = strategy1Points;
+    document.getElementById("Strat2ScoreUpdate").textContent = strategy2Points;
 }
 
 
 document.getElementById("playAgain").addEventListener("click", resetGame)
 function resetGame() {
-<<<<<<< Updated upstream
     console.clear()
-=======
     clearChoiceHistoryTable();
->>>>>>> Stashed changes
     currentRound = 1;
     strategy1Points = 0;
     strategy1Choices = [];

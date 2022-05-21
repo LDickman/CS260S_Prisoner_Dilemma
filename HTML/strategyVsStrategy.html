@@ -7,7 +7,7 @@
     <title>Split or Steal: Strategy v. Strategy</title>
     <script type="module" src="../JS/StrategyVsStrategy.js"></script>
 </head>
-<body>
+<body id="strategyVsStrategyScreen">
 <div>
     <h1 class="text-center my-5">Strategy vs. Strategy</h1>
 </div>
@@ -45,6 +45,28 @@
         </select>
     </label>
 </div>
+<table style="display: none" id="stratChoiceHistoryTable">
+    <tr id="roundRow">
+        <th style="text-align: right;">Rounds Played</th>
+    </tr>
+    <tr id="strat1ChoicesRow">
+        <th id="strat1ChoiceName"></th>
+    </tr>
+    <tr id="strat2ChoicesRow">
+        <th id="strat2ChoiceName"></th>
+    </tr>
+</table>
+<table style="display: none" id="scoreTable">
+    <tr id="scoreRow">
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td><label id="Strat1ScoreUpdate"> 0</label></td>
+    </tr>
+    <tr>
+        <td><label id="Strat2ScoreUpdate"> 0</label></td>
+    </tr>
+</table>
 <div>
     <br>
     <p id="strat1Desc">Strategy 1: Strategy 1 will be chosen randomly.</p>
