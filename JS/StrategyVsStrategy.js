@@ -62,7 +62,7 @@ function setStrategy1() {
     else if (selection === 'grim') { strategy1 = grim; }
     else if (selection === 'pavlov') { strategy1 = pavlov; }
     else if (selection === 'titForTwoTats') { strategy1 = titForTwoTats; }
-    else if (selection === 'thresher') { strategy1 = thresher; }
+    else if (selection === 'thresher') { strategy1 = new StrategyThresher(); }
     else if (selection === 'impTitForTat') { strategy1 = impTitForTat; }
     setStrat1Desc(selection);
     console.log("Strat 1: " + strategy1.name)
@@ -96,7 +96,7 @@ function setStrategy2() {
     else if (selection === 'grim') { strategy2 = grim; }
     else if (selection === 'pavlov') { strategy2 = pavlov; }
     else if (selection === 'titForTwoTats') { strategy2 = titForTwoTats; }
-    else if (selection === 'thresher') { strategy2 = thresher; }
+    else if (selection === 'thresher') { strategy2 = new StrategyThresher(); }
     else if (selection === 'impTitForTat') { strategy2 = impTitForTat; }
     setStrat2Desc(selection);
     console.log("Strat 2: " + strategy2.name)
