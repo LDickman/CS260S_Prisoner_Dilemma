@@ -79,7 +79,6 @@ let createGameButton;
 let selectStrategyButton;
 
 if (toChooseGameScreen != null) {
-    strategyDetails.style.display="none";
     createGameButton = document.getElementById("createGameButton");
     createGameButton.addEventListener("click", createGame);
 

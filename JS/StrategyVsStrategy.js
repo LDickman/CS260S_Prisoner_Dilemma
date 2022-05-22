@@ -170,24 +170,20 @@ function printRound() {
 function givePoints() {
     let strat1Choice = strategy1Choices[strategy1Choices.length - 1];
     let strat2Choice = strategy2Choices[strategy2Choices.length - 1];
-    if (currentRound > 1) {
-        if (strat1Choice === "Split" && strat2Choice === "Split") {
-            strategy1Points += 250;
-            strategy2Points += 250;
-        } else if (strat1Choice === "Steal" && strat2Choice === "Split") {
-            strategy1Points += 500;
-            strategy2Points -= 50;
-        } else if (strat1Choice === "Split" && strat2Choice === "Steal") {
-            strategy1Points -= 50;
-            strategy2Points += 500;
-        }
+    if (strat1Choice === "Split" && strat2Choice === "Split") {
+        strategy1Points += 250;
+        strategy2Points += 250;
+    } else if (strat1Choice === "Steal" && strat2Choice === "Split") {
+        strategy1Points += 500;
+        strategy2Points -= 50;
+    } else if (strat1Choice === "Split" && strat2Choice === "Steal") {
+        strategy1Points -= 50;
+        strategy2Points += 500;
     }
     updatePointDisplay()
 }
 
 function updatePointDisplay() {
-    document.getElementById("strat1Points").innerHTML = strategy1Points;
-    document.getElementById("strat2Points").innerHTML = strategy2Points;
     document.getElementById("Strat1ScoreUpdate").textContent = strategy1Points;
     document.getElementById("Strat2ScoreUpdate").textContent = strategy2Points;
 }
@@ -206,7 +202,6 @@ function resetGame() {
     document.getElementById("chooseStrat2").style.display ='block';
     document.getElementById("startGame").style.display='block';
     document.getElementById("endOfGame").style.display = 'none';
-    document.getElementById("strategyDetails").style.display = 'none';
     document.getElementById("nextRound").style.display='none';
     document.getElementById("playAgain").style.display='none';
     document.getElementById("stratChoiceHistoryTable").style.display = 'none';
