@@ -3,90 +3,103 @@
 
 <head>
     <link rel=stylesheet id="style" type="text/css" href="../CSS/ScreenOutlines.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Split or Steal: Strategy v. Strategy</title>
     <script type="module" src="../JS/StrategyVsStrategy.js"></script>
 </head>
+
 <body id="strategyVsStrategyScreen">
-<div>
-    <h1 class="text-center my-5">Strategy vs. Strategy</h1>
-</div>
-<div id="chooseStrat1">
-    <label>Choose Strategy 1
-        <select id="selectStrat1">
-            <option value="notChosen">Random Strategy</option>
-            <option value="alwaysSplit">Always Split</option>
-            <option value="alwaysSteal">Always Steal</option>
-            <option value="random">Random Choice</option>
-            <option value="coopTitForTat">Tit for Tat Cooperate</option>
-            <option value="defectTitForTat">Tit for Tat Defect</option>
-            <option value="grim">Grim</option>
-            <option value="pavlov">Pavlov</option>
-            <option value="titForTwoTats">Tit for Two Tats</option>
-            <option value="thresher">Thresher</option>
-            <option value="impTitForTat">Imperfect Tit for Tat</option>
-        </select>
-    </label>
-</div>
-<div id="chooseStrat2">
-    <label>Choose Strategy 2
-        <select id="selectStrat2">
-            <option value="notChosen">Random Strategy</option>
-            <option value="alwaysSplit">Always Split</option>
-            <option value="alwaysSteal">Always Steal</option>
-            <option value="random">Random Choice</option>
-            <option value="coopTitForTat">Tit for Tat Cooperate</option>
-            <option value="defectTitForTat">Tit for Tat Defect</option>
-            <option value="grim">Grim</option>
-            <option value="pavlov">Pavlov</option>
-            <option value="titForTwoTats">Tit for Two Tats</option>
-            <option value="thresher">Thresher</option>
-            <option value="impTitForTat">Imperfect Tit for Tat</option>
-        </select>
-    </label>
-</div>
-<table style="display: none" id="stratChoiceHistoryTable">
-    <tr id="roundRow">
-        <th style="text-align: right;">Rounds Played</th>
-    </tr>
-    <tr id="strat1ChoicesRow">
-        <th id="strat1ChoiceName"></th>
-    </tr>
-    <tr id="strat2ChoicesRow">
-        <th id="strat2ChoiceName"></th>
-    </tr>
-</table>
-<table style="display: none" id="scoreTable">
-    <tr id="scoreRow">
-        <th>Score</th>
-    </tr>
-    <tr>
-        <td><label id="Strat1ScoreUpdate"> 0</label></td>
-    </tr>
-    <tr>
-        <td><label id="Strat2ScoreUpdate"> 0</label></td>
-    </tr>
-</table>
-<div>
-    <br>
-    <p id="strat1Desc">Strategy 1: Strategy 1 will be chosen randomly.</p>
-    <p id="strat1Points">Points</p>
-</div>
-<div>
-    <p id="strat2Desc">Strategy 2: Strategy 2 will be chosen randomly.</p>
-    <p id="strat2Points">Points</p>
-</div>
-<div>
-    <button id="startGame">Start Game</button>
-    <button id="nextRound" style="display: none">Next Round >>></button>
-</div>
-<div>
-    <button id="playAgain" style="display: none">Play Again</button>
-</div>
-<button id="helpButton">?</button> <span class="caption">Guide</span>
-<div class="mainMenuFormDiv">
-    <form id="fromGuideToMenu" action = "../index.html">
-        <input type="submit" value="Return to Main Menu" class ="mainMenuForm"/>
-    </form>
-</div>
+    <div>
+        <h1 class="text-center my-5">Strategy vs. Strategy</h1>
+    </div>
+    <div id="endOfGame" style="margin-bottom: 0">
+        <h1>Game Over</h1>
+    </div>
+    <div id="strategyDetails">
+        <p><b>Strategy 1:</b>
+            <span id="opponent1Strategy"></span>
+            <br />
+            <span id="strat1Desc"></span>
+        </p>
+        <p><b>Strategy 1 Points:</b> <span id="strat1Points"></span></p>
+        <p><b>Strategy 2:</b>
+            <span id="opponent2Strategy"></span>
+            <br />
+            <span id="strat2Desc"></span>
+        </p>
+        <p><b>Strategy 2 Points:</b> <span id="strat2Points"></span></p>
+    </div>
+    <br />
+    <div id="chooseStrat1">
+        <label>Choose Strategy 1
+            <select id="selectStrat1">
+                <option value="notChosen">Random Strategy</option>
+                <option value="alwaysSplit">Always Split</option>
+                <option value="alwaysSteal">Always Steal</option>
+                <option value="random">Random Choice</option>
+                <option value="coopTitForTat">Tit for Tat Cooperate</option>
+                <option value="defectTitForTat">Tit for Tat Defect</option>
+                <option value="grim">Grim</option>
+                <option value="pavlov">Pavlov</option>
+                <option value="titForTwoTats">Tit for Two Tats</option>
+                <option value="thresher">Thresher</option>
+                <option value="impTitForTat">Imperfect Tit for Tat</option>
+            </select>
+        </label>
+    </div>
+    <div id="chooseStrat2">
+        <label>Choose Strategy 2
+            <select id="selectStrat2">
+                <option value="notChosen">Random Strategy</option>
+                <option value="alwaysSplit">Always Split</option>
+                <option value="alwaysSteal">Always Steal</option>
+                <option value="random">Random Choice</option>
+                <option value="coopTitForTat">Tit for Tat Cooperate</option>
+                <option value="defectTitForTat">Tit for Tat Defect</option>
+                <option value="grim">Grim</option>
+                <option value="pavlov">Pavlov</option>
+                <option value="titForTwoTats">Tit for Two Tats</option>
+                <option value="thresher">Thresher</option>
+                <option value="impTitForTat">Imperfect Tit for Tat</option>
+            </select>
+        </label>
+    </div>
+    <table style="display: none" id="stratChoiceHistoryTable">
+        <tr id="roundRow">
+            <th style="text-align: right;">Rounds Played</th>
+        </tr>
+        <tr id="strat1ChoicesRow">
+            <th id="strat1ChoiceName"></th>
+        </tr>
+        <tr id="strat2ChoicesRow">
+            <th id="strat2ChoiceName"></th>
+        </tr>
+    </table>
+    <table style="display: none" id="scoreTable">
+        <tr id="scoreRow">
+            <th>Score</th>
+        </tr>
+        <tr>
+            <td><label id="Strat1ScoreUpdate"> 0</label></td>
+        </tr>
+        <tr>
+            <td><label id="Strat2ScoreUpdate"> 0</label></td>
+        </tr>
+    </table>
+    <div  style="text-align: center">
+        <button id="startGame">Start Game</button>
+        <button id="nextRound" style="display: none">Next Round >>></button>
+    </div>
+    <div style="text-align: center">
+        <br>
+        <br>
+        <button id="playAgain" style="display: none">Play Again</button>
+    </div>
+    <button id="helpButton">?</button> <span class="caption">Guide</span>
+    <div class="mainMenuFormDiv">
+        <form id="fromGuideToMenu" action="../index.html">
+            <input type="submit" value="Return to Main Menu" class="mainMenuForm" />
+        </form>
+    </div>
 </body>

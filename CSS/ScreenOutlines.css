@@ -102,6 +102,27 @@ html {
   display: none;
 }
 
+#nextRound {
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 50px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+#playAgain {
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 527px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+#startGame {
+  font-size: 16px;
+  padding: 10px;
+}
+
 #splitButton {
   background-color: #028A0F;
   border-color: #03AC13;
@@ -128,6 +149,10 @@ html {
 }
 
 #opponentDetails {
+  display: none;
+}
+
+#strategyDetails {
   display: none;
 }
 
@@ -206,6 +231,17 @@ th, td {
   padding: 10px 100px 0 10px;
   margin-top: 10px;
   margin-left: -460px;
+}
+
+#strategyDetails {
+  float: right;
+  font-size: 14px;
+  background-color: lightgray;
+  padding: 10px 10px 0 10px;
+  margin-top: 10px;
+  margin-left: -460px;
+  inline-size: 340px;
+  overflow-wrap: break-word;
 }
 
 /* END Game over  */

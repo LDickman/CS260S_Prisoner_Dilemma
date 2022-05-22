@@ -65,16 +65,15 @@ function setStrategy1() {
     else if (selection === 'thresher') { strategy1 = thresher; }
     else if (selection === 'impTitForTat') { strategy1 = impTitForTat; }
     setStrat1Desc(selection);
-    document.getElementById("strat1ChoiceName").textContent = strategy1.name;
     console.log("Strat 1: " + strategy1.name)
     console.log("Selection: " + selection)
 }
 
 function setStrat1Desc(selection) {
     if (selection === 'notChosen') {
-        document.getElementById("strat1Desc").innerHTML = "Strategy 1: Strategy 1 will be chosen randomly."
+        document.getElementById("strat1Desc").textContent = "Strategy 1 will be chosen randomly."
     } else {
-        document.getElementById("strat1Desc").innerHTML = "Strategy 1: " + strategy1.desc
+        document.getElementById("strat1Desc").textContent = strategy1.desc;
     }
 }
 
@@ -84,7 +83,11 @@ function setStrategy2() {
     console.clear();
     console.log("Function 2 triggered");
     let selection = dropdown2.options[dropdown2.selectedIndex].value
-    if (selection === 'notChosen') { strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];}
+    if (selection === 'notChosen') { 
+        strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
+        document.getElementById("strat1ChoiceName").textContent = strategy2.name;
+        document.getElementById("opponent1Strategy").textContent = strategy2.name;
+    }
     else if (selection === 'alwaysSplit') { strategy2 = alwaysSplit; }
     else if (selection === 'alwaysSteal') { strategy2 = alwaysSteal; }
     else if (selection === 'random') { strategy2 = randomChoice; }
@@ -96,16 +99,15 @@ function setStrategy2() {
     else if (selection === 'thresher') { strategy2 = thresher; }
     else if (selection === 'impTitForTat') { strategy2 = impTitForTat; }
     setStrat2Desc(selection);
-    document.getElementById("strat2ChoiceName").textContent = strategy2.name;
     console.log("Strat 2: " + strategy2.name)
     console.log("Selection: " + selection)
 }
 
 function setStrat2Desc(selection) {
     if (selection === 'notChosen') {
-        document.getElementById("strat2Desc").innerHTML = "Strategy 2: Strategy 1 will be chosen randomly."
+        document.getElementById("strat2Desc").textContent = "Strategy 2 will be chosen randomly."
     } else {
-        document.getElementById("strat2Desc").innerHTML = "Strategy 2: " + strategy2.desc
+        document.getElementById("strat2Desc").textContent = strategy2.desc
     }
 }
 
@@ -120,6 +122,12 @@ function startGame() {
     document.getElementById("chooseStrat2").style.display ='none';
     document.getElementById("startGame").style.display='none';
     document.getElementById("nextRound").style.display='block';
+    document.getElementById("strat1ChoiceName").textContent = strategy1.name;
+    document.getElementById("opponent1Strategy").textContent = strategy1.name;
+    document.getElementById("strat2ChoiceName").textContent = strategy2.name;
+    document.getElementById("opponent2Strategy").textContent = strategy2.name;
+    document.getElementById("strat1Desc").textContent = strategy1.desc;
+    document.getElementById("strat2Desc").textContent = strategy2.desc;
     nextRound();
     document.getElementById("stratChoiceHistoryTable").style.display = 'block';
     document.getElementById("scoreTable").style.display = 'block';
@@ -138,6 +146,8 @@ function nextRound() {
         currentRound += 1;
     } else {
         console.log("Game Over");
+        document.getElementById("endOfGame").style.display = 'block';
+        document.getElementById("strategyDetails").style.display = 'block';
         document.getElementById("nextRound").style.display='none';
         document.getElementById("playAgain").style.display='block';
     }
@@ -176,8 +186,8 @@ function givePoints() {
 }
 
 function updatePointDisplay() {
-    document.getElementById("strat1Points").innerHTML="Strategy 1 Points: " + strategy1Points;
-    document.getElementById("strat2Points").innerHTML="Strategy 2 Points: " + strategy2Points;
+    document.getElementById("strat1Points").innerHTML = strategy1Points;
+    document.getElementById("strat2Points").innerHTML = strategy2Points;
     document.getElementById("Strat1ScoreUpdate").textContent = strategy1Points;
     document.getElementById("Strat2ScoreUpdate").textContent = strategy2Points;
 }
@@ -195,6 +205,8 @@ function resetGame() {
     document.getElementById("chooseStrat1").style.display ='block';
     document.getElementById("chooseStrat2").style.display ='block';
     document.getElementById("startGame").style.display='block';
+    document.getElementById("endOfGame").style.display = 'none';
+    document.getElementById("strategyDetails").style.display = 'none';
     document.getElementById("nextRound").style.display='none';
     document.getElementById("playAgain").style.display='none';
     document.getElementById("stratChoiceHistoryTable").style.display = 'none';
