@@ -322,3 +322,7 @@ th, td {
 #strategyName {
   font-weight: bold;
 }
+
+#chooseStrat1, #chooseStrat2 {
+  margin-left: 25px;
+}
