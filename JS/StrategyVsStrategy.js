@@ -43,14 +43,13 @@ console.log('Strat 1 (unchosen): ' + strategy1.name);
 console.log('Strat 2 (unchosen): ' + strategy2.name);
 
 export let currentRound = 1;
-export let rounds = 10;
-
-let dropdown1 = document.getElementById("selectStrat1");
-dropdown1.addEventListener('change', setStrategy1);
+export let rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10);
+let strategy1Dropdown = document.getElementById("selectStrat1");
+strategy1Dropdown.addEventListener('change', setStrategy1);
 function setStrategy1() {
     console.clear();
     console.log("Function 1 triggered");
-    let selection = dropdown1.options[dropdown1.selectedIndex].value
+    let selection = strategy1Dropdown.options[strategy1Dropdown.selectedIndex].value
     if (selection === 'notChosen') { strategy1 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)]; }
     else if (selection === 'alwaysSplit') { strategy1 = alwaysSplit; }
     else if (selection === 'alwaysSteal') { strategy1 = alwaysSteal; }
@@ -77,12 +76,12 @@ function setStrat1Desc(selection) {
     }
 }
 
-let dropdown2 = document.getElementById("selectStrat2");
-dropdown2.addEventListener('change', setStrategy2);
+let strategy2Dropdown = document.getElementById("selectStrat2");
+strategy2Dropdown.addEventListener('change', setStrategy2);
 function setStrategy2() {
     console.clear();
     console.log("Function 2 triggered");
-    let selection = dropdown2.options[dropdown2.selectedIndex].value
+    let selection = strategy2Dropdown.options[strategy2Dropdown.selectedIndex].value
     if (selection === 'notChosen') { strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)]; }
     else if (selection === 'alwaysSplit') { strategy2 = alwaysSplit; }
     else if (selection === 'alwaysSteal') { strategy2 = alwaysSteal; }
@@ -109,6 +108,35 @@ function setStrat2Desc(selection) {
     }
 }
 
+let roundDropdown = document.getElementById("selectRounds");
+roundDropdown.addEventListener('change', setRoundNum);
+function setRoundNum() {
+    console.clear()
+    console.log("Rounds function triggered");
+    let roundNum = roundDropdown.options[roundDropdown.selectedIndex].value
+    if (roundNum === 'randomRounds') { rounds = rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10); }
+    else if (roundNum === '10') { rounds = 10; }
+    else if (roundNum === '11') { rounds = 11; }
+    else if (roundNum === '12') { rounds = 12; }
+    else if (roundNum === '13') { rounds = 13; }
+    else if (roundNum === '14') { rounds = 14; }
+    else if (roundNum === '15') { rounds = 15; }
+    else if (roundNum === '16') { rounds = 16; }
+    else if (roundNum === '17') { rounds = 17; }
+    else if (roundNum === '18') { rounds = 18; }
+    else if (roundNum === '19') { rounds = 19; }
+    else if (roundNum === '20') { rounds = 20; }
+    setRoundDesc(roundNum);
+}
+
+function setRoundDesc(roundNum) {
+    if (roundNum === 'randomRounds') {
+        document.getElementById("roundDesc").innerHTML = "Random"
+    } else {
+        document.getElementById("roundDesc").innerHTML = rounds;
+    }
+}
+
 document.getElementById("nextRound").addEventListener("click", nextRound)
 
 document.getElementById("startGame").addEventListener("click", startGame)
@@ -119,6 +147,7 @@ function startGame() {
     document.getElementById("strategyVsStrategy").style.display ='none';
     document.getElementById("chooseStrat1").style.display ='none';
     document.getElementById("chooseStrat2").style.display ='none';
+    document.getElementById("chooseRounds").style.display ='none';
     document.getElementById("startGame").style.display='none';
     document.getElementById("nextRound").style.display='block';
     document.getElementById("strat1ChoiceName").textContent = strategy1.name;
@@ -213,8 +242,12 @@ function resetGame() {
     strategy2Points = 0;
     strategy2Choices = [];
     document.getElementById("chooseStrat1").style.display ='block';
+    strategy1Dropdown.selectedIndex = 0;
     document.getElementById("chooseStrat2").style.display ='block';
     document.getElementById("strategyVsStrategy").style.display ='block';
+    strategy2Dropdown.selectedIndex = 0;
+    document.getElementById("chooseRounds").style.display ='block';
+    roundDropdown.selectedIndex = 0;
     document.getElementById("startGame").style.display='inline-block';
     document.getElementById("endOfGame").style.display = 'none';
     document.getElementById("nextRound").style.display='none';
@@ -229,6 +262,8 @@ function resetGame() {
     strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
     document.getElementById("strat2Desc").textContent = "Strategy 2 will be chosen randomly."
     document.getElementById("opponent2Strategy").textContent = "";
+    document.getElementById("roundDesc").innerHTML = "Random";
+    rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10);
 }
 
 function clearChoiceHistoryTable() {
@@ -242,13 +277,13 @@ function clearChoiceHistoryTable() {
     }
 }
 
-function updateChangeColorOfCell(name, number, idex) {
+function updateChangeColorOfCell(name, number, index) {
     let tableCell = document.getElementById(name).getElementsByTagName("td");
     console.log(name +" " + tableCell[number]);
-    if (idex === "Steal") {
+    if (index === "Steal") {
         tableCell[number].style.backgroundColor = "red";
     }
-    if (idex === "Split") {
+    if (index === "Split") {
         tableCell[number].style.backgroundColor = "green";
     }
 }

@@ -17,7 +17,7 @@ import { OpponentImperfectTitForTat} from "./Player_vs_Strategy_Opponents/Oppone
 /* Opponent Strategy Imports */
 
 /* Field Declarations and Initializations*/
-export let rounds = Math.floor(Math.random() * (20 - 11 + 1) + 11);
+export let rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10);
 console.log("Rounds: " + rounds);
 export let currentRound = 1;
 export let playerChoices = [];

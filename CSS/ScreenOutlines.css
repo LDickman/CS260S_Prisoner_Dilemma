@@ -34,7 +34,6 @@ html {
 }
 
 #coopButton {
-  background-image: url(/CSS/images/scale.png);
   background-size: 100%;
   background-color: rgb(0, 253, 13); 
   height: 60px;
@@ -318,6 +317,6 @@ th, td {
   font-weight: bold;
 }
 
-#chooseStrat1, #chooseStrat2 {
+#chooseStrat1, #chooseStrat2, #chooseRounds {
   margin-left: 25px;
 }
