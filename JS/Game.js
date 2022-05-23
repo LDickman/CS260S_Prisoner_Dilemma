@@ -124,7 +124,6 @@ function clickOnDropDownMenu(ul, button) {
                 opponentType = items[i].textContent;
                 console.log("opponentType: " + opponentType);
                 button.textContent = items[i].textContent + " ▼";
-                strategyDetails.style.display="block";
             }
         }
     });
@@ -196,7 +195,6 @@ function createGame() {
 function deactivatePlayerSelectionButtons(){
     document.getElementById("createGameButton").style.display = 'none';
     document.getElementById("strategySelect").style.display = 'none';
-    document.getElementById("opponentStrategyInfo").style.display = 'none';
     document.getElementById("buttonInfo").style.display = 'none';
     strategyDetails.style.display = 'none';
     strategyName.style.display = 'none';
@@ -404,9 +402,8 @@ function displayOpponentInfo() {
             strategyDes.textContent = "The opponent will be randomly selected for you";
             break;
         case "":
-            strategyDetails.style.display="none";
-            strategyName.textContent = " ";
-            strategyDes.textContent = " ";
+            strategyName.textContent = "No Preference";
+            strategyDes.textContent = "The opponent will be randomly selected for you";
             break;
     }
 }

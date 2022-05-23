@@ -51,9 +51,7 @@ function setStrategy1() {
     console.clear();
     console.log("Function 1 triggered");
     let selection = dropdown1.options[dropdown1.selectedIndex].value
-    if (selection === 'notChosen') {
-        strategy1 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
-    }
+    if (selection === 'notChosen') { strategy1 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)]; }
     else if (selection === 'alwaysSplit') { strategy1 = alwaysSplit; }
     else if (selection === 'alwaysSteal') { strategy1 = alwaysSteal; }
     else if (selection === 'random') { strategy1 = randomChoice; }
@@ -65,6 +63,8 @@ function setStrategy1() {
     else if (selection === 'thresher') { strategy1 = new StrategyThresher(); }
     else if (selection === 'impTitForTat') { strategy1 = impTitForTat; }
     setStrat1Desc(selection);
+    document.getElementById("strat1ChoiceName").textContent = strategy1.name;
+    document.getElementById("opponent1Strategy").textContent = strategy1.name;
     console.log("Strat 1: " + strategy1.name)
     console.log("Selection: " + selection)
 }
@@ -83,11 +83,7 @@ function setStrategy2() {
     console.clear();
     console.log("Function 2 triggered");
     let selection = dropdown2.options[dropdown2.selectedIndex].value
-    if (selection === 'notChosen') { 
-        strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
-        document.getElementById("strat2ChoiceName").textContent = strategy2.name;
-        document.getElementById("opponent2Strategy").textContent = strategy2.name;
-    }
+    if (selection === 'notChosen') { strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)]; }
     else if (selection === 'alwaysSplit') { strategy2 = alwaysSplit; }
     else if (selection === 'alwaysSteal') { strategy2 = alwaysSteal; }
     else if (selection === 'random') { strategy2 = randomChoice; }
@@ -99,6 +95,8 @@ function setStrategy2() {
     else if (selection === 'thresher') { strategy2 = new StrategyThresher(); }
     else if (selection === 'impTitForTat') { strategy2 = impTitForTat; }
     setStrat2Desc(selection);
+    document.getElementById("strat2ChoiceName").textContent = strategy2.name;
+    document.getElementById("opponent2Strategy").textContent = strategy2.name;
     console.log("Strat 2: " + strategy2.name)
     console.log("Selection: " + selection)
 }
