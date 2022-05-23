@@ -1,8 +1,8 @@
-import {currentRound, strategy1, strategy1Choices, strategy2Choices} from "../StrategyVsStrategy.js";
+import {currentRound, strategy1, strategy1Choices, strategy2Choices} from "../StrategyVsStrategy.js"
 
 export class StrategyTitForTwoTats {
     name = "Tit for Two Tats"
-    desc = "This opponent strategy cooperates with you unless defected against twice in a row."
+    desc = "This opponent strategy cooperates with it's opponent unless defected against twice in a row."
 
     makeChoice() {
         if (this === strategy1) {

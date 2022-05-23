@@ -1,4 +1,4 @@
-import {currentRound, playerChoices, opponentChoices} from "../Game.js";
+import {currentRound, playerChoices, opponentChoices} from "../Game.js"
 
 export class OpponentPavlov {
     name = "Pavlov"
@@ -6,11 +6,11 @@ export class OpponentPavlov {
 
     makeChoice() {
         if (currentRound === 1) {
-            return "Split";
+            return "Split"
         } else if (playerChoices[currentRound - 2] === opponentChoices[currentRound - 2]) {
-            return "Split";
+            return "Split"
         } else {
-            return "Steal";
+            return "Steal"
         }
     }
 }

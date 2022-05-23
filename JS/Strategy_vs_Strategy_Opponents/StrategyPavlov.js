@@ -1,16 +1,16 @@
-import {currentRound, strategy1Choices, strategy2Choices} from "../StrategyVsStrategy.js";
+import {currentRound, strategy1Choices, strategy2Choices} from "../StrategyVsStrategy.js"
 
 export class StrategyPavlov {
     name = "Pavlov"
-    desc = "This opponent strategy cooperates if it and yourself moved alike in the previous round and defects if you moved differently."
+    desc = "This opponent strategy cooperates if it and it's opponent moved alike in the previous round and defects if you moved differently."
 
     makeChoice() {
         if (currentRound === 1) {
-            return "Split";
+            return "Split"
         } else if (strategy1Choices[currentRound - 2] === strategy2Choices[currentRound - 2]) {
-            return "Split";
+            return "Split"
         } else {
-            return "Steal";
+            return "Steal"
         }
     }
 }

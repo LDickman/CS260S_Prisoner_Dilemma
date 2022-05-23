@@ -1,10 +1,10 @@
 export class OpponentRandom {
     name = "Random Choice";
-    desc = "This opponent strategy will randomly split or steal with/from you.";
+    desc = "This opponent strategy will randomly cooperate or defect from/with you."
     
     makeChoice() {
-        let actions = ["Split", "Steal"];
-        let random = Math.floor(Math.random() * actions.length);
-        return actions[random];
+        let actions = ["Split", "Steal"]
+        let random = Math.floor(Math.random() * actions.length)
+        return actions[random]
     }
 }

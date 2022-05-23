@@ -1,6 +1,6 @@
-import { currentRound, playerChoices } from '../Game.js';
+import { currentRound, playerChoices } from '../Game.js'
 export class OpponentTitForTatCoopFirst {
-    name = "Tit for Tat Cooperate";
+    name = "Tit for Tat Cooperate"
     desc = "This opponent strategy cooperates on the first round and imitates your previous move thereafter.";
 
     makeChoice() {

@@ -1,14 +1,14 @@
-import {currentRound, playerChoices} from "../Game.js";
+import {currentRound, playerChoices} from "../Game.js"
 
 export class OpponentImperfectTitForTat {
     name = "Imperfect Tit for Tat"
-    desc = "Imitates opponent's last move with high (but less than one) probability."
+    desc = "This opponent strategy imitates your last move with high (but less than one) probability."
 
     makeChoice() {
-        let p = Math.floor((Math.random() * (4 - 1 + 1) + 1));
-        let pChoice = playerChoices[currentRound - 2];
+        let p = Math.floor((Math.random() * (4 - 1 + 1) + 1))
+        let pChoice = playerChoices[currentRound - 2]
         if (currentRound === 1) {
-            return "Split";
+            return "Split"
         }
         else if (p === 1 || p === 2 || p === 3) {
             if (pChoice === "Split") {

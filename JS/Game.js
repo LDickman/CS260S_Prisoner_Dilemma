@@ -4,39 +4,50 @@
 */
 
 /* Opponent Strategy Imports */
-import { OpponentTitForTatDefectFirst } from './Player_vs_Strategy_Opponents/OpponentTitForTatDefectFirst.js';
+import { OpponentTitForTatDefectFirst } from './Player_vs_Strategy_Opponents/OpponentTitForTatDefectFirst.js'
 import { OpponentAlwaysSplit } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSplits.js"
 import { OpponentAlwaysSteal } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSteals.js"
 import { OpponentRandom } from "./Player_vs_Strategy_Opponents/OpponentRandom.js"
 import { OpponentTitForTatCoopFirst } from "./Player_vs_Strategy_Opponents/OpponentTitForTatCoopFirst.js"
-import { OpponentGrim } from "./Player_vs_Strategy_Opponents/OpponentGrim.js";
+import { OpponentGrim } from "./Player_vs_Strategy_Opponents/OpponentGrim.js"
 import { OpponentPavlov } from "./Player_vs_Strategy_Opponents/OpponentPavlov.js"
-import { OpponentTitForTwoTats} from "./Player_vs_Strategy_Opponents/OpponentTitForTwoTats.js";
-import {OpponentThresher} from "./Player_vs_Strategy_Opponents/OpponentThresher.js";
-import { OpponentImperfectTitForTat} from "./Player_vs_Strategy_Opponents/OpponentImperfectTitForTat.js";
+import { OpponentTitForTwoTats} from "./Player_vs_Strategy_Opponents/OpponentTitForTwoTats.js"
+import {OpponentThresher} from "./Player_vs_Strategy_Opponents/OpponentThresher.js"
+import { OpponentImperfectTitForTat} from "./Player_vs_Strategy_Opponents/OpponentImperfectTitForTat.js"
 /* Opponent Strategy Imports */
 
 /* Field Declarations and Initializations*/
-export let rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10);
-console.log("Rounds: " + rounds);
-export let currentRound = 1;
-export let playerChoices = [];
-let strategyName = document.getElementById("strategyName");
-let strategyDes = document.getElementById("strategyDesc");
-let strategyDetails = document.getElementById("strategyInfo");
-let playerPoints = 0;
-export let possibleOpponents = [];
-populatePossibleOpponents();
-let opponent;
-let opponentType = "";
-export let opponentChoices = [];
-let opponentPoints = 0;
+export let rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10)
+console.log("Rounds: " + rounds)
+export let currentRound = 1
+export let playerChoices = []
+let strategyName = document.getElementById("strategyName")
+let strategyDes = document.getElementById("strategyDesc")
+let strategyDetails = document.getElementById("strategyInfo")
+let playerPoints = 0
+
+let alwaysSplit = new OpponentAlwaysSplit()
+let alwaysSteal = new OpponentAlwaysSteal()
+let randomChoice = new OpponentRandom()
+let titForTatCoop = new OpponentTitForTatCoopFirst()
+let titForTatDefect = new OpponentTitForTatDefectFirst()
+let grim = new OpponentGrim()
+let pavlov = new OpponentPavlov()
+let titForTwoTats = new OpponentTitForTwoTats()
+let thresher = new OpponentThresher()
+let impTitForTat = new OpponentImperfectTitForTat()
+export let possibleOpponents = [alwaysSplit, alwaysSteal, randomChoice, titForTatCoop, titForTatDefect,
+                                grim, pavlov, titForTwoTats, thresher, impTitForTat]
+let opponent
+let opponentType = ""
+export let opponentChoices = []
+let opponentPoints = 0
 /* Field Declarations and Initializations */
 
 /* In-Game Guide/How-to-Play Management */
-document.getElementById("helpButton").addEventListener("click", displayGuide);
+document.getElementById("helpButton").addEventListener("click", displayGuide)
 function displayGuide() {
-    let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes,resizeable=yes');
+    let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes,resizeable=yes')
     popup.window.onload = function() {
         popup.document.getElementById("fromGuideToMenu").style.display='none'
     }
@@ -44,29 +55,29 @@ function displayGuide() {
 /* In-Game Guide/How-to-Play Management */
 
 /* Button Management */
-const conSplitButton = document.getElementById("splitButton");
-conSplitButton.addEventListener("click", playerChoiceSplit);
+const conSplitButton = document.getElementById("splitButton")
+conSplitButton.addEventListener("click", playerChoiceSplit)
 
-const conStealButton = document.getElementById("stealButton");
-conStealButton.addEventListener("click", playerChoiceSteal);
+const conStealButton = document.getElementById("stealButton")
+conStealButton.addEventListener("click", playerChoiceSteal)
 
-const replayButton = document.getElementById("playAgainButton");
+const replayButton = document.getElementById("playAgainButton")
 
-const toGameScreenBody = document.getElementById("gameScreen");
-const toChooseGameScreen = document.getElementById("chooseGameScreen");
+const toGameScreenBody = document.getElementById("gameScreen")
+const toChooseGameScreen = document.getElementById("chooseGameScreen")
 
 replayButton.addEventListener("click", function() {
-    replayButton.style.display = 'none';
-    resetGame();
-    console.clear();
+    replayButton.style.display = 'none'
+    resetGame()
+    console.clear()
     if (toChooseGameScreen != null) {
-        document.getElementById("playerChoiceHistoryTable").style.display = 'none';
-        document.getElementById("scoreTable").style.display = 'none';
-        document.getElementById("pointTable").style.display = 'none';
-        deactivatePlayerChoiceButtons();
-        activatePlayerSelectionButtons();
+        document.getElementById("playerChoiceHistoryTable").style.display = 'none'
+        document.getElementById("scoreTable").style.display = 'none'
+        document.getElementById("pointTable").style.display = 'none'
+        deactivatePlayerChoiceButtons()
+        activatePlayerSelectionButtons()
     } else {
-        createGame();
+        createGame()
     }
 });
 /* Button Management */
@@ -75,34 +86,33 @@ replayButton.addEventListener("click", function() {
 * This if-statement is used to check which html file (either Game or chooseStrategy)
 * is accessing the javascript, so as to display the appropriate elements.
 */
-let createGameButton;
-let selectStrategyButton;
+let createGameButton
+let selectStrategyButton
 
 if (toChooseGameScreen != null) {
-    createGameButton = document.getElementById("createGameButton");
-    createGameButton.addEventListener("click", createGame);
+    createGameButton = document.getElementById("createGameButton")
+    createGameButton.addEventListener("click", createGame)
 
-    selectStrategyButton = document.getElementById("strategySelect");
-    let ulList = document.getElementById("strategyList");
-    selectStrategyButton.addEventListener("click", selectionButton);
+    selectStrategyButton = document.getElementById("strategySelect")
+    let ulList = document.getElementById("strategyList")
+    selectStrategyButton.addEventListener("click", selectionButton)
 
     window.onclick = function (event) {
         if (!event.target.matches('.dropButton')) {
-            let dropdowns = document.getElementsByClassName("dropdown-content");
-            let i;
-            for (i = 0; i < dropdowns.length; i++) {
-                let openDropdown = dropdowns[i];
+            let dropdowns = document.getElementsByClassName("dropdown-content")
+            for (let i = 0; i < dropdowns.length; i++) {
+                let openDropdown = dropdowns[i]
                 if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
+                    openDropdown.classList.remove('show')
                 }
             }
         }
-        clickOnDropDownMenu(ulList, selectStrategyButton);
+        clickOnDropDownMenu(ulList, selectStrategyButton)
     }
 
 } 
 if (toGameScreenBody != null) {
-    window.addEventListener("load", createGame);
+    window.addEventListener("load", createGame)
 }
 /* HTML If-Statement*/
 
@@ -110,24 +120,24 @@ if (toGameScreenBody != null) {
 * manages what the dropdown menu displays when an option is selected
 */
 function selectionButton() {
-    document.getElementById('strategyDropdown').classList.toggle("show");
+    document.getElementById('strategyDropdown').classList.toggle("show")
 }
 
 /* clickOnDropDownMenu():
 * displays opponent information for selected option
 */
 function clickOnDropDownMenu(ul, button) {
-    let items = ul.getElementsByTagName('li');
+    let items = ul.getElementsByTagName('li')
     ul.addEventListener("click", function (e) {
         for (let i = 0; i < items.length; i++) {
             if (e.target === items[i]) {
-                opponentType = items[i].textContent;
-                console.log("opponentType: " + opponentType);
-                button.textContent = items[i].textContent + " ▼";
+                opponentType = items[i].textContent
+                console.log("opponentType: " + opponentType)
+                button.textContent = items[i].textContent + " ▼"
             }
         }
-    });
-    displayOpponentInfo();
+    })
+    displayOpponentInfo()
 }
 
 /* setOpponent():
@@ -163,13 +173,13 @@ function setOpponent() {
             opponent = possibleOpponents[8]
             break;
         case "Imperfect Tit for Tat":
-            opponent = possibleOpponents[9];
+            opponent = possibleOpponents[9]
             break;
         case "No Preference":
-            pickOpponentRandomly();
+            pickOpponentRandomly()
             break;
         case "":
-            pickOpponentRandomly();
+            pickOpponentRandomly()
             break;
     }
 }
@@ -180,12 +190,12 @@ function setOpponent() {
 */
 function createGame() {
     if (selectStrategyButton == null) {
-        pickOpponentRandomly();
-        playGame();
+        pickOpponentRandomly()
+        playGame()
     } else {
-        deactivatePlayerSelectionButtons();
-        setOpponent();
-        playGame();
+        deactivatePlayerSelectionButtons()
+        setOpponent()
+        playGame()
     }
 }
 
@@ -193,14 +203,14 @@ function createGame() {
 * disables display for chooseStrategy.html elements for choosing an opponent
 */
 function deactivatePlayerSelectionButtons(){
-    document.getElementById("createGameButton").style.display = 'none';
-    document.getElementById("chooseStrategy").style.display = 'none';
-    document.getElementById("strategySelect").style.display = 'none';
-    document.getElementById("buttonInfo").style.display = 'none';
-    document.getElementById("opponentStrategyInfo").style.display = 'none';
-    strategyDetails.style.display = 'none';
-    strategyName.style.display = 'none';
-    strategyDes.style.display = 'none';
+    document.getElementById("createGameButton").style.display = 'none'
+    document.getElementById("chooseStrategy").style.display = 'none'
+    document.getElementById("strategySelect").style.display = 'none'
+    document.getElementById("buttonInfo").style.display = 'none'
+    document.getElementById("opponentStrategyInfo").style.display = 'none'
+    strategyDetails.style.display = 'none'
+    strategyName.style.display = 'none'
+    strategyDes.style.display = 'none'
 }
 
 /* activatePlayerSelectionButtons():
@@ -462,32 +472,6 @@ function deactivatePlayerChoiceButtons() {
     document.getElementById("playerQuestion").style.display = 'none';
     conSplitButton.style.display = 'none';
     conStealButton.style.display = 'none';
-}
-
-/* populatePossibleOpponents():
-* adds each type of opponent strategy to an array
-*/
-function populatePossibleOpponents() {
-    let alwaysSplit = new OpponentAlwaysSplit();
-    let alwaysSteal = new OpponentAlwaysSteal();
-    let randomChoice = new OpponentRandom();
-    let titForTatCoop = new OpponentTitForTatCoopFirst();
-    let titForTatDefect = new OpponentTitForTatDefectFirst();
-    let grim = new OpponentGrim();
-    let pavlov = new OpponentPavlov();
-    let titForTwoTats = new OpponentTitForTwoTats();
-    let thresher = new OpponentThresher();
-    let impTitForTat = new OpponentImperfectTitForTat();
-    possibleOpponents.push(alwaysSplit);
-    possibleOpponents.push(alwaysSteal);
-    possibleOpponents.push(randomChoice);
-    possibleOpponents.push(titForTatCoop);
-    possibleOpponents.push(titForTatDefect);
-    possibleOpponents.push(grim);
-    possibleOpponents.push(pavlov);
-    possibleOpponents.push(titForTwoTats);
-    possibleOpponents.push(thresher);
-    possibleOpponents.push(impTitForTat);
 }
 
 /* resetGame():
