@@ -450,7 +450,7 @@ function printSummary() {
     document.getElementById("opponentDetails").style.display = 'block';
     document.getElementById("playerPoints").innerHTML = playerPoints;
     document.getElementById("opponentPoints").innerHTML = opponentPoints;
-    document.getElementById("opponentStrategy").innerHTML = opponent.name;
+    document.getElementById("opponentStrategy").innerHTML = opponent.name + "<br/>" + opponent.desc;
     // show & update player points
     updatePlayerPoints();
     // hide round num info
