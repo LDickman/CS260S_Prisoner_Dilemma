@@ -116,6 +116,7 @@ function startGame() {
     console.clear();
     console.log("Strat 1: " + strategy1.name + " Points: " + strategy1Points);
     console.log("Strat 2: " + strategy2.name + " Points: " + strategy2Points);
+    document.getElementById("strategyVsStrategy").style.display ='none';
     document.getElementById("chooseStrat1").style.display ='none';
     document.getElementById("chooseStrat2").style.display ='none';
     document.getElementById("startGame").style.display='none';
@@ -148,6 +149,7 @@ function nextRound() {
         document.getElementById("strategyDetails").style.display = 'block';
         document.getElementById("nextRound").style.display='none';
         document.getElementById("playAgain").style.display='block';
+        showResultOfStartegy();
     }
 }
 
@@ -186,6 +188,16 @@ function updatePointDisplay() {
     document.getElementById("Strat2ScoreUpdate").textContent = strategy2Points;
 }
 
+function showResultOfStartegy(){
+    document.getElementById("startResult").style.display = "block"
+    if (strategy1Points > strategy2Points) {
+        document.getElementById("startResult").innerHTML = strategy1.name + "is the Winner!" + "<br/>" + strategy2.name + "is the Loser!";
+    } else if (strategy1Points < strategy2Points ){
+        document.getElementById("startResult").innerHTML = strategy2.name + "is the Winner!" + "<br/>" + strategy1.name + "is the Loser!";
+    } else {
+        document.getElementById("startResult").innerHTML = "Both strategies Tie!";
+    }
+}
 
 document.getElementById("playAgain").addEventListener("click", resetGame)
 function resetGame() {
@@ -198,10 +210,12 @@ function resetGame() {
     strategy2Choices = [];
     document.getElementById("chooseStrat1").style.display ='block';
     document.getElementById("chooseStrat2").style.display ='block';
+    document.getElementById("strategyVsStrategy").style.display ='block';
     document.getElementById("startGame").style.display='inline-block';
     document.getElementById("endOfGame").style.display = 'none';
     document.getElementById("nextRound").style.display='none';
     document.getElementById("playAgain").style.display='none';
+    document.getElementById("startResult").style.display = "none";
     document.getElementById("stratChoiceHistoryTable").style.display = 'none';
     document.getElementById("scoreTable").style.display = 'none';
     strategy1 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
