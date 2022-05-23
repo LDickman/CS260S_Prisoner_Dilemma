@@ -430,6 +430,19 @@ function printRound() {
 function printSummary() {
     // show end of game header
     document.getElementById("endOfGame").style.display = 'block';
+    if (playerPoints > opponentPoints) {
+        document.getElementById("playerWin").style.display = 'block';
+        document.getElementById("playerLose").style.display = 'none';
+        document.getElementById("playerTie").style.display = 'none';
+    } else if (playerPoints < opponentPoints) {
+        document.getElementById("playerWin").style.display = 'none';
+        document.getElementById("playerLose").style.display = 'block';
+        document.getElementById("playerTie").style.display = 'none';
+    } else {
+        document.getElementById("playerWin").style.display = 'none';
+        document.getElementById("playerLose").style.display = 'none';
+        document.getElementById("playerTie").style.display = 'block';
+    }
     // show & update opponent details
     document.getElementById("playerPointsPara").style.display = 'block';
     document.getElementById("opponentDetails").style.display = 'block';
@@ -481,6 +494,8 @@ function populatePossibleOpponents() {
 */
 function resetGame() {
     rounds = Math.floor(Math.random() * (20 - 11 + 1) + 11);
+    document.getElementById("playerWin").style.display = 'none';
+    document.getElementById("playerLose").style.display = 'none';
     // Hide opponent details
     document.getElementById("opponentDetails").style.display = 'none';
     document.getElementById("playerPointsPara").style.display = 'none';
