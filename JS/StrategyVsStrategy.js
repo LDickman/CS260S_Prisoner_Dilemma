@@ -198,7 +198,7 @@ function resetGame() {
     strategy2Choices = [];
     document.getElementById("chooseStrat1").style.display ='block';
     document.getElementById("chooseStrat2").style.display ='block';
-    document.getElementById("startGame").style.display='block';
+    document.getElementById("startGame").style.display='inline-block';
     document.getElementById("endOfGame").style.display = 'none';
     document.getElementById("nextRound").style.display='none';
     document.getElementById("playAgain").style.display='none';

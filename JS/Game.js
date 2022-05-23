@@ -196,6 +196,7 @@ function deactivatePlayerSelectionButtons(){
     document.getElementById("createGameButton").style.display = 'none';
     document.getElementById("strategySelect").style.display = 'none';
     document.getElementById("buttonInfo").style.display = 'none';
+    document.getElementById("opponentStrategyInfo").style.display = 'none';
     strategyDetails.style.display = 'none';
     strategyName.style.display = 'none';
     strategyDes.style.display = 'none';
