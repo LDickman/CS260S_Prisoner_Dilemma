@@ -32,6 +32,14 @@ function displayGuide() {
     }
 }
 
+document.addEventListener("keydown", function (e) {
+    if (document.getElementById("nextRound").style.display === 'block') {
+        if (e.code === "Enter") {
+            nextRound();
+        }
+    }
+});
+
 export let strategy1 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
 export let strategy1Choices = []
 let strategy1Points = 0;
