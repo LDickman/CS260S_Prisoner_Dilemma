@@ -194,6 +194,7 @@ function createGame() {
 */
 function deactivatePlayerSelectionButtons(){
     document.getElementById("createGameButton").style.display = 'none';
+    document.getElementById("chooseStrategy").style.display = 'none';
     document.getElementById("strategySelect").style.display = 'none';
     document.getElementById("buttonInfo").style.display = 'none';
     document.getElementById("opponentStrategyInfo").style.display = 'none';
@@ -207,6 +208,7 @@ function deactivatePlayerSelectionButtons(){
 */
 function activatePlayerSelectionButtons(){
     document.getElementById("createGameButton").style.display = 'block';
+    document.getElementById("chooseStrategy").style.display = 'block';
     document.getElementById("strategySelect").style.display = 'block';
     document.getElementById("strategySelect").textContent = "Choose Strategy ▼";
     opponentType = "";
