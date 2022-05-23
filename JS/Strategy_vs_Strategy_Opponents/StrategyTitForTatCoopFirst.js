@@ -1,7 +1,7 @@
 import {currentRound, strategy1, strategy1Choices, strategy2, strategy2Choices} from "../StrategyVsStrategy.js";
 
 export class StrategyTitForTatCoopFirst {
-    name = "Tit for Tat - Cooperate First";
+    name = "Tit for Tat Cooperate";
     desc = "This opponent strategy cooperates on the first round and imitates your previous move thereafter.";
 
     makeChoice() {

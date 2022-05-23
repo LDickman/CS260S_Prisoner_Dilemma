@@ -1,7 +1,7 @@
 import {currentRound, strategy1, strategy1Choices, strategy2, strategy2Choices} from "../StrategyVsStrategy.js";
 
 export class StrategyTitForTatDefectFirst {
-    name = "Tit for Tat - Defect First";
+    name = "Tit for Tat Defect";
     desc = "This opponent strategy defects on the first round and imitates your previous move thereafter.";
 
     makeChoice() {

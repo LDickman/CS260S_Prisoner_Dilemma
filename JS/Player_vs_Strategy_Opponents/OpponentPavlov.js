@@ -1,7 +1,7 @@
 import {currentRound, playerChoices, opponentChoices} from "../Game.js";
 
 export class OpponentPavlov {
-    name = "Pavlov (Win-Stay, Lose-Shift)"
+    name = "Pavlov"
     desc = "This opponent strategy cooperates if it and yourself moved alike in the previous round and defects if you moved differently."
 
     makeChoice() {

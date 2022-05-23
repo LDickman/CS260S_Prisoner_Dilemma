@@ -1,6 +1,6 @@
 import { currentRound, playerChoices } from '../Game.js';
 export class OpponentTitForTatDefectFirst {
-    name = "Tit for Tat - Defect First";
+    name = "Tit for Tat Defect";
     desc = "This opponent strategy defects on the first round and imitates your previous move thereafter.";
 
     makeChoice() {

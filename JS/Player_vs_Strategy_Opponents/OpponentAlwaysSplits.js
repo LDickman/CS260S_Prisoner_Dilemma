@@ -1,5 +1,5 @@
 export class OpponentAlwaysSplit {
-    name = "Unconditional Cooperate (Always Split)";
+    name = "Unconditional Cooperate";
     desc = "This opponent strategy cooperates with you unconditionally.";
 
     makeChoice() {
