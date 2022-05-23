@@ -232,9 +232,9 @@ function showResultOfStartegy(){
     document.getElementById("startResult").style.display = "block";
     document.getElementById("roundNumDiv").style.display = 'none';
     if (strategy1Points > strategy2Points) {
-        document.getElementById("startResult").innerHTML = strategy1.name + "is the Winner!" + "<br/>" + strategy2.name + "is the Loser!";
+        document.getElementById("startResult").innerHTML = strategy1.name + " is the Winner!" + "<br/>" + strategy2.name + " is the Loser!";
     } else if (strategy1Points < strategy2Points ){
-        document.getElementById("startResult").innerHTML = strategy2.name + "is the Winner!" + "<br/>" + strategy1.name + "is the Loser!";
+        document.getElementById("startResult").innerHTML = strategy2.name + " is the Winner!" + "<br/>" + strategy1.name + " is the Loser!";
     } else {
         document.getElementById("startResult").innerHTML = "Both strategies Tie!";
     }
