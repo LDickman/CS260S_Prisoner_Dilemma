@@ -165,6 +165,9 @@ function printRound() {
     updateChangeColorOfCell("strat2ChoicesRow", currentRound - 1, strategy2Choices[currentRound - 1]);
     strat1Row.insertCell(-1).innerHTML = strategy1Choices[currentRound - 1];
     updateChangeColorOfCell("strat1ChoicesRow", currentRound - 1, strategy1Choices[currentRound - 1]);
+    document.getElementById("roundNumDiv").style.display = 'block';
+    document.getElementById("roundNumDisplay").style.display = 'inline-block';
+    document.getElementById("roundNum").innerHTML = currentRound;
 }
 
 function givePoints() {
@@ -189,7 +192,8 @@ function updatePointDisplay() {
 }
 
 function showResultOfStartegy(){
-    document.getElementById("startResult").style.display = "block"
+    document.getElementById("startResult").style.display = "block";
+    document.getElementById("roundNumDiv").style.display = 'none';
     if (strategy1Points > strategy2Points) {
         document.getElementById("startResult").innerHTML = strategy1.name + "is the Winner!" + "<br/>" + strategy2.name + "is the Loser!";
     } else if (strategy1Points < strategy2Points ){
@@ -217,6 +221,7 @@ function resetGame() {
     document.getElementById("playAgain").style.display='none';
     document.getElementById("startResult").style.display = "none";
     document.getElementById("stratChoiceHistoryTable").style.display = 'none';
+    document.getElementById("roundNumDiv").style.display = 'none';
     document.getElementById("scoreTable").style.display = 'none';
     strategy1 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
     document.getElementById("strat1Desc").textContent = "Strategy 1 will be chosen randomly."
