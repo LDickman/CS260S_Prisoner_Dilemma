@@ -111,9 +111,7 @@ html {
 }
 
 #playAgain {
-  text-align: center;
-  margin-top: 50px;
-  margin-left: 527px;
+  margin: auto;
   font-size: 16px;
   padding: 10px;
 }
