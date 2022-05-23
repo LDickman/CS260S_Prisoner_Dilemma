@@ -85,8 +85,8 @@ function setStrategy2() {
     let selection = dropdown2.options[dropdown2.selectedIndex].value
     if (selection === 'notChosen') { 
         strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
-        document.getElementById("strat1ChoiceName").textContent = strategy2.name;
-        document.getElementById("opponent1Strategy").textContent = strategy2.name;
+        document.getElementById("strat2ChoiceName").textContent = strategy2.name;
+        document.getElementById("opponent2Strategy").textContent = strategy2.name;
     }
     else if (selection === 'alwaysSplit') { strategy2 = alwaysSplit; }
     else if (selection === 'alwaysSteal') { strategy2 = alwaysSteal; }
@@ -206,6 +206,12 @@ function resetGame() {
     document.getElementById("playAgain").style.display='none';
     document.getElementById("stratChoiceHistoryTable").style.display = 'none';
     document.getElementById("scoreTable").style.display = 'none';
+    strategy1 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
+    document.getElementById("strat1Desc").textContent = "Strategy 1 will be chosen randomly."
+    document.getElementById("opponent1Strategy").textContent = "";
+    strategy2 = possibleStrategies[Math.floor(Math.random() * possibleStrategies.length)];
+    document.getElementById("strat2Desc").textContent = "Strategy 2 will be chosen randomly."
+    document.getElementById("opponent2Strategy").textContent = "";
 }
 
 function clearChoiceHistoryTable() {
