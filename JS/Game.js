@@ -4,16 +4,16 @@
 */
 
 /* Strategy Imports */
-import { OpponentTitForTatDefectFirst } from './Player_vs_Strategy_Opponents/OpponentTitForTatDefectFirst.js'
-import { OpponentAlwaysSplit } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSplits.js"
-import { OpponentAlwaysSteal } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSteals.js"
-import { OpponentRandom } from "./Player_vs_Strategy_Opponents/OpponentRandom.js"
-import { OpponentTitForTatCoopFirst } from "./Player_vs_Strategy_Opponents/OpponentTitForTatCoopFirst.js"
-import { OpponentGrim } from "./Player_vs_Strategy_Opponents/OpponentGrim.js"
-import { OpponentPavlov } from "./Player_vs_Strategy_Opponents/OpponentPavlov.js"
-import { OpponentTitForTwoTats} from "./Player_vs_Strategy_Opponents/OpponentTitForTwoTats.js"
+import {OpponentTitForTatDefectFirst} from './Player_vs_Strategy_Opponents/OpponentTitForTatDefectFirst.js'
+import {OpponentAlwaysSplit} from "./Player_vs_Strategy_Opponents/OpponentAlwaysSplits.js"
+import {OpponentAlwaysSteal} from "./Player_vs_Strategy_Opponents/OpponentAlwaysSteals.js"
+import {OpponentRandom} from "./Player_vs_Strategy_Opponents/OpponentRandom.js"
+import {OpponentTitForTatCoopFirst} from "./Player_vs_Strategy_Opponents/OpponentTitForTatCoopFirst.js"
+import {OpponentGrim} from "./Player_vs_Strategy_Opponents/OpponentGrim.js"
+import {OpponentPavlov} from "./Player_vs_Strategy_Opponents/OpponentPavlov.js"
+import {OpponentTitForTwoTats} from "./Player_vs_Strategy_Opponents/OpponentTitForTwoTats.js"
 import {OpponentThresher} from "./Player_vs_Strategy_Opponents/OpponentThresher.js"
-import { OpponentImperfectTitForTat} from "./Player_vs_Strategy_Opponents/OpponentImperfectTitForTat.js"
+import {OpponentImperfectTitForTat} from "./Player_vs_Strategy_Opponents/OpponentImperfectTitForTat.js"
 /* End Strategy Imports */
 
 /* Strategy Initializations */
@@ -30,6 +30,15 @@ let impTitForTat = new OpponentImperfectTitForTat()
 export let possibleOpponents = [alwaysSplit, alwaysSteal, randomChoice, titForTatCoop, titForTatDefect,
     grim, pavlov, titForTwoTats, thresher, impTitForTat]
 /* END Strategy Initializations */
+
+/* Sound Effects */
+let winSound = new Audio("../CSS/audio/winSound.wav")
+winSound.volume = .05
+let loseSound = new Audio("../CSS/audio/loseSound.wav")
+loseSound.volume = .05
+let tieSound = new Audio("../CSS/audio/tieSound.mp3")
+tieSound.volume = .05
+/* END Sound Effects */
 
 /* Field Declarations and Initializations*/
 export let rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10)
@@ -492,14 +501,17 @@ function printSummary() {
         document.getElementById("playerWin").style.display = 'block';
         document.getElementById("playerLose").style.display = 'none';
         document.getElementById("playerTie").style.display = 'none';
+        winSound.play()
     } else if (playerPoints < opponentPoints) {
         document.getElementById("playerWin").style.display = 'none';
         document.getElementById("playerLose").style.display = 'block';
         document.getElementById("playerTie").style.display = 'none';
+        loseSound.play()
     } else {
         document.getElementById("playerWin").style.display = 'none';
         document.getElementById("playerLose").style.display = 'none';
         document.getElementById("playerTie").style.display = 'block';
+        tieSound.play()
     }
     // show & update opponent details
     document.getElementById("playerPointsPara").style.display = 'block';
