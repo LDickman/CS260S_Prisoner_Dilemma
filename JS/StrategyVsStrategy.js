@@ -1,3 +1,8 @@
+/* StrategyVsStrategy.js
+* StrategyVsStrategy.js facilitates the main gameplay loop for the
+* Strategy vs. Strategy gameplay loop
+*/
+
 /* Strategy Imports */
 import {OpponentAlwaysSplit} from "./Player_vs_Strategy_Opponents/OpponentAlwaysSplits.js"
 import {OpponentAlwaysSteal} from "./Player_vs_Strategy_Opponents/OpponentAlwaysSteals.js"

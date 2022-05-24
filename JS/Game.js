@@ -1,9 +1,9 @@
 /* Game.js
-* Game.js manages and game logic and visuals, and is used by
-* chooseStrategy.html and game.html.
+* Game.js facilitates the main gameplay loop for the
+* Choose Strategy and Play Now game modes
 */
 
-/* Opponent Strategy Imports */
+/* Strategy Imports */
 import { OpponentTitForTatDefectFirst } from './Player_vs_Strategy_Opponents/OpponentTitForTatDefectFirst.js'
 import { OpponentAlwaysSplit } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSplits.js"
 import { OpponentAlwaysSteal } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSteals.js"
@@ -14,18 +14,9 @@ import { OpponentPavlov } from "./Player_vs_Strategy_Opponents/OpponentPavlov.js
 import { OpponentTitForTwoTats} from "./Player_vs_Strategy_Opponents/OpponentTitForTwoTats.js"
 import {OpponentThresher} from "./Player_vs_Strategy_Opponents/OpponentThresher.js"
 import { OpponentImperfectTitForTat} from "./Player_vs_Strategy_Opponents/OpponentImperfectTitForTat.js"
-/* Opponent Strategy Imports */
+/* End Strategy Imports */
 
-/* Field Declarations and Initializations*/
-export let rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10)
-console.log("Rounds: " + rounds)
-export let currentRound = 1
-export let playerChoices = []
-let strategyName = document.getElementById("strategyName")
-let strategyDes = document.getElementById("strategyDesc")
-let strategyDetails = document.getElementById("strategyInfo")
-let playerPoints = 0
-
+/* Strategy Initializations */
 let alwaysSplit = new OpponentAlwaysSplit()
 let alwaysSteal = new OpponentAlwaysSteal()
 let randomChoice = new OpponentRandom()
@@ -37,12 +28,23 @@ let titForTwoTats = new OpponentTitForTwoTats()
 let thresher = new OpponentThresher()
 let impTitForTat = new OpponentImperfectTitForTat()
 export let possibleOpponents = [alwaysSplit, alwaysSteal, randomChoice, titForTatCoop, titForTatDefect,
-                                grim, pavlov, titForTwoTats, thresher, impTitForTat]
+    grim, pavlov, titForTwoTats, thresher, impTitForTat]
+/* END Strategy Initializations */
+
+/* Field Declarations and Initializations*/
+export let rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10)
+console.log("Rounds: " + rounds)
+export let currentRound = 1
+export let playerChoices = []
+let strategyName = document.getElementById("strategyName")
+let strategyDes = document.getElementById("strategyDesc")
+let strategyDetails = document.getElementById("strategyInfo")
+let playerPoints = 0
 let opponent
 let opponentType = ""
 export let opponentChoices = []
 let opponentPoints = 0
-/* Field Declarations and Initializations */
+/* END Field Declarations and Initializations */
 
 /* In-Game Guide/How-to-Play Management */
 document.getElementById("helpButton").addEventListener("click", displayGuide)
@@ -52,20 +54,15 @@ function displayGuide() {
         popup.document.getElementById("fromGuideToMenu").style.display='none'
     }
 }
-/* In-Game Guide/How-to-Play Management */
+/* END In-Game Guide/How-to-Play Management */
 
-/* Button Management */
-const conSplitButton = document.getElementById("splitButton")
-conSplitButton.addEventListener("click", playerChoiceSplit)
 
-const conStealButton = document.getElementById("stealButton")
-conStealButton.addEventListener("click", playerChoiceSteal)
-
-const replayButton = document.getElementById("playAgainButton")
+/* Choose Strategy Management */
 
 const toGameScreenBody = document.getElementById("gameScreen")
 const toChooseGameScreen = document.getElementById("chooseGameScreen")
 
+const replayButton = document.getElementById("playAgainButton")
 replayButton.addEventListener("click", function() {
     replayButton.style.display = 'none'
     resetGame()
@@ -80,7 +77,6 @@ replayButton.addEventListener("click", function() {
         createGame()
     }
 });
-/* Button Management */
 
 /* HTML If-Statement
 * This if-statement is used to check which html file (either Game or chooseStrategy)
@@ -88,7 +84,6 @@ replayButton.addEventListener("click", function() {
 */
 let createGameButton
 let selectStrategyButton
-
 if (toChooseGameScreen != null) {
     createGameButton = document.getElementById("createGameButton")
     createGameButton.addEventListener("click", createGame)
@@ -114,7 +109,7 @@ if (toChooseGameScreen != null) {
 if (toGameScreenBody != null) {
     window.addEventListener("load", createGame)
 }
-/* HTML If-Statement*/
+/* END HTML If-Statement*/
 
 /* selectionButton():
 * manages what the dropdown menu displays when an option is selected
@@ -183,7 +178,9 @@ function setOpponent() {
             break;
     }
 }
+/* END Choose Strategy Management */
 
+/* Create Game Management */
 /* createGame():
 * sets up game opponent strategy using the random or choose methods and
 * begins the game loop by calling playGame()
@@ -236,9 +233,12 @@ function pickOpponentRandomly() {
     let random = Math.floor(Math.random() * possibleOpponents.length);
     opponent = possibleOpponents[random];
 }
+/* END Create Game Management */
 
+
+/* Play Game Management */
 /* playGame():
-* this method contains the entire gameplay loop of updating backend game variables
+* this method contains the entire gameplay loop of updating game fields
 * and HTML elements
 */
 function playGame() {
@@ -263,6 +263,52 @@ function activatePlayerChoiceButtons() {
     document.getElementById("playerQuestion").style.display = 'block';
     conSplitButton.style.display = 'inline-block';
     conStealButton.style.display = 'inline-block';
+}
+
+/* playerChoiceSplit():
+* this is the function executed when the 'Split' button is pushed
+* during the gameplay loop. Logs the choice for the round, and iterates round
+*/
+const conSplitButton = document.getElementById("splitButton")
+conSplitButton.addEventListener("click", playerChoiceSplit)
+function playerChoiceSplit() {
+    opponentTurn();
+    playerChoices.push("Split");
+    console.clear();
+    currentRound += 1;
+    playGame()
+}
+
+/* playerChoiceSteal():
+* this is the function executed when the 'Steal' button is pushed
+* during the gameplay loop. Logs the choice for the round, and iterates round
+*/
+const conStealButton = document.getElementById("stealButton")
+conStealButton.addEventListener("click", playerChoiceSteal)
+function playerChoiceSteal() {
+    opponentTurn();
+    playerChoices.push("Steal");
+    console.clear();
+    currentRound += 1;
+    playGame()
+}
+
+/* opponentTurn():
+* gets opponent choice (Split/Steal) from the 'opponent' object after
+* the player has made their selection
+*/
+function opponentTurn() {
+    let opponentChoice = opponent.makeChoice();
+    opponentChoices.push(opponentChoice);
+}
+
+/* updatePlayerPoints():
+* updates the HTML elements for player and opponent points
+*/
+function updatePlayerPoints() {
+    //// The score table is updated
+    document.getElementById("playerScoreUpdate").textContent = playerPoints;
+    document.getElementById("opponentScoreUpdate").textContent = opponentPoints;
 }
 
 /* populateChoiceHistoryTable():
@@ -468,12 +514,19 @@ function printSummary() {
     console.log("Opponent Points: " + opponentPoints);
     console.log("Opponent Strategy: " + opponent.name);
 }
+
+/* deactivatePlayerChoiceButtons():
+* Disables player controls for split/steal At end of the play game loop
+*/
 function deactivatePlayerChoiceButtons() {
     document.getElementById("playerQuestion").style.display = 'none';
     conSplitButton.style.display = 'none';
     conStealButton.style.display = 'none';
 }
+/* END Play Game Management */
 
+
+/* Reset Game Management */
 /* resetGame():
 * resets variables that are important to the gameplay loop,
 * as well as visual elements
@@ -508,45 +561,4 @@ function clearChoiceHistoryTable() {
         roundRow.deleteCell(-1);
     }
 }
-
-/* playerChoiceSplit():
-* this is the function executed when the 'Split' button is pushed
-* during the gameplay loop. Logs the choice for the round, and iterates round
-*/
-function playerChoiceSplit() {
-    opponentTurn();
-    playerChoices.push("Split");
-    console.clear();
-    currentRound += 1;
-    playGame()
-}
-
-/* playerChoiceSteal():
-* this is the function executed when the 'Steal' button is pushed
-* during the gameplay loop. Logs the choice for the round, and iterates round
-*/
-function playerChoiceSteal() {
-    opponentTurn();
-    playerChoices.push("Steal");
-    console.clear();
-    currentRound += 1;
-    playGame()
-}
-
-/* opponentTurn():
-* gets opponent choice (Split/Steal) from the 'opponent' object after
-* the player has made their selection
-*/
-function opponentTurn() {
-    let opponentChoice = opponent.makeChoice();
-    opponentChoices.push(opponentChoice);
-}
-
-/* updatePlayerPoints():
-* updates the HTML elements for player and opponent points
-*/
-function updatePlayerPoints() {
-    //// The score table is updated 
-    document.getElementById("playerScoreUpdate").textContent = playerPoints;
-    document.getElementById("opponentScoreUpdate").textContent = opponentPoints;
-}
+/* END Reset Game Management */
