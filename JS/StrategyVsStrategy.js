@@ -166,6 +166,14 @@ function setRoundDesc(roundNum) {
 * Starts strategy vs. strategy game, largely UI handling
 */
 document.getElementById("startGame").addEventListener("click", startGame)
+// document.addEventListener("keydown", function (e) {
+//     if (document.getElementById("startGame").style.display !== 'none') {
+//         console.log("start game triggered by key")
+//         if (e.code === "Enter") {
+//             startGame()
+//         }
+//     }
+// })
 function startGame() {
     deactivateDropdowns()
     activateGameElements()
@@ -211,13 +219,13 @@ function updateStrategyInfo() {
 * Handles UI and logic for moving between rounds
 */
 document.getElementById("nextRound").addEventListener("click", nextRound)
-document.addEventListener("keydown", function (e) {
-    if (document.getElementById("nextRound").style.display === 'block') {
-        if (e.code === "Enter") {
-            nextRound()
-        }
-    }
-});
+// document.addEventListener("keydown", function (e) {
+//     if (document.getElementById("nextRound").style.display === 'block') {
+//         if (e.code === '32') { //if key was 'space'
+//             nextRound()
+//         }
+//     }
+// })
 function nextRound() {
     if (currentRound <= rounds) {
         strategy1Choices.push(strategy1.makeChoice())
@@ -322,10 +330,18 @@ function showResultOfStrategy(){
 /* resetGame():
 * Resets UI and fields
 */
+// document.addEventListener("keydown", function (e) {
+//     if (document.getElementById("playAgain").style.display !== 'none') {
+//         console.log("reset game triggered by key")
+//         if (e.code === "Enter") {
+//             resetGame()
+//         }
+//     }
+// })
 document.getElementById("playAgain").addEventListener("click", resetGame)
 function resetGame() {
-    resetFields()
     clearChoiceHistoryTable()
+    resetFields()
     resetDropdowns()
     deactivateRoundDisplay()
     resetStrategyInfo()
@@ -349,6 +365,7 @@ function resetFields() {
 * Clears UI table of choices from previous game
 */
 function clearChoiceHistoryTable() {
+    console.log("table clear called")
     for (let i = 0; i < strategy1Choices.length; i++) {
         let strat1Row = document.getElementById("strat1ChoicesRow")
         let strat2Row = document.getElementById("strat2ChoicesRow")
