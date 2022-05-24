@@ -72,11 +72,32 @@ const toGameScreenBody = document.getElementById("gameScreen")
 const toChooseGameScreen = document.getElementById("chooseGameScreen")
 
 const replayButton = document.getElementById("playAgainButton")
+
 replayButton.addEventListener("click", function() {
+    determinePlayAgainDestination()
+});
+
+document.addEventListener("keydown", function (e) {
+    if (e.code === "Enter") {
+        if (toChooseGameScreen !== null) {
+            if (document.getElementById("playAgainButton").style.display !== 'none' && document.getElementById("createGameButton").style.display === 'none') {
+                setTimeout(determinePlayAgainDestination, 1)
+            }
+        } else if (document.getElementById("playAgainButton").style.display !== 'none') {
+            determinePlayAgainDestination()
+        }
+    }
+})
+
+/* determinePlayAgainDestination():
+* Determines if play again should go back to choose opponent or start
+* a new random game
+*/
+function determinePlayAgainDestination() {
     replayButton.style.display = 'none'
     resetGame()
     console.clear()
-    if (toChooseGameScreen != null) {
+    if (toChooseGameScreen !== null) {
         document.getElementById("playerChoiceHistoryTable").style.display = 'none'
         document.getElementById("scoreTable").style.display = 'none'
         document.getElementById("pointTable").style.display = 'none'
@@ -85,7 +106,7 @@ replayButton.addEventListener("click", function() {
     } else {
         createGame()
     }
-});
+}
 
 /* HTML If-Statement
 * This if-statement is used to check which html file (either Game or chooseStrategy)
@@ -96,6 +117,14 @@ let selectStrategyButton
 if (toChooseGameScreen != null) {
     createGameButton = document.getElementById("createGameButton")
     createGameButton.addEventListener("click", createGame)
+    document.addEventListener("keydown", function (e) {
+        if (document.getElementById("createGameButton").style.display !== 'none') {
+            if (e.code === "Enter") {
+                console.log("createGame by key")
+                createGame()
+            }
+        }
+    })
 
     selectStrategyButton = document.getElementById("strategySelect")
     let ulList = document.getElementById("strategyList")
@@ -220,10 +249,9 @@ function deactivatePlayerSelectionButtons(){
 }
 
 /* activatePlayerSelectionButtons():
-* enables display for chooseStrategy.html elements for choosing and opponent
+* enables display for chooseStrategy.html elements for choosing an opponent
 */
 function activatePlayerSelectionButtons(){
-    document.getElementById("createGameButton").style.display = 'block';
     document.getElementById("chooseStrategy").style.display = 'block';
     document.getElementById("strategySelect").style.display = 'block';
     document.getElementById("strategySelect").textContent = "Choose Strategy ▼";
@@ -233,6 +261,7 @@ function activatePlayerSelectionButtons(){
     strategyDetails.style.display = 'block';
     strategyName.style.display = 'block';
     strategyDes.style.display = 'block';
+    document.getElementById("createGameButton").style.display = 'block';
 }
 
 /* pickOpponentRandomly():
@@ -280,6 +309,13 @@ function activatePlayerChoiceButtons() {
 */
 const conSplitButton = document.getElementById("splitButton")
 conSplitButton.addEventListener("click", playerChoiceSplit)
+document.addEventListener("keydown", function (e) {
+    if (document.getElementById("splitButton").style.display !== 'none') {
+        if (e.code === "KeyZ") {
+            playerChoiceSplit()
+        }
+    }
+})
 function playerChoiceSplit() {
     opponentTurn();
     playerChoices.push("Split");
@@ -294,6 +330,13 @@ function playerChoiceSplit() {
 */
 const conStealButton = document.getElementById("stealButton")
 conStealButton.addEventListener("click", playerChoiceSteal)
+document.addEventListener("keydown", function (e) {
+    if (document.getElementById("stealButton").style.display !== 'none') {
+        if (e.code === "KeyX") {
+            playerChoiceSteal()
+        }
+    }
+})
 function playerChoiceSteal() {
     opponentTurn();
     playerChoices.push("Steal");
