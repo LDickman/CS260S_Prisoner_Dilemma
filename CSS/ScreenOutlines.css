@@ -17,7 +17,7 @@ html {
 }
 
 #strategyVsStrategyScreen {
-  background-image: linear-gradient(to left, rgba(255, 0, 128, 0.445), rgba(238, 255, 0, 0.521));
+  background-image: linear-gradient(rgba(255, 0, 128, 0.445), rgba(238, 255, 0, 0.521));
   overflow-y: hidden;
   overflow-x: hidden;
 }
