@@ -166,7 +166,7 @@ function setOpponent() {
         case "Pavlov":
             opponent = possibleOpponents[6]
             break;
-        case "Tit For Two Tats":
+        case "Tit for Two Tats":
             opponent = possibleOpponents[7]
             break;
         case "Threshold":
