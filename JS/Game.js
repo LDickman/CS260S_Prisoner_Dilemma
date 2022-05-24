@@ -398,7 +398,7 @@ function displayOpponentInfo() {
             strategyName.textContent = possibleOpponents[6].name;
             strategyDes.textContent = possibleOpponents[6].desc; 
             break;
-        case "Tit For Two Tats":
+        case "Tit for Two Tats":
             strategyName.textContent = possibleOpponents[7].name;
             strategyDes.textContent = possibleOpponents[7].desc; 
             break;
