@@ -5,12 +5,26 @@ html {
   background-size: cover;
 }
 
-#gameScreen, #chooseGameScreen, #guideForm, #strategyVsStrategyScreen {
+#guideForm {
   background-color: #989898;
   overflow-x: hidden;
 }
 
-#gameScreen, #chooseGameScreen, #strategyVsStrategyScreen {
+#chooseGameScreen {
+  background-image: linear-gradient(to right, rgba(0, 89, 255, 0.322), rgba(146, 218, 247, 0.397), rgba(168, 65, 253, 0.329));
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+#strategyVsStrategyScreen {
+  background-image: linear-gradient(to left, rgba(255, 0, 128, 0.445), rgba(238, 255, 0, 0.521));
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+#gameScreen {
+  background-image: linear-gradient(to right, rgba(0, 255, 0, 0.253), rgba(255, 0, 0, 0.24));
+  overflow-x: hidden;
   overflow-y: hidden;
 }
 
