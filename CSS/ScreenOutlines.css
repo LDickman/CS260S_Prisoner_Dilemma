@@ -24,8 +24,8 @@ html {
 
 #gameScreen {
   background-image: linear-gradient(to right, rgba(0, 255, 0, 0.253), rgba(255, 0, 0, 0.24));
-  /* overflow-x: hidden; */
-  overflow-y: hidden;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
 }
 
 .index body {
