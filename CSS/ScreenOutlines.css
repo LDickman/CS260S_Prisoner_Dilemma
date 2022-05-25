@@ -10,34 +10,11 @@ html, body {
   padding: 0;
 }
 
-#guideForm {
+#guideForm, #chooseGameScreen, #strategyVsStrategyScreen, #gameScreen {
   background-color: #989898;
   left: auto;
   right: auto;
   position: relative;
-  /* overflow-x: hidden; */
-}
-
-#chooseGameScreen {
-  background: linear-gradient(to right, rgba(0, 89, 255, 0.322), rgba(146, 218, 247, 0.397), rgba(168, 65, 253, 0.329));
-  left: auto;
-  right: auto;
-  position: relative;
-  /* overflow-x: hidden; */
-}
-
-#strategyVsStrategyScreen {
-  background: linear-gradient(to right, rgba(255, 0, 128, 0.445), rgba(238, 255, 0, 0.521));
-  left: auto;
-  right: auto;
-  position: relative;
-  /* overflow-x: hidden; */
-}
-
-#gameScreen {
-  background: linear-gradient(to right, rgba(0, 255, 0, 0.253), rgba(255, 0, 0, 0.24));
-  left: auto;
-  right: auto;
   /* overflow-x: hidden; */
 }
 
