@@ -42,7 +42,6 @@ tieSound.volume = .05
 
 /* Field Declarations and Initializations*/
 export let rounds = Math.floor(Math.random() * (20 - 10 + 1) + 10)
-console.log("Rounds: " + rounds)
 export let currentRound = 1
 export let playerChoices = []
 let strategyName = document.getElementById("strategyName")
@@ -96,7 +95,6 @@ document.addEventListener("keydown", function (e) {
 function determinePlayAgainDestination() {
     replayButton.style.display = 'none'
     resetGame()
-    console.clear()
     if (toChooseGameScreen !== null) {
         document.getElementById("playerChoiceHistoryTable").style.display = 'none'
         document.getElementById("scoreTable").style.display = 'none'
@@ -120,7 +118,6 @@ if (toChooseGameScreen != null) {
     document.addEventListener("keydown", function (e) {
         if (document.getElementById("createGameButton").style.display !== 'none') {
             if (e.code === "Enter") {
-                console.log("createGame by key")
                 createGame()
             }
         }
@@ -165,7 +162,6 @@ function clickOnDropDownMenu(ul, button) {
         for (let i = 0; i < items.length; i++) {
             if (e.target === items[i]) {
                 opponentType = items[i].textContent
-                console.log("opponentType: " + opponentType)
                 button.textContent = items[i].textContent + " ▼"
             }
         }
@@ -286,7 +282,6 @@ function playGame() {
     givePoints();
     if (currentRound <= rounds) {
         printRound();
-        console.log("Opponent Points: " + opponentPoints);
     } else {
         printSummary();
         replayButton.style.display = 'inline';
@@ -319,7 +314,6 @@ document.addEventListener("keydown", function (e) {
 function playerChoiceSplit() {
     opponentTurn();
     playerChoices.push("Split");
-    console.clear();
     currentRound += 1;
     playGame()
 }
@@ -340,7 +334,6 @@ document.addEventListener("keydown", function (e) {
 function playerChoiceSteal() {
     opponentTurn();
     playerChoices.push("Steal");
-    console.clear();
     currentRound += 1;
     playGame()
 }
@@ -392,7 +385,6 @@ function populateChoiceHistoryTable() {
 */
 function updateChangeColorOfCell(name, index) {
     let tableCell = document.getElementById(name).getElementsByTagName("td");
-    console.log(name +" " + tableCell[index]);
     if (tableCell[index].textContent === "Steal") {
         tableCell[index].style.backgroundColor = "red";
     }
@@ -529,7 +521,6 @@ function printRound() {
     updatePlayerPoints();
     document.getElementById("roundNumDisplay").style.display = 'inline-block';
     document.getElementById("roundNum").innerHTML = currentRound;
-    console.log("Opponent AI: " + opponent.name);
 }
 
 /* printSummary():
@@ -566,8 +557,6 @@ function printSummary() {
     updatePlayerPoints();
     // hide round num info
     document.getElementById("roundNumDiv").style.display = 'none';
-    console.log("Opponent Points: " + opponentPoints);
-    console.log("Opponent Strategy: " + opponent.name);
 }
 
 /* deactivatePlayerChoiceButtons():
