@@ -404,9 +404,9 @@ function deactivateRoundDisplay() {
 */
 function resetStrategyInfo() {
     document.getElementById("startGame").style.display = 'inline-block'
-    document.getElementById("strat1Desc").textContent = "Strategy 1 will be chosen randomly."
+    document.getElementById("strat1Desc").textContent = "Strategy 1 will be randomly selected."
     document.getElementById("opponent1Strategy").textContent = ""
-    document.getElementById("strat2Desc").textContent = "Strategy 2 will be chosen randomly."
+    document.getElementById("strat2Desc").textContent = "Strategy 1 will be randomly selected."
     document.getElementById("opponent2Strategy").textContent = ""
     document.getElementById("roundDesc").innerHTML = "Random"
 }

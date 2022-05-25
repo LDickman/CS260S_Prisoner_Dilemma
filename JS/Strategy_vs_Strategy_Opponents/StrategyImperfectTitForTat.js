@@ -2,7 +2,7 @@ import {currentRound, strategy1, strategy1Choices, strategy2, strategy2Choices} 
 
 export class StrategyImperfectTitForTat {
     name = "Imperfect Tit for Tat"
-    desc = "This opponent strategy imitates it's opponent's last move with high (but less than one) probability."
+    desc = "This opponent strategy imitates its opponent's last move with high (but less than one) probability."
 
     makeChoice() {
         let p = Math.floor((Math.random() * (4 - 1 + 1) + 1))

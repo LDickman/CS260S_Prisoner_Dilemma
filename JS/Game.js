@@ -510,11 +510,11 @@ function displayOpponentInfo() {
             break;
         case "No Preference":
             strategyName.textContent = "No Preference";
-            strategyDes.textContent = "The opponent will be randomly selected for you";
+            strategyDes.textContent = "The opponent will be randomly selected.";
             break;
         case "":
             strategyName.textContent = "No Preference";
-            strategyDes.textContent = "The opponent will be randomly selected for you";
+            strategyDes.textContent = "The opponent will be randomly selected.";
             break;
     }
 }
