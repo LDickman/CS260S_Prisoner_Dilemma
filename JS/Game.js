@@ -4,16 +4,16 @@
 */
 
 /* Strategy Imports */
-import {OpponentTitForTatDefectFirst} from './Player_vs_Strategy_Opponents/OpponentTitForTatDefectFirst.js'
-import {OpponentAlwaysSplit} from "./Player_vs_Strategy_Opponents/OpponentAlwaysSplits.js"
-import {OpponentAlwaysSteal} from "./Player_vs_Strategy_Opponents/OpponentAlwaysSteals.js"
-import {OpponentRandom} from "./Player_vs_Strategy_Opponents/OpponentRandom.js"
-import {OpponentTitForTatCoopFirst} from "./Player_vs_Strategy_Opponents/OpponentTitForTatCoopFirst.js"
-import {OpponentGrim} from "./Player_vs_Strategy_Opponents/OpponentGrim.js"
-import {OpponentPavlov} from "./Player_vs_Strategy_Opponents/OpponentPavlov.js"
-import {OpponentTitForTwoTats} from "./Player_vs_Strategy_Opponents/OpponentTitForTwoTats.js"
-import {OpponentThresher} from "./Player_vs_Strategy_Opponents/OpponentThresher.js"
-import {OpponentImperfectTitForTat} from "./Player_vs_Strategy_Opponents/OpponentImperfectTitForTat.js"
+import { OpponentTitForTatDefectFirst } from './Player_vs_Strategy_Opponents/OpponentTitForTatDefectFirst.js'
+import { OpponentAlwaysSplit } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSplits.js"
+import { OpponentAlwaysSteal } from "./Player_vs_Strategy_Opponents/OpponentAlwaysSteals.js"
+import { OpponentRandom } from "./Player_vs_Strategy_Opponents/OpponentRandom.js"
+import { OpponentTitForTatCoopFirst } from "./Player_vs_Strategy_Opponents/OpponentTitForTatCoopFirst.js"
+import { OpponentGrim } from "./Player_vs_Strategy_Opponents/OpponentGrim.js"
+import { OpponentPavlov } from "./Player_vs_Strategy_Opponents/OpponentPavlov.js"
+import { OpponentTitForTwoTats } from "./Player_vs_Strategy_Opponents/OpponentTitForTwoTats.js"
+import { OpponentThresher } from "./Player_vs_Strategy_Opponents/OpponentThresher.js"
+import { OpponentImperfectTitForTat } from "./Player_vs_Strategy_Opponents/OpponentImperfectTitForTat.js"
 /* End Strategy Imports */
 
 /* Strategy Initializations */
@@ -58,8 +58,8 @@ let opponentPoints = 0
 document.getElementById("helpButton").addEventListener("click", displayGuide)
 function displayGuide() {
     let popup = window.open('guide.html', 'popup', 'width=500,height=500,scrollbars=yes,resizeable=yes')
-    popup.window.onload = function() {
-        popup.document.getElementById("fromGuideToMenu").style.display='none'
+    popup.window.onload = function () {
+        popup.document.getElementById("fromGuideToMenu").style.display = 'none'
     }
 }
 /* END In-Game Guide/How-to-Play Management */
@@ -72,7 +72,7 @@ const toChooseGameScreen = document.getElementById("chooseGameScreen")
 
 const replayButton = document.getElementById("playAgainButton")
 
-replayButton.addEventListener("click", function() {
+replayButton.addEventListener("click", function () {
     determinePlayAgainDestination()
 });
 
@@ -140,7 +140,7 @@ if (toChooseGameScreen != null) {
         clickOnDropDownMenu(ulList, selectStrategyButton)
     }
 
-} 
+}
 if (toGameScreenBody != null) {
     window.addEventListener("load", createGame)
 }
@@ -233,7 +233,7 @@ function createGame() {
 /* deactivatePlayerSelectionButtons():
 * disables display for chooseStrategy.html elements for choosing an opponent
 */
-function deactivatePlayerSelectionButtons(){
+function deactivatePlayerSelectionButtons() {
     document.getElementById("createGameButton").style.display = 'none'
     document.getElementById("chooseStrategy").style.display = 'none'
     document.getElementById("strategySelect").style.display = 'none'
@@ -247,7 +247,7 @@ function deactivatePlayerSelectionButtons(){
 /* activatePlayerSelectionButtons():
 * enables display for chooseStrategy.html elements for choosing an opponent
 */
-function activatePlayerSelectionButtons(){
+function activatePlayerSelectionButtons() {
     document.getElementById("chooseStrategy").style.display = 'block';
     document.getElementById("strategySelect").style.display = 'block';
     document.getElementById("strategySelect").textContent = "Choose Strategy ▼";
@@ -372,7 +372,7 @@ function populateChoiceHistoryTable() {
                 roundsRow.insertCell(-1).innerHTML = String(currentRound - 1);
                 playerRow.insertCell(-1).innerHTML = playerChoices[i];
                 opponentRow.insertCell(-1).innerHTML = opponentChoices[i];
-                updateChangeColorOfCell("playerChoicesRow",i);
+                updateChangeColorOfCell("playerChoicesRow", i);
                 updateChangeColorOfCell("OpponentChoicesRow", i);
             }
         }
@@ -435,7 +435,7 @@ function updatePointTable() {
             bothSteal.style.background = "none"
             pSplitOppSteal.style.background = "none"
             pStealOppSplit.style.background = "none"
-        } else if (pChoice === "Split" && oChoice ==="Steal") {
+        } else if (pChoice === "Split" && oChoice === "Steal") {
             bothSplit.style.background = "none"
             bothSteal.style.background = "none"
             pSplitOppSteal.style.background = "yellow"
@@ -462,35 +462,35 @@ function displayOpponentInfo() {
     switch (opponentType) {
         case "Always Split":
             strategyName.textContent = possibleOpponents[0].name;
-            strategyDes.textContent = possibleOpponents[0].desc; 
+            strategyDes.textContent = possibleOpponents[0].desc;
             break;
         case "Always Steal":
             strategyName.textContent = possibleOpponents[1].name;
-            strategyDes.textContent = possibleOpponents[1].desc; 
+            strategyDes.textContent = possibleOpponents[1].desc;
             break;
         case "Random":
             strategyName.textContent = possibleOpponents[2].name;
-            strategyDes.textContent = possibleOpponents[2].desc; 
+            strategyDes.textContent = possibleOpponents[2].desc;
             break;
         case "Tit for Tat Defect":
             strategyName.textContent = possibleOpponents[4].name;
-            strategyDes.textContent = possibleOpponents[4].desc; 
+            strategyDes.textContent = possibleOpponents[4].desc;
             break;
         case "Tit for Tat Coop":
             strategyName.textContent = possibleOpponents[3].name;
-            strategyDes.textContent = possibleOpponents[3].desc; 
+            strategyDes.textContent = possibleOpponents[3].desc;
             break;
         case "Grim":
             strategyName.textContent = possibleOpponents[5].name;
-            strategyDes.textContent = possibleOpponents[5].desc; 
+            strategyDes.textContent = possibleOpponents[5].desc;
             break;
         case "Pavlov":
             strategyName.textContent = possibleOpponents[6].name;
-            strategyDes.textContent = possibleOpponents[6].desc; 
+            strategyDes.textContent = possibleOpponents[6].desc;
             break;
         case "Tit for Two Tats":
             strategyName.textContent = possibleOpponents[7].name;
-            strategyDes.textContent = possibleOpponents[7].desc; 
+            strategyDes.textContent = possibleOpponents[7].desc;
             break;
         case "Threshold":
             strategyName.textContent = possibleOpponents[8].name;

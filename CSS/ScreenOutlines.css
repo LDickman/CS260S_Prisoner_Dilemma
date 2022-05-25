@@ -1,4 +1,4 @@
-html, body {
+html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -8,15 +8,19 @@ html, body {
   overflow: auto;
   margin: 0 auto;
   padding: 0;
+  border: 0;
+  outline: 0;
 }
 
 #guideForm, #chooseGameScreen, #strategyVsStrategyScreen, #gameScreen {
   background-color: #989898;
-  left: auto;
-  right: auto;
-  position: relative;
-  /* overflow-x: hidden; */
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
+
+#chooseGameScreen, #strategyVsStrategyScreen, #gameScreen { overflow-x: hidden; }
 
 .index body {
   background-color: transparent !important;
