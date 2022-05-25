@@ -1,48 +1,44 @@
-html {
+html, body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  margin: 0 auto;
+  padding: 0;
 }
 
 #guideForm {
   background-color: #989898;
-  position: relative;
-  top: "your percentage";
   left: auto;
   right: auto;
-  margin: auto;
-  overflow-x: hidden;
+  position: relative;
+  /* overflow-x: hidden; */
 }
 
 #chooseGameScreen {
   background: linear-gradient(to right, rgba(0, 89, 255, 0.322), rgba(146, 218, 247, 0.397), rgba(168, 65, 253, 0.329));
-  position: relative;
-  top: "your percentage";
   left: auto;
   right: auto;
-  margin: auto;
-  overflow-x: hidden;
+  position: relative;
+  /* overflow-x: hidden; */
 }
 
 #strategyVsStrategyScreen {
   background: linear-gradient(to right, rgba(255, 0, 128, 0.445), rgba(238, 255, 0, 0.521));
-  position: relative;
-  top: "your percentage";
   left: auto;
   right: auto;
-  margin: auto;
-  overflow-x: hidden;
+  position: relative;
+  /* overflow-x: hidden; */
 }
 
 #gameScreen {
   background: linear-gradient(to right, rgba(0, 255, 0, 0.253), rgba(255, 0, 0, 0.24));
-  position: relative;
-  top: "your percentage";
   left: auto;
   right: auto;
-  margin: auto;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .index body {
