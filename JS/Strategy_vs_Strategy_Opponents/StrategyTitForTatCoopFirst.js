@@ -2,7 +2,7 @@ import {currentRound, strategy1, strategy1Choices, strategy2, strategy2Choices} 
 
 export class StrategyTitForTatCoopFirst {
     name = "Tit for Tat Cooperate"
-    desc = "This opponent strategy cooperates on the first round and imitates it's opponent's previous move thereafter."
+    desc = "This opponent strategy cooperates on the first round and imitates its opponent's previous move thereafter."
 
     makeChoice() {
         if (currentRound === 1) {
