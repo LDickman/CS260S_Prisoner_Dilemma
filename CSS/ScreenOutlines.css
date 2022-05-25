@@ -7,25 +7,42 @@ html {
 
 #guideForm {
   background-color: #989898;
+  position: relative;
+  top: "your percentage";
+  left: auto;
+  right: auto;
+  margin: auto;
   overflow-x: hidden;
 }
 
 #chooseGameScreen {
-  background-image: linear-gradient(to right, rgba(0, 89, 255, 0.322), rgba(146, 218, 247, 0.397), rgba(168, 65, 253, 0.329));
-  /* overflow-y: hidden; */
+  background: linear-gradient(to right, rgba(0, 89, 255, 0.322), rgba(146, 218, 247, 0.397), rgba(168, 65, 253, 0.329));
+  position: relative;
+  top: "your percentage";
+  left: auto;
+  right: auto;
+  margin: auto;
   overflow-x: hidden;
 }
 
 #strategyVsStrategyScreen {
-  background-image: linear-gradient(to right, rgba(255, 0, 128, 0.445), rgba(238, 255, 0, 0.521));
-  /* overflow-y: hidden; */
+  background: linear-gradient(to right, rgba(255, 0, 128, 0.445), rgba(238, 255, 0, 0.521));
+  position: relative;
+  top: "your percentage";
+  left: auto;
+  right: auto;
+  margin: auto;
   overflow-x: hidden;
 }
 
 #gameScreen {
-  background-image: linear-gradient(to right, rgba(0, 255, 0, 0.253), rgba(255, 0, 0, 0.24));
+  background: linear-gradient(to right, rgba(0, 255, 0, 0.253), rgba(255, 0, 0, 0.24));
+  position: relative;
+  top: "your percentage";
+  left: auto;
+  right: auto;
+  margin: auto;
   overflow-x: hidden;
-  /* overflow-y: hidden; */
 }
 
 .index body {
