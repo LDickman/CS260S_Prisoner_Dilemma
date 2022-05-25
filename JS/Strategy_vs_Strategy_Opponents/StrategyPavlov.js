@@ -2,7 +2,7 @@ import {currentRound, strategy1Choices, strategy2Choices} from "../StrategyVsStr
 
 export class StrategyPavlov {
     name = "Pavlov"
-    desc = "This opponent strategy cooperates if it and it's opponent moved alike in the previous round and defects if you moved differently."
+    desc = "This opponent strategy cooperates if it and its opponent moved alike in the previous round and defects if they moved differently."
 
     makeChoice() {
         if (currentRound === 1) {

@@ -2,7 +2,7 @@ import {currentRound, strategy1, strategy1Choices, strategy2, strategy2Choices} 
 
 export class StrategyTitForTatDefectFirst {
     name = "Tit for Tat Defect"
-    desc = "This opponent strategy defects on the first round and imitates it's opponent's previous move thereafter."
+    desc = "This opponent strategy defects on the first round and imitates its opponent's previous move thereafter."
 
     makeChoice() {
         if (currentRound === 1) {
