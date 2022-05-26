@@ -292,10 +292,10 @@ function populateChoiceHistoryTable() {
 function changeCellColor(name, number, index) {
     let tableCell = document.getElementById(name).getElementsByTagName("td")
     if (index === "Steal") {
-        tableCell[number].style.backgroundColor = "red"
+        tableCell[number].style.backgroundColor = "pink"
     }
     if (index === "Split") {
-        tableCell[number].style.backgroundColor = "green"
+        tableCell[number].style.backgroundColor = "lightgreen"
     }
 }
 

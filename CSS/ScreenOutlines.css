@@ -20,8 +20,6 @@ html {
   bottom: 0;
 }
 
-#chooseGameScreen, #strategyVsStrategyScreen, #gameScreen { overflow-x: hidden; }
-
 .index body {
   background-color: transparent !important;
 }
